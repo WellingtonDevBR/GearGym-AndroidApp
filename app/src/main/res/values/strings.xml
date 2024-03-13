@@ -1,0 +1,43 @@
+<resources>
+    <!-- General -->
+    <string name="app_name">GearGym</string>
+    <string name="gear_gym_logo">GearGym Logo</string>
+
+    <!-- Login Page -->
+    <string name="welcomeTitle">Welcome to GearGym</string>
+    <string name="subWelcomeTitle">Please, Sign in to continue to GearGym!</string>
+    <string name="rememberMe">Remember me</string>
+    <string name="forgotPassword">Forgot Password</string>
+    <string name="signIn">Sign In</string>
+    <string name="signUp">Sign Up</string>
+    <string name="doNotHaveAccount">Do not have an account?</string>
+    <string name="gearGymLogo">GearGym Logo</string>
+
+    <!-- Registration Page -->
+    <string name="sign_up_now">SIGN UP NOW</string>
+    <string name="sign_up_promo">Please, Sign up to continue to GearGym!</string>
+    <string name="sign_up_description">Please, Sign up to continue to GearGym!</string>
+    <string name="hint_enter_your_name">Enter your name</string>
+    <string name="hint_enter_your_email">Enter your email</string>
+    <string name="hint_enter_your_password">Enter your password</string>
+    <string name="hint_repeat_your_password">Repeat your password</string>
+    <string name="i_agree_to">I agree to</string>
+    <string name="terms_and_conditions">Terms and Conditions</string>
+    <string name="register_button">Register</string>
+
+    <!-- Forgot Password Page -->
+    <string name="forgotPasswordTitle">Forgot Your Password?</string>
+    <string name="subForgotPasswordTitle">Please, enter your email to reset the password!</string>
+    <string name="sendLinkPassword">Send Link</string>
+
+    <!-- Labels -->
+    <string name="label_name">Name</string>
+    <string name="label_email">Email</string>
+    <string name="label_password">Password</string>
+    <string name="label_repeat_password">Repeat Password</string>
+    <string name="home">Home</string>
+    <string name="scan">Scan Now</string>
+    <string name="support">Support</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+</resources>

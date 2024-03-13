@@ -1,0 +1,22 @@
+<!-- res/menu/bottom_navigation_menu.xml -->
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/navigation_home"
+        android:icon="@drawable/ic_home"
+        app:showAsAction="ifRoom"
+        android:title="@string/home" />
+
+    <item
+        android:id="@+id/navigation_scan"
+        app:showAsAction="ifRoom"
+        android:enabled="false"
+        android:title="@string/scan" />
+
+    <item
+        android:id="@+id/navigation_support"
+        android:icon="@drawable/ic_support"
+        app:showAsAction="ifRoom"
+        android:title="@string/support" />
+</menu>
