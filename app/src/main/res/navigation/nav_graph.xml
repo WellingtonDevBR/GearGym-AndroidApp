@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/nav_graph"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
     app:startDestination="@id/homeFragment">
 
     <fragment
@@ -46,5 +46,19 @@
         android:id="@+id/createWorkoutFragment"
         android:name="com.gamezzar.geargymtest.feature.workout.CreateWorkoutFragment"
         android:label="New Workout"
-        tools:layout="@layout/create_workout_fragment" />
+        tools:layout="@layout/create_workout_fragment">
+        <action
+            android:id="@+id/action_createWorkoutFragment_to_workoutChoiceListFragment"
+            app:destination="@id/workoutChoiceListFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/workoutChoiceListFragment"
+        android:name="com.gamezzar.geargymtest.feature.workout.WorkoutChoiceListFragment"
+        android:label="New Workout"
+        tools:layout="@layout/workout_choice_list_fragment" />
 </navigation>

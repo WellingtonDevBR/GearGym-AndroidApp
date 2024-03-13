@@ -1,6 +1,7 @@
 package com.gamezzar.geargymtest.feature.workout;
 
 import android.view.LayoutInflater;
+import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
@@ -13,9 +14,11 @@ import java.util.List;
 public class WorkoutAdapter extends RecyclerView.Adapter<WorkoutAdapter.WorkoutViewHolder> {
 
     private List<Workout> workoutList;
+    private View.OnClickListener onItemClickListener;
 
-    public WorkoutAdapter(List<Workout> workoutList) {
+    public WorkoutAdapter(List<Workout> workoutList, View.OnClickListener onItemClickListener) {
         this.workoutList = workoutList;
+        this.onItemClickListener = onItemClickListener;
     }
 
     @NonNull
@@ -30,7 +33,7 @@ public class WorkoutAdapter extends RecyclerView.Adapter<WorkoutAdapter.WorkoutV
     @Override
     public void onBindViewHolder(@NonNull WorkoutViewHolder holder, int position) {
         Workout workout = workoutList.get(position);
-        holder.bind(workout);
+        holder.bind(workout, onItemClickListener);
     }
 
     @Override
@@ -46,13 +49,14 @@ public class WorkoutAdapter extends RecyclerView.Adapter<WorkoutAdapter.WorkoutV
             this.binding = binding;
         }
 
-        public void bind(Workout workout) {
+        public void bind(Workout workout, View.OnClickListener clickListener) {
             // Bind the workout data to the views
             binding.textWorkoutTitle.setText(workout.getTitle());
             binding.textWorkoutSubtitle.setText(workout.getSubtitle());
             binding.textWorkoutCount.setText(workout.getFormattedWorkoutCount());
             binding.imageWorkout.setImageResource(workout.getImageResourceId());
-            // Set any click listeners if necessary
+            itemView.setTag(workout); // or workout.getId() if you have IDs
+            itemView.setOnClickListener(clickListener);
         }
     }
 }

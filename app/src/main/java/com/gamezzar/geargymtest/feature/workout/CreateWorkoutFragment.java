@@ -7,6 +7,8 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.NavDirections;
+import androidx.navigation.fragment.NavHostFragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
 import android.view.LayoutInflater;
@@ -27,24 +29,34 @@ public class CreateWorkoutFragment extends Fragment {
     private WorkoutAdapter adapter;
     private List<Workout> workoutList;
     private CreateWorkoutFragmentBinding binding;
+
     public static CreateWorkoutFragment newInstance() {
         return new CreateWorkoutFragment();
     }
 
     @Override
-    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
-                             @Nullable Bundle savedInstanceState) {
-        // Initialize the binding variable here correctly without re-declaring it
+    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         binding = CreateWorkoutFragmentBinding.inflate(inflater, container, false);
 
-        // Initialize your workout list here before setting the adapter
-        workoutList = new ArrayList<>(); // This should be populated with actual data
+        workoutList = new ArrayList<>();
+        // Add workout items to the list
         workoutList.add(new Workout("Chest", "Body Workout", R.drawable.chest_workout, 40));
-        workoutList.add(new Workout("Shoulder", "Shoulder Workout", R.drawable.shoulder_workout, 40));
-        workoutList.add(new Workout("ABS", "ABS Workout", R.drawable.abs_wokrout, 40));
-        adapter = new WorkoutAdapter(workoutList);
+        workoutList.add(new Workout("Shoulder", "Body Workout", R.drawable.shoulder_workout, 10));
+        workoutList.add(new Workout("ABS", "Body Workout", R.drawable.abs_wokrout, 6));
 
-        // You don't need to set up RecyclerView here anymore, move this to onViewCreated
+        View.OnClickListener onItemClickListener = view -> {
+            // Assuming each item has a tag set with its position or ID
+            Workout selectedWorkout = (Workout) view.getTag();
+            // Now you can navigate to the next fragment using the selected workout's details
+            NavDirections action = CreateWorkoutFragmentDirections.actionCreateWorkoutFragmentToWorkoutChoiceListFragment();
+
+            NavHostFragment.findNavController(CreateWorkoutFragment.this).navigate(action);
+        };
+
+        adapter = new WorkoutAdapter(workoutList, onItemClickListener);
+        binding.recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+        binding.recyclerView.setAdapter(adapter);
+
         return binding.getRoot();
     }
 
