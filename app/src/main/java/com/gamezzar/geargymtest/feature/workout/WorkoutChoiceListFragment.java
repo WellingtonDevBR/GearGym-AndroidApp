@@ -1,4 +1,4 @@
-package com.gamezzar.geargymtest.view.model;
+package com.gamezzar.geargymtest.feature.workout;
 
 import androidx.lifecycle.ViewModelProvider;
 
@@ -14,24 +14,24 @@ import android.view.ViewGroup;
 
 import com.gamezzar.geargymtest.R;
 
-public class RegisterFragment extends Fragment {
+public class WorkoutChoiceListFragment extends Fragment {
 
-    private RegisterViewModel mViewModel;
+    private WorkoutChoiceListViewModel mViewModel;
 
-    public static RegisterFragment newInstance() {
-        return new RegisterFragment();
+    public static WorkoutChoiceListFragment newInstance() {
+        return new WorkoutChoiceListFragment();
     }
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.register_fragment, container, false);
+        return inflater.inflate(R.layout.workout_choice_list_fragment, container, false);
     }
 
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        mViewModel = new ViewModelProvider(this).get(RegisterViewModel.class);
+        mViewModel = new ViewModelProvider(this).get(WorkoutChoiceListViewModel.class);
         // TODO: Use the ViewModel
     }
 

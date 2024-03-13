@@ -7,17 +7,17 @@
 
     <fragment
         android:id="@+id/loginFragment"
-        android:name="com.gamezzar.geargymtest.view.model.LoginFragment"
+        android:name="com.gamezzar.geargymtest.feature.login.LoginFragment"
         tools:layout="@layout/login_fragment" />
 
     <fragment
         android:id="@+id/registerFragment"
-        android:name="com.gamezzar.geargymtest.view.model.RegisterFragment"
+        android:name="com.gamezzar.geargymtest.feature.login.RegisterFragment"
         tools:layout="@layout/register_fragment" />
 
     <fragment
         android:id="@+id/homeFragment"
-        android:name="com.gamezzar.geargymtest.view.model.HomeFragment"
+        android:name="com.gamezzar.geargymtest.feature.home.HomeFragment"
         tools:layout="@layout/home_fragment">
         <action
             android:id="@+id/action_homeFragment_to_workoutFragment"
@@ -30,7 +30,7 @@
 
     <fragment
         android:id="@+id/workoutFragment"
-        android:name="com.gamezzar.geargymtest.view.model.WorkoutFragment"
+        android:name="com.gamezzar.geargymtest.feature.workout.WorkoutFragment"
         android:label="Workout Planning and Tracking"
         tools:layout="@layout/workout_fragment">
         <action
@@ -44,7 +44,7 @@
 
     <fragment
         android:id="@+id/createWorkoutFragment"
-        android:name="com.gamezzar.geargymtest.view.model.CreateWorkoutFragment"
+        android:name="com.gamezzar.geargymtest.feature.workout.CreateWorkoutFragment"
         android:label="New Workout"
         tools:layout="@layout/create_workout_fragment" />
 </navigation>

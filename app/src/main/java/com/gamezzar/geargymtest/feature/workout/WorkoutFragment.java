@@ -1,4 +1,4 @@
-package com.gamezzar.geargymtest.view.model;
+package com.gamezzar.geargymtest.feature.workout;
 
 import android.os.Bundle;
 
@@ -11,6 +11,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.gamezzar.geargymtest.R;
+import com.gamezzar.geargymtest.core.BaseFragment;
 import com.gamezzar.geargymtest.databinding.WorkoutFragmentBinding;
 
 public class WorkoutFragment extends BaseFragment {

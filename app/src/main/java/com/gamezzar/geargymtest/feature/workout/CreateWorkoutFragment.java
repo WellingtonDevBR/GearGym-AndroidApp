@@ -1,7 +1,6 @@
-package com.gamezzar.geargymtest.view.model;
+package com.gamezzar.geargymtest.feature.workout;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.lifecycle.ViewModelProvider;
 
 import android.os.Bundle;
 
@@ -17,7 +16,6 @@ import android.view.ViewGroup;
 import com.gamezzar.geargymtest.R;
 import com.gamezzar.geargymtest.databinding.CreateWorkoutFragmentBinding;
 import com.google.android.material.bottomappbar.BottomAppBar;
-import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.ArrayList;

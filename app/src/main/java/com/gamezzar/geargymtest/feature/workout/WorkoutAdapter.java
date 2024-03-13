@@ -1,4 +1,4 @@
-package com.gamezzar.geargymtest.view.model;
+package com.gamezzar.geargymtest.feature.workout;
 
 import android.view.LayoutInflater;
 import android.view.ViewGroup;

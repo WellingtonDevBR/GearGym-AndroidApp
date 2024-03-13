@@ -1,29 +1,16 @@
 package com.gamezzar.geargymtest;
 
-import static androidx.core.content.ContentProviderCompat.requireContext;
-
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
-import androidx.core.content.ContextCompat;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.fragment.NavHostFragment;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
-import androidx.activity.*;
 
-import android.content.res.Resources;
-import android.graphics.BlendMode;
-import android.graphics.PorterDuff;
 import android.os.Bundle;
-import android.view.MenuItem;
 
-import com.gamezzar.geargymtest.view.model.HomeFragment;
-import com.gamezzar.geargymtest.view.model.LoginFragment;
-import com.gamezzar.geargymtest.view.model.RegisterFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
-
-import java.util.Objects;
 
 public class MainActivity extends AppCompatActivity {
 
