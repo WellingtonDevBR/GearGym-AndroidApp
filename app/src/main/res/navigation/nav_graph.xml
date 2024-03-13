@@ -32,5 +32,19 @@
         android:id="@+id/workoutFragment"
         android:name="com.gamezzar.geargymtest.view.model.WorkoutFragment"
         android:label="Workout Planning and Tracking"
-        tools:layout="@layout/workout_fragment" />
+        tools:layout="@layout/workout_fragment">
+        <action
+            android:id="@+id/action_workoutFragment_to_createWorkoutFragment"
+            app:destination="@id/createWorkoutFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/createWorkoutFragment"
+        android:name="com.gamezzar.geargymtest.view.model.CreateWorkoutFragment"
+        android:label="New Workout"
+        tools:layout="@layout/create_workout_fragment" />
 </navigation>

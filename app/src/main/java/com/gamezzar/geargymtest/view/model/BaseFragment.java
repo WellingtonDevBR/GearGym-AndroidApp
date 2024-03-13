@@ -1,4 +1,4 @@
-package com.gamezzar.geargymtest;
+package com.gamezzar.geargymtest.view.model;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;

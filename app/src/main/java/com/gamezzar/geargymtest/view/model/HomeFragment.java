@@ -18,7 +18,9 @@ import android.view.ViewGroup;
 
 import com.gamezzar.geargymtest.R;
 import com.gamezzar.geargymtest.databinding.HomeFragmentBinding;
+import com.google.android.material.bottomappbar.BottomAppBar;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 public class HomeFragment extends Fragment {
 
@@ -53,6 +55,13 @@ public class HomeFragment extends Fragment {
         if (activity != null) {
             if (activity.getSupportActionBar() != null) {
                 activity.getSupportActionBar().hide();
+            }
+
+            BottomAppBar bottomAppBar = activity.findViewById(R.id.bottom_app_bar);
+            FloatingActionButton floatingActionButton = activity.findViewById(R.id.fab);
+            if (bottomAppBar != null) {
+                bottomAppBar.setVisibility(View.VISIBLE);
+                floatingActionButton.setVisibility(View.VISIBLE);
             }
         }
     }

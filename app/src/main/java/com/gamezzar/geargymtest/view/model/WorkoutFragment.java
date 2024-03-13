@@ -1,26 +1,22 @@
 package com.gamezzar.geargymtest.view.model;
 
-import androidx.appcompat.app.ActionBar;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.lifecycle.ViewModelProvider;
-
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.fragment.app.Fragment;
+import androidx.navigation.fragment.NavHostFragment;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import androidx.appcompat.widget.Toolbar;
 
-import com.gamezzar.geargymtest.BaseFragment;
 import com.gamezzar.geargymtest.R;
+import com.gamezzar.geargymtest.databinding.WorkoutFragmentBinding;
 
 public class WorkoutFragment extends BaseFragment {
 
     private WorkoutViewModel mViewModel;
+    private WorkoutFragmentBinding binding;
 
     public static WorkoutFragment newInstance() {
         return new WorkoutFragment();
@@ -29,13 +25,18 @@ public class WorkoutFragment extends BaseFragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.workout_fragment, container, false);
+        binding = WorkoutFragmentBinding.inflate(inflater, container, false);
+        return binding.getRoot();
     }
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        setupToolbar("Workout Planning and Tracking");
+
+        binding.createWorkoutCard.setOnClickListener(v -> navigateToCreateWorkout());
+    }
+
+    private void navigateToCreateWorkout() {
+        NavHostFragment.findNavController(this).navigate(R.id.action_workoutFragment_to_createWorkoutFragment);
     }
 }
