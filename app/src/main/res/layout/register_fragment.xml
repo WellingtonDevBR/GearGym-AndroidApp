@@ -61,18 +61,18 @@
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/nameInputLayout"
+            style="@style/CustomTextInputLayoutStyle"
             android:layout_width="0dp"
             android:layout_height="52dp"
             android:layout_marginStart="36dp"
             android:layout_marginEnd="36dp"
             android:hint="@string/hint_enter_your_name"
-            app:startIconDrawable="@drawable/ic_user"
             android:textColorHint="@color/gray_400"
             app:boxStrokeColor="@color/custom_border_color"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            style="@style/CustomTextInputLayoutStyle"
-            app:layout_constraintTop_toBottomOf="@+id/tvNameLabel">
+            app:layout_constraintTop_toBottomOf="@+id/tvNameLabel"
+            app:startIconDrawable="@drawable/ic_user">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/nameEditText"
@@ -80,7 +80,7 @@
                 android:layout_height="wrap_content"
                 android:background="@drawable/layout_border"
                 android:paddingStart="36dp"
-                android:paddingEnd="36dp"/>
+                android:paddingEnd="36dp" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <TextView
@@ -95,25 +95,25 @@
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/emailTextInput"
+            style="@style/CustomTextInputLayoutStyle"
             android:layout_width="0dp"
             android:layout_height="52dp"
             android:layout_marginStart="36dp"
             android:layout_marginEnd="36dp"
             android:hint="@string/hint_enter_your_email"
-            app:startIconDrawable="@drawable/ic_email"
             android:textColorHint="@color/gray_400"
             app:boxStrokeColor="@color/custom_border_color"
-            style="@style/CustomTextInputLayoutStyle"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/emailTextViewLabel">
+            app:layout_constraintTop_toBottomOf="@+id/emailTextViewLabel"
+            app:startIconDrawable="@drawable/ic_email">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@drawable/layout_border"
                 android:paddingStart="36dp"
-                android:paddingEnd="36dp"/>
+                android:paddingEnd="36dp" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <TextView
@@ -128,25 +128,25 @@
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/passwordTextInput"
+            style="@style/CustomTextInputLayoutStyle"
             android:layout_width="0dp"
             android:layout_height="52dp"
             android:layout_marginStart="36dp"
             android:layout_marginEnd="36dp"
             android:hint="@string/hint_enter_your_password"
-            app:startIconDrawable="@drawable/ic_password"
             android:textColorHint="@color/gray_400"
             app:boxStrokeColor="@color/custom_border_color"
-            style="@style/CustomTextInputLayoutStyle"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/passwordTextViewLabel">
+            app:layout_constraintTop_toBottomOf="@+id/passwordTextViewLabel"
+            app:startIconDrawable="@drawable/ic_password">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@drawable/layout_border"
                 android:paddingStart="36dp"
-                android:paddingEnd="36dp"/>
+                android:paddingEnd="36dp" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <TextView
@@ -161,25 +161,25 @@
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/repeatPasswordTextInput"
+            style="@style/CustomTextInputLayoutStyle"
             android:layout_width="0dp"
             android:layout_height="52dp"
             android:layout_marginStart="36dp"
             android:layout_marginEnd="36dp"
             android:hint="@string/hint_repeat_your_password"
-            app:startIconDrawable="@drawable/ic_password"
             android:textColorHint="@color/gray_400"
-            style="@style/CustomTextInputLayoutStyle"
             app:boxStrokeColor="@color/custom_border_color"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/repeatPasswordLabel">
+            app:layout_constraintTop_toBottomOf="@+id/repeatPasswordLabel"
+            app:startIconDrawable="@drawable/ic_password">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@drawable/layout_border"
                 android:paddingStart="36dp"
-                android:paddingEnd="36dp"/>
+                android:paddingEnd="36dp" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <androidx.appcompat.widget.AppCompatRadioButton
@@ -205,7 +205,7 @@
             app:layout_constraintTop_toBottomOf="@+id/repeatPasswordTextInput" />
 
         <Button
-            android:id="@+id/registerButton"
+            android:id="@+id/btnRegister"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="36dp"
@@ -216,6 +216,19 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/repeatPasswordTextInput" />
+
+        <ImageButton
+            android:id="@+id/ibReturn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="40dp"
+            android:background="@android:color/transparent"
+            android:backgroundTint="@color/black"
+            android:src="@drawable/ic_up_button"
+            android:tint="@color/black"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </FrameLayout>

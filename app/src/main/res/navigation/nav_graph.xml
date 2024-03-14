@@ -3,17 +3,48 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/homeFragment">
+    app:startDestination="@id/loginFragment">
 
     <fragment
         android:id="@+id/loginFragment"
         android:name="com.gamezzar.geargymtest.feature.login.LoginFragment"
-        tools:layout="@layout/login_fragment" />
+        tools:layout="@layout/login_fragment">
+        <action
+            android:id="@+id/action_loginFragment_to_homeFragment"
+            app:destination="@id/homeFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
+        <action
+            android:id="@+id/action_loginFragment_to_registerFragment"
+            app:destination="@id/registerFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
+    </fragment>
 
     <fragment
         android:id="@+id/registerFragment"
         android:name="com.gamezzar.geargymtest.feature.login.RegisterFragment"
-        tools:layout="@layout/register_fragment" />
+        tools:layout="@layout/register_fragment">
+        <action
+            android:id="@+id/action_registerFragment_to_loginFragment"
+            app:destination="@id/loginFragment"
+            app:enterAnim="@anim/slide_in_left"
+            app:exitAnim="@anim/slide_out_right"
+            app:popEnterAnim="@anim/slide_in_right"
+            app:popExitAnim="@anim/slide_out_left" />
+
+        <action
+            android:id="@+id/action_registerFragment_to_HomeFragment"
+            app:destination="@id/homeFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
+    </fragment>
 
     <fragment
         android:id="@+id/homeFragment"
@@ -21,11 +52,7 @@
         tools:layout="@layout/home_fragment">
         <action
             android:id="@+id/action_homeFragment_to_workoutFragment"
-            app:destination="@id/workoutFragment"
-            app:enterAnim="@anim/slide_in_right"
-            app:exitAnim="@anim/slide_out_left"
-            app:popEnterAnim="@anim/slide_in_left"
-            app:popExitAnim="@anim/slide_out_right" />
+            app:destination="@id/workoutFragment" />
     </fragment>
 
     <fragment
@@ -35,19 +62,14 @@
         tools:layout="@layout/workout_fragment">
         <action
             android:id="@+id/action_workoutFragment_to_createWorkoutFragment"
-            app:destination="@id/createWorkoutFragment"
-            app:enterAnim="@anim/slide_in_right"
-            app:exitAnim="@anim/slide_out_left"
-            app:popEnterAnim="@anim/slide_in_left"
-            app:popExitAnim="@anim/slide_out_right" />
+            app:destination="@id/createWorkoutFragment" />
 
         <action
             android:id="@+id/action_workoutFragment_to_workoutListFragment"
-            app:destination="@id/workoutListFragment"
-            app:enterAnim="@anim/slide_in_right"
-            app:exitAnim="@anim/slide_out_left"
-            app:popEnterAnim="@anim/slide_in_left"
-            app:popExitAnim="@anim/slide_out_right" />
+            app:destination="@id/workoutListFragment" />
+        <action
+            android:id="@+id/action_workoutFragment_to_homeFragment"
+            app:destination="@id/homeFragment" />
     </fragment>
 
     <fragment
@@ -56,23 +78,35 @@
         android:label="New Workout"
         tools:layout="@layout/new_workout_fragment">
         <action
-            android:id="@+id/action_createWorkoutFragment_to_workoutChoiceListFragment"
-            app:destination="@id/workoutChoiceListFragment"
-            app:enterAnim="@anim/slide_in_right"
-            app:exitAnim="@anim/slide_out_left"
-            app:popEnterAnim="@anim/slide_in_left"
-            app:popExitAnim="@anim/slide_out_right" />
+            android:id="@+id/action_createWorkoutFragment_to_newWorkoutListFragment"
+            app:destination="@id/newWorkoutListFragment" />
+
+        <action
+            android:id="@+id/action_createWorkoutFragment_to_workoutListFragment"
+            app:destination="@id/workoutListFragment" />
     </fragment>
 
     <fragment
-        android:id="@+id/workoutChoiceListFragment"
+        android:id="@+id/newWorkoutListFragment"
         android:name="com.gamezzar.geargymtest.feature.workout.create.NewWorkoutListFragment"
         android:label="New Workout"
-        tools:layout="@layout/new_workout_list_fragment" />
+        tools:layout="@layout/new_workout_list_fragment">
+        <action
+            android:id="@+id/action_newWorkoutListFragment_to_createWorkoutFragment"
+            app:destination="@id/createWorkoutFragment" />
+    </fragment>
 
     <fragment
         android:id="@+id/workoutListFragment"
         android:name="com.gamezzar.geargymtest.feature.workout.list.WorkoutListFragment"
         android:label="Your Workout"
-        tools:layout="@layout/workout_list_fragment" />
+        tools:layout="@layout/workout_list_fragment">
+        <action
+            android:id="@+id/action_workoutListFragment_to_workoutFragment"
+            app:destination="@id/workoutFragment" />
+        <action
+            android:id="@+id/action_workoutListFragment_to_createWorkoutFragment"
+            app:destination="@id/createWorkoutFragment" />
+
+    </fragment>
 </navigation>

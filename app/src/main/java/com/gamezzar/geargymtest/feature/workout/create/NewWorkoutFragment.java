@@ -52,7 +52,7 @@ public class NewWorkoutFragment extends BaseFragment {
             // Assuming each item has a tag set with its position or ID
             Workout selectedWorkout = (Workout) view.getTag();
             // Now you can navigate to the next fragment using the selected workout's details
-            NavDirections action = NewWorkoutFragmentDirections.actionCreateWorkoutFragmentToWorkoutChoiceListFragment();
+            NavDirections action = NewWorkoutFragmentDirections.actionCreateWorkoutFragmentToNewWorkoutListFragment();
 
             NavHostFragment.findNavController(NewWorkoutFragment.this).navigate(action);
         };
