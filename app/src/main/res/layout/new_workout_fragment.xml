@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/purple_600"
-    tools:context=".feature.workout.CreateWorkoutFragment">
+    tools:context=".feature.workout.create.NewWorkoutFragment">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"

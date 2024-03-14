@@ -1,4 +1,4 @@
-package com.gamezzar.geargymtest.feature.workout;
+package com.gamezzar.geargymtest.feature.workout.home;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -7,6 +7,7 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.gamezzar.geargymtest.core.Workout;
 import com.gamezzar.geargymtest.databinding.ItemWorkoutBinding;
 
 import java.util.List;

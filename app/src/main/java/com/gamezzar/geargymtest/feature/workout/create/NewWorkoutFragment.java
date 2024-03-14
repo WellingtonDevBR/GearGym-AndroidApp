@@ -1,4 +1,4 @@
-package com.gamezzar.geargymtest.feature.workout;
+package com.gamezzar.geargymtest.feature.workout.create;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -16,27 +16,30 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.gamezzar.geargymtest.R;
-import com.gamezzar.geargymtest.databinding.CreateWorkoutFragmentBinding;
+import com.gamezzar.geargymtest.databinding.NewWorkoutFragmentBinding;
+import com.gamezzar.geargymtest.core.Workout;
+import com.gamezzar.geargymtest.feature.workout.home.WorkoutAdapter;
 import com.google.android.material.bottomappbar.BottomAppBar;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class CreateWorkoutFragment extends Fragment {
+public class NewWorkoutFragment extends Fragment {
 
-    private CreateWorkoutViewModel mViewModel;
+    private NewWorkoutViewModel mViewModel;
     private WorkoutAdapter adapter;
     private List<Workout> workoutList;
-    private CreateWorkoutFragmentBinding binding;
+    private NewWorkoutFragmentBinding binding;
 
-    public static CreateWorkoutFragment newInstance() {
-        return new CreateWorkoutFragment();
+    public static NewWorkoutFragment newInstance() {
+        return new NewWorkoutFragment();
     }
 
     @Override
-    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        binding = CreateWorkoutFragmentBinding.inflate(inflater, container, false);
+    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
+                             @Nullable Bundle savedInstanceState) {
+        binding = NewWorkoutFragmentBinding.inflate(inflater, container, false);
 
         workoutList = new ArrayList<>();
         // Add workout items to the list
@@ -48,9 +51,9 @@ public class CreateWorkoutFragment extends Fragment {
             // Assuming each item has a tag set with its position or ID
             Workout selectedWorkout = (Workout) view.getTag();
             // Now you can navigate to the next fragment using the selected workout's details
-            NavDirections action = CreateWorkoutFragmentDirections.actionCreateWorkoutFragmentToWorkoutChoiceListFragment();
+            NavDirections action = NewWorkoutFragmentDirections.actionCreateWorkoutFragmentToWorkoutChoiceListFragment();
 
-            NavHostFragment.findNavController(CreateWorkoutFragment.this).navigate(action);
+            NavHostFragment.findNavController(NewWorkoutFragment.this).navigate(action);
         };
 
         adapter = new WorkoutAdapter(workoutList, onItemClickListener);

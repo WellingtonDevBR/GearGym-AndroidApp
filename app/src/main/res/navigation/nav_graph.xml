@@ -30,7 +30,7 @@
 
     <fragment
         android:id="@+id/workoutFragment"
-        android:name="com.gamezzar.geargymtest.feature.workout.WorkoutFragment"
+        android:name="com.gamezzar.geargymtest.feature.workout.home.WorkoutFragment"
         android:label="Workout Planning and Tracking"
         tools:layout="@layout/workout_fragment">
         <action
@@ -40,13 +40,21 @@
             app:exitAnim="@anim/slide_out_left"
             app:popEnterAnim="@anim/slide_in_left"
             app:popExitAnim="@anim/slide_out_right" />
+
+        <action
+            android:id="@+id/action_workoutFragment_to_workoutListFragment"
+            app:destination="@id/workoutListFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
     </fragment>
 
     <fragment
         android:id="@+id/createWorkoutFragment"
-        android:name="com.gamezzar.geargymtest.feature.workout.CreateWorkoutFragment"
+        android:name="com.gamezzar.geargymtest.feature.workout.create.NewWorkoutFragment"
         android:label="New Workout"
-        tools:layout="@layout/create_workout_fragment">
+        tools:layout="@layout/new_workout_fragment">
         <action
             android:id="@+id/action_createWorkoutFragment_to_workoutChoiceListFragment"
             app:destination="@id/workoutChoiceListFragment"
@@ -58,7 +66,13 @@
 
     <fragment
         android:id="@+id/workoutChoiceListFragment"
-        android:name="com.gamezzar.geargymtest.feature.workout.WorkoutChoiceListFragment"
+        android:name="com.gamezzar.geargymtest.feature.workout.create.NewWorkoutListFragment"
         android:label="New Workout"
-        tools:layout="@layout/workout_choice_list_fragment" />
+        tools:layout="@layout/new_workout_list_fragment" />
+
+    <fragment
+        android:id="@+id/workoutListFragment"
+        android:name="com.gamezzar.geargymtest.feature.workout.list.WorkoutListFragment"
+        android:label="Your Workout"
+        tools:layout="@layout/workout_list_fragment" />
 </navigation>
