@@ -16,6 +16,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.gamezzar.geargymtest.R;
+import com.gamezzar.geargymtest.core.BaseFragment;
 import com.gamezzar.geargymtest.databinding.NewWorkoutFragmentBinding;
 import com.gamezzar.geargymtest.core.Workout;
 import com.gamezzar.geargymtest.feature.workout.home.WorkoutAdapter;
@@ -25,7 +26,7 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import java.util.ArrayList;
 import java.util.List;
 
-public class NewWorkoutFragment extends Fragment {
+public class NewWorkoutFragment extends BaseFragment {
 
     private NewWorkoutViewModel mViewModel;
     private WorkoutAdapter adapter;
@@ -75,24 +76,14 @@ public class NewWorkoutFragment extends Fragment {
     @Override
     public void onResume() {
         super.onResume();
-        // Hide the Toolbar when the fragment becomes active
-        AppCompatActivity activity = (AppCompatActivity) getActivity();
-        if (activity != null) {
-            // Also hide the BottomNavigationView if needed
-            BottomAppBar bottomAppBar = activity.findViewById(R.id.bottom_app_bar);
-            FloatingActionButton floatingActionButton = activity.findViewById(R.id.fab);
-            if (bottomAppBar != null) {
-                bottomAppBar.setVisibility(View.GONE);
-                floatingActionButton.setVisibility(View.GONE);
-            }
-
-        }
+        showToolBar();
+        hideBottomAppBar();
+        hideFab();
     }
 
     @Override
     public void onDestroyView() {
         super.onDestroyView();
-        // Set binding to null, since the view is about to be destroyed
         binding = null;
     }
 }

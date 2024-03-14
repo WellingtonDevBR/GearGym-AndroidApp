@@ -35,9 +35,13 @@ public class WorkoutFragment extends BaseFragment {
         super.onViewCreated(view, savedInstanceState);
 
         binding.createWorkoutCard.setOnClickListener(v -> navigateToCreateWorkout());
+        binding.listWorkoutCard.setOnClickListener(v -> navigateToListWorkout());
     }
 
     private void navigateToCreateWorkout() {
         NavHostFragment.findNavController(this).navigate(R.id.action_workoutFragment_to_createWorkoutFragment);
+    }
+    private void navigateToListWorkout() {
+        NavHostFragment.findNavController(this).navigate((R.id.action_workoutFragment_to_workoutListFragment));
     }
 }

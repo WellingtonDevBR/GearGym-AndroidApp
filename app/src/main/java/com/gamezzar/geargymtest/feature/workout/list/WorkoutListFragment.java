@@ -12,13 +12,14 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.gamezzar.geargymtest.R;
+import com.gamezzar.geargymtest.core.BaseFragment;
 import com.gamezzar.geargymtest.core.Workout;
 import com.gamezzar.geargymtest.databinding.WorkoutListFragmentBinding;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class WorkoutListFragment extends Fragment {
+public class WorkoutListFragment extends BaseFragment {
 
     private WorkoutListViewModel mViewModel;
     private WorkoutListFragmentBinding binding;
@@ -39,11 +40,26 @@ public class WorkoutListFragment extends Fragment {
         workoutList.add(new Workout("Chest", "Body Workout", R.drawable.chest_workout, 40));
         workoutList.add(new Workout("Shoulder", "Body Workout", R.drawable.shoulder_workout, 10));
         workoutList.add(new Workout("ABS", "Body Workout", R.drawable.abs_wokrout, 6));
+        workoutList.add(new Workout("ABS", "Body Workout", R.drawable.abs_wokrout, 6));
+        workoutList.add(new Workout("ABS", "Body Workout", R.drawable.abs_wokrout, 6));
 
         adapter = new WorkoutListAdapter(workoutList);
         binding.recycleView.setLayoutManager(new LinearLayoutManager(getContext()));
         binding.recycleView.setAdapter(adapter);
 
         return binding.getRoot();
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        hideBottomAppBar();
+        hideFab();
+    }
+
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        binding = null;
     }
 }

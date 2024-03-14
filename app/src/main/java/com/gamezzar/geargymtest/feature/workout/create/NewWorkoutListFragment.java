@@ -12,17 +12,20 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.gamezzar.geargymtest.R;
+import com.gamezzar.geargymtest.core.BaseFragment;
 import com.gamezzar.geargymtest.core.Workout;
 import com.gamezzar.geargymtest.databinding.NewWorkoutListFragmentBinding;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class NewWorkoutListFragment extends Fragment {
+public class NewWorkoutListFragment extends BaseFragment {
 
     private NewWorkoutListViewModel mViewModel;
     NewWorkoutListAdapter adapter;
     private List<Workout> workoutChoiceList;
+
+
     private NewWorkoutListFragmentBinding binding;
 
     public static NewWorkoutListFragment newInstance() {
@@ -46,4 +49,18 @@ public class NewWorkoutListFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
     }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        hideBottomAppBar();
+        hideFab();
+    }
+
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        binding = null;
+    }
+
 }

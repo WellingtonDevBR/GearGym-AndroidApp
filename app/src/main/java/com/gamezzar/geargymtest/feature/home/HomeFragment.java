@@ -15,11 +15,12 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.gamezzar.geargymtest.R;
+import com.gamezzar.geargymtest.core.BaseFragment;
 import com.gamezzar.geargymtest.databinding.HomeFragmentBinding;
 import com.google.android.material.bottomappbar.BottomAppBar;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
-public class HomeFragment extends Fragment {
+public class HomeFragment extends BaseFragment {
 
     private HomeViewModel mViewModel;
 
@@ -47,44 +48,19 @@ public class HomeFragment extends Fragment {
     @Override
     public void onResume() {
         super.onResume();
-        // Hide the Toolbar when the fragment becomes active
-        AppCompatActivity activity = (AppCompatActivity) getActivity();
-        if (activity != null) {
-            if (activity.getSupportActionBar() != null) {
-                activity.getSupportActionBar().hide();
-            }
-
-            BottomAppBar bottomAppBar = activity.findViewById(R.id.bottom_app_bar);
-            FloatingActionButton floatingActionButton = activity.findViewById(R.id.fab);
-            if (bottomAppBar != null) {
-                bottomAppBar.setVisibility(View.VISIBLE);
-                floatingActionButton.setVisibility(View.VISIBLE);
-            }
-        }
+        hideToolBar();
+        showBottomAppBar();
     }
 
     @Override
     public void onPause() {
         super.onPause();
-        // Show the Toolbar when the fragment is no longer active
-        AppCompatActivity activity = (AppCompatActivity) getActivity();
-        if (activity != null) {
-            if (activity.getSupportActionBar() != null) {
-                activity.getSupportActionBar().show();
-            }
-        }
     }
 
     @Override
     public void onDestroyView() {
         super.onDestroyView();
-
-        // Show the Toolbar when the view is destroyed
-        AppCompatActivity activity = (AppCompatActivity) getActivity();
-        if (activity != null && activity.getSupportActionBar() != null) {
-            activity.getSupportActionBar().show();
-        }
-
+        showToolBar();
         binding = null;
     }
 

@@ -7,7 +7,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.gamezzar.geargymtest.core.Workout;
-import com.gamezzar.geargymtest.databinding.ItemWorkoutListBinding;
+import com.gamezzar.geargymtest.databinding.WorkoutSelectionItemCardBinding;
 
 import java.util.List;
 
@@ -24,7 +24,7 @@ public class NewWorkoutListAdapter extends RecyclerView.Adapter<NewWorkoutListAd
     public NewWorkoutListAdapter.WorkoutChoiceListViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         // Inflate the item layout
         LayoutInflater layoutInflater = LayoutInflater.from(parent.getContext());
-        ItemWorkoutListBinding itemBinding = ItemWorkoutListBinding.inflate(layoutInflater, parent, false);
+        WorkoutSelectionItemCardBinding itemBinding = WorkoutSelectionItemCardBinding.inflate(layoutInflater, parent, false);
         return new NewWorkoutListAdapter.WorkoutChoiceListViewHolder(itemBinding);
     }
 
@@ -40,9 +40,9 @@ public class NewWorkoutListAdapter extends RecyclerView.Adapter<NewWorkoutListAd
     }
 
     static class WorkoutChoiceListViewHolder extends RecyclerView.ViewHolder {
-        private final ItemWorkoutListBinding binding;
+        private final WorkoutSelectionItemCardBinding binding;
 
-        public WorkoutChoiceListViewHolder(ItemWorkoutListBinding binding) {
+        public WorkoutChoiceListViewHolder(WorkoutSelectionItemCardBinding binding) {
             super(binding.getRoot());
             this.binding = binding;
         }
