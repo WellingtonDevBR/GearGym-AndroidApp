@@ -11,37 +11,29 @@ import com.gamezzar.geargymtest.database.entities.User;
 import com.gamezzar.geargymtest.database.interfaces.UserDao;
 
 import java.util.List;
+import java.util.concurrent.Callable;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.FutureTask;
 
 public class UserRepository {
     private final UserDao userDao;
-    private final LiveData<List<User>> allUsers;
+    private final ExecutorService executorService = Executors.newFixedThreadPool(2); // Using a fixed thread pool
 
     public UserRepository(Application application) {
-        AppDatabase db = Room.databaseBuilder(application, AppDatabase.class, "database-name").build();
+        AppDatabase db = Room.databaseBuilder(application,
+                AppDatabase.class, "database-name").build();
         userDao = db.userDao();
-        allUsers = userDao.getAllUsers();
     }
 
-    public LiveData<List<User>> getAllUsers() {
-        return allUsers;
+    public LiveData<User> findByEmailAndPassword(String email, String password) {
+        return userDao.findUserByEmailAndPassword(email, password);
     }
 
     public void insert(User user) {
-        new insertAsyncTask(userDao).execute(user);
+        executorService.execute(() -> userDao.insertUser(user));
     }
 
-    private static class insertAsyncTask extends AsyncTask<User, Void, Void> {
-        private final UserDao asyncTaskDao;
-
-        insertAsyncTask(UserDao dao) {
-            asyncTaskDao = dao;
-        }
-
-        @Override
-        protected Void doInBackground(final User... params) {
-            asyncTaskDao.insertUser(params[0]);
-            return null;
-        }
-    }
 }
+
 
