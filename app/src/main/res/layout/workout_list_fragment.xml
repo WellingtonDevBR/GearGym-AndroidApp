@@ -5,7 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/purple_600"
-    tools:context=".feature.workout.WorkoutChoiceListFragment">
+    android:backgroundTint="@color/purple_600"
+    tools:context=".feature.workout.WorkoutListFragment">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -30,70 +31,49 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/toolbar">
 
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/tilSearchWorkout"
-                style="@style/CustomTextInputLayoutStyle"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="20dp"
-                android:layout_marginTop="16dp"
-                android:layout_marginEnd="20dp"
-                app:endIconDrawable="@drawable/ic_filter_with_circle"
-                app:endIconMode="custom"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:startIconDrawable="@drawable/ic_search">
-
-                <com.google.android.material.textfield.TextInputEditText
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/layout_border"
-                    android:hint="Search Workout"
-                    android:paddingStart="40dp"
-                    android:paddingEnd="36dp" />
-            </com.google.android.material.textfield.TextInputLayout>
-
             <TextView
-                android:id="@+id/tvWorkoutTypeLabel"
+                android:id="@+id/tvWorkoutDay"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="20dp"
                 android:layout_marginTop="20dp"
-                android:text="Chest Workout"
-                android:textSize="18sp"
-                android:textStyle="bold"
+                android:fontFamily="@font/inter_bold"
+                android:text="Monday Workouts"
+                android:textColor="@color/black_300"
+                android:textSize="16sp"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/tilSearchWorkout" />
+                app:layout_constraintTop_toTopOf="parent" />
 
             <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/recyclerView"
-                android:layout_width="match_parent"
+                android:layout_width="375dp"
                 android:layout_height="0dp"
                 android:layout_marginStart="20dp"
-                android:layout_marginTop="10dp"
+                android:layout_marginTop="30dp"
                 android:layout_marginEnd="20dp"
-                android:layout_marginBottom="16dp"
-                android:clipToPadding="false"
+                android:layout_marginBottom="30dp"
                 app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-                app:layout_constraintBottom_toTopOf="@+id/btnSave"
+                app:layout_constraintBottom_toTopOf="@+id/btnNewWorkout"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/tvWorkoutTypeLabel" />
+                app:layout_constraintTop_toBottomOf="@+id/tvWorkoutDay" />
 
             <Button
-                android:id="@+id/btnSave"
+                android:id="@+id/btnNewWorkout"
                 android:layout_width="0dp"
-                android:layout_height="58dp"
-                android:layout_marginStart="26dp"
-                android:layout_marginEnd="26dp"
-                android:layout_marginBottom="26dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginEnd="20dp"
+                android:layout_marginBottom="27dp"
+                android:height="52dp"
                 android:backgroundTint="@color/purple_600"
-                android:text="Save"
+                android:fontFamily="@font/inter_semibold"
+                android:text="New Workout"
+                android:textSize="12sp"
+                app:cornerRadius="12dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent" />
         </androidx.constraintlayout.widget.ConstraintLayout>
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 </FrameLayout>
