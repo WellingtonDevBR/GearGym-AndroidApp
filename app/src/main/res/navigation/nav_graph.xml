@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/loginFragment"
-        android:name="com.gamezzar.geargymtest.feature.login.LoginFragment"
+        android:name="com.gamezzar.geargymtest.ui.fragment.LoginFragment"
         tools:layout="@layout/login_fragment">
         <action
             android:id="@+id/action_loginFragment_to_homeFragment"
@@ -27,7 +27,7 @@
 
     <fragment
         android:id="@+id/registerFragment"
-        android:name="com.gamezzar.geargymtest.feature.login.RegisterFragment"
+        android:name="com.gamezzar.geargymtest.ui.fragment.RegisterFragment"
         tools:layout="@layout/register_fragment">
         <action
             android:id="@+id/action_registerFragment_to_loginFragment"
@@ -48,7 +48,7 @@
 
     <fragment
         android:id="@+id/homeFragment"
-        android:name="com.gamezzar.geargymtest.feature.home.HomeFragment"
+        android:name="com.gamezzar.geargymtest.ui.fragment.HomeFragment"
         tools:layout="@layout/home_fragment">
         <action
             android:id="@+id/action_homeFragment_to_workoutFragment"
@@ -57,7 +57,7 @@
 
     <fragment
         android:id="@+id/workoutFragment"
-        android:name="com.gamezzar.geargymtest.feature.workout.home.WorkoutFragment"
+        android:name="com.gamezzar.geargymtest.ui.fragment.WorkoutFragment"
         android:label="Workout Planning and Tracking"
         tools:layout="@layout/workout_fragment">
         <action
@@ -74,7 +74,7 @@
 
     <fragment
         android:id="@+id/createWorkoutFragment"
-        android:name="com.gamezzar.geargymtest.feature.workout.create.NewWorkoutFragment"
+        android:name="com.gamezzar.geargymtest.ui.fragment.NewWorkoutFragment"
         android:label="New Workout"
         tools:layout="@layout/new_workout_fragment">
         <action
@@ -88,7 +88,7 @@
 
     <fragment
         android:id="@+id/newWorkoutListFragment"
-        android:name="com.gamezzar.geargymtest.feature.workout.create.NewWorkoutListFragment"
+        android:name="com.gamezzar.geargymtest.ui.fragment.NewWorkoutListFragment"
         android:label="New Workout"
         tools:layout="@layout/new_workout_list_fragment">
         <action
@@ -98,7 +98,7 @@
 
     <fragment
         android:id="@+id/workoutListFragment"
-        android:name="com.gamezzar.geargymtest.feature.workout.list.WorkoutListFragment"
+        android:name="com.gamezzar.geargymtest.ui.fragment.WorkoutListFragment"
         android:label="Your Workout"
         tools:layout="@layout/workout_list_fragment">
         <action

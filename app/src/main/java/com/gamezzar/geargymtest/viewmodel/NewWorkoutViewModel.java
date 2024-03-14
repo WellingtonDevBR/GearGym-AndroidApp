@@ -1,4 +1,4 @@
-package com.gamezzar.geargymtest.feature.workout.create;
+package com.gamezzar.geargymtest.viewmodel;
 
 import androidx.lifecycle.ViewModel;
 

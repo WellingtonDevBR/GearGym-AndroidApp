@@ -1,12 +1,9 @@
-package com.gamezzar.geargymtest.feature.login;
-
-import androidx.lifecycle.ViewModelProvider;
+package com.gamezzar.geargymtest.ui.fragment;
 
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.fragment.app.Fragment;
 import androidx.navigation.fragment.NavHostFragment;
 
 import android.view.LayoutInflater;
@@ -16,6 +13,7 @@ import android.view.ViewGroup;
 import com.gamezzar.geargymtest.R;
 import com.gamezzar.geargymtest.core.BaseFragment;
 import com.gamezzar.geargymtest.databinding.LoginFragmentBinding;
+import com.gamezzar.geargymtest.viewmodel.LoginViewModel;
 
 public class LoginFragment extends BaseFragment {
 

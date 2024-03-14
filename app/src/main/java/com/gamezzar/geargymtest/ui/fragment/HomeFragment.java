@@ -1,13 +1,11 @@
-package com.gamezzar.geargymtest.feature.home;
+package com.gamezzar.geargymtest.ui.fragment;
 
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProvider;
 
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.fragment.app.Fragment;
 import androidx.navigation.fragment.NavHostFragment;
 
 import android.view.LayoutInflater;
@@ -17,8 +15,7 @@ import android.view.ViewGroup;
 import com.gamezzar.geargymtest.R;
 import com.gamezzar.geargymtest.core.BaseFragment;
 import com.gamezzar.geargymtest.databinding.HomeFragmentBinding;
-import com.google.android.material.bottomappbar.BottomAppBar;
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.gamezzar.geargymtest.viewmodel.HomeViewModel;
 
 public class HomeFragment extends BaseFragment {
 

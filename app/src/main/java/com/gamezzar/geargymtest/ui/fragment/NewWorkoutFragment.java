@@ -1,12 +1,9 @@
-package com.gamezzar.geargymtest.feature.workout.create;
-
-import androidx.appcompat.app.AppCompatActivity;
+package com.gamezzar.geargymtest.ui.fragment;
 
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.fragment.app.Fragment;
 import androidx.navigation.NavDirections;
 import androidx.navigation.fragment.NavHostFragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -19,9 +16,8 @@ import com.gamezzar.geargymtest.R;
 import com.gamezzar.geargymtest.core.BaseFragment;
 import com.gamezzar.geargymtest.databinding.NewWorkoutFragmentBinding;
 import com.gamezzar.geargymtest.core.Workout;
-import com.gamezzar.geargymtest.feature.workout.home.WorkoutAdapter;
-import com.google.android.material.bottomappbar.BottomAppBar;
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.gamezzar.geargymtest.ui.adapter.WorkoutAdapter;
+import com.gamezzar.geargymtest.viewmodel.NewWorkoutViewModel;
 
 import java.util.ArrayList;
 import java.util.List;

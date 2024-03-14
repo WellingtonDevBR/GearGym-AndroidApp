@@ -1,4 +1,4 @@
-package com.gamezzar.geargymtest.feature.home;
+package com.gamezzar.geargymtest.viewmodel;
 
 import androidx.lifecycle.ViewModel;
 

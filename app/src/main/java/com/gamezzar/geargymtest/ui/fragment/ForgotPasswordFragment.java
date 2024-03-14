@@ -1,4 +1,4 @@
-package com.gamezzar.geargymtest.feature.login;
+package com.gamezzar.geargymtest.ui.fragment;
 
 import androidx.lifecycle.ViewModelProvider;
 
@@ -13,6 +13,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.gamezzar.geargymtest.R;
+import com.gamezzar.geargymtest.viewmodel.ForgotPasswordViewModel;
 
 public class ForgotPasswordFragment extends Fragment {
 

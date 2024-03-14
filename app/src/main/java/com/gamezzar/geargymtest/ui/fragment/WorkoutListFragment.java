@@ -1,10 +1,9 @@
-package com.gamezzar.geargymtest.feature.workout.list;
+package com.gamezzar.geargymtest.ui.fragment;
 
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
 import android.view.LayoutInflater;
@@ -15,6 +14,8 @@ import com.gamezzar.geargymtest.R;
 import com.gamezzar.geargymtest.core.BaseFragment;
 import com.gamezzar.geargymtest.core.Workout;
 import com.gamezzar.geargymtest.databinding.WorkoutListFragmentBinding;
+import com.gamezzar.geargymtest.ui.adapter.WorkoutListAdapter;
+import com.gamezzar.geargymtest.viewmodel.WorkoutListViewModel;
 
 import java.util.ArrayList;
 import java.util.List;

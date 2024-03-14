@@ -1,4 +1,4 @@
-package com.gamezzar.geargymtest.feature.workout.list;
+package com.gamezzar.geargymtest.ui.adapter;
 
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
@@ -6,11 +6,7 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.gamezzar.geargymtest.core.Workout;
 import com.gamezzar.geargymtest.databinding.WorkoutItemsInCardBinding;
-import com.gamezzar.geargymtest.databinding.WorkoutListItemCardBinding;
-
-import java.util.List;
 
 public class WorkoutListItemAdapter extends RecyclerView.Adapter<WorkoutListItemAdapter.WorkoutListItemViewHolder> {
     private final String workoutName;

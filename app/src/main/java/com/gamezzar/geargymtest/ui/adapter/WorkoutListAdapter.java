@@ -1,4 +1,4 @@
-package com.gamezzar.geargymtest.feature.workout.list;
+package com.gamezzar.geargymtest.ui.adapter;
 
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
@@ -8,8 +8,6 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.gamezzar.geargymtest.core.Workout;
 import com.gamezzar.geargymtest.databinding.WorkoutListItemCardBinding;
-import com.gamezzar.geargymtest.databinding.WorkoutSelectionItemCardBinding;
-import com.gamezzar.geargymtest.feature.workout.create.NewWorkoutListAdapter;
 
 import java.util.List;
 
