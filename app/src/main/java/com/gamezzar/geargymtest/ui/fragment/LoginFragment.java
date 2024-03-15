@@ -23,6 +23,7 @@ import com.gamezzar.geargymtest.database.entities.User;
 import com.gamezzar.geargymtest.databinding.LoginFragmentBinding;
 import com.gamezzar.geargymtest.viewmodel.LoginViewModel;
 import com.google.android.material.textfield.TextInputEditText;
+import com.google.android.material.textfield.TextInputLayout;
 
 import java.util.Objects;
 
@@ -76,40 +77,49 @@ public class LoginFragment extends BaseFragment {
         isPasswordValidated = isValid;
     }
 
-    private void setUpInputField(TextInputEditText inputField, String regex, int validBg, int invalidBg, Runnable validationFlagUpdater) {
-        inputField.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-            }
+    private void setUpInputField(TextInputLayout inputLayout, String regex, Runnable validationFlagUpdater) {
+        TextInputEditText inputField = (TextInputEditText) inputLayout.getEditText();
+        if (inputField != null) {
+            inputField.addTextChangedListener(new TextWatcher() {
+                @Override
+                public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+                }
 
-            @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
-            }
+                @Override
+                public void onTextChanged(CharSequence s, int start, int before, int count) {
+                }
 
-            @Override
-            public void afterTextChanged(Editable s) {
-                boolean isValid = s.toString().matches(regex);
-                int bgResource = isValid ? validBg : invalidBg;
-                inputField.setBackground(ResourcesCompat.getDrawable(getResources(), bgResource, null));
-                validationFlagUpdater.run();
-                updateLoginButtonState();
-            }
-        });
+                @Override
+                public void afterTextChanged(Editable s) {
+                    boolean isValid = s.toString().matches(regex);
+                    int boxStrokeColor = isValid ? getResources().getColor(R.color.purple_600, getResources().newTheme()) : getResources().getColor(R.color.red, getResources().newTheme());
+                    inputLayout.setBoxStrokeColor(boxStrokeColor);
+                    inputLayout.setHelperTextEnabled(!isValid);
+                    if (inputLayout.getId() == R.id.tilEmail) {
+                        isEmailValidated = isValid;
+                    } else if (inputLayout.getId() == R.id.tilPassword) {
+                        isPasswordValidated = isValid;
+                    }
+                    validationFlagUpdater.run();
+                    updateLoginButtonState();
+                }
+            });
+        }
     }
 
     public void setUpEmailInputField() {
         String emailRegex = "^[a-zA-Z0-9_+&*-]+(?:\\.[a-zA-Z0-9_+&*-]+)*@" + "(?:[a-zA-Z0-9-]+\\.)+[a-zA-Z]{2,7}$";
-        setUpInputField(binding.tiEmailField, emailRegex, R.drawable.layout_border, R.drawable.layout_border_error, () -> updateEmailValidation(binding.tiEmailField.getText().toString().matches(emailRegex)));
+        setUpInputField(binding.tilEmail, emailRegex, this::updateLoginButtonState);
     }
 
     public void setUpPasswordInputField() {
         String passwordRegex = "^.{6,}$";
-        setUpInputField(binding.tiPasswordField, passwordRegex, R.drawable.layout_border, R.drawable.layout_border_error, () -> updatePasswordValidation(binding.tiPasswordField.getText().toString().matches(passwordRegex)));
+        setUpInputField(binding.tilPassword, passwordRegex, this::updateLoginButtonState);
     }
 
     private void navigateToHome() {
-        String email = Objects.requireNonNull(binding.tiEmailField.getText()).toString();
-        String password = Objects.requireNonNull(binding.tiPasswordField.getText()).toString();
+        String email = Objects.requireNonNull(binding.tilEmail.getEditText().getText()).toString();
+        String password = Objects.requireNonNull(binding.tilPassword.getEditText().getText()).toString();
 
         LiveData<User> userLiveData = mViewModel.login(email, password);
 
