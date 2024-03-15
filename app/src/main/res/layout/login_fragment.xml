@@ -49,78 +49,59 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/signUpTextViewLabel" />
 
-        <TextView
-            android:id="@+id/tvEmailLabel"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="36dp"
-            android:layout_marginTop="26dp"
-            android:text="@string/label_email"
-            android:textColor="#2A2D34"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/subTextViewSignUp" />
-
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/tilEmail"
+            style="@style/CustomTextInputLayoutStyle"
             android:layout_width="0dp"
-            android:layout_height="58dp"
+            android:layout_height="wrap_content"
             android:layout_marginStart="36dp"
+            android:layout_marginTop="30dp"
             android:layout_marginEnd="36dp"
             app:boxCornerRadiusBottomEnd="8dp"
             app:boxCornerRadiusBottomStart="8dp"
             app:boxCornerRadiusTopEnd="8dp"
             app:boxCornerRadiusTopStart="8dp"
-            app:startIconDrawable="@drawable/ic_email"
             app:boxStrokeColor="@color/custom_border_color"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            style="@style/CustomTextInputLayoutStyle"
-            app:layout_constraintTop_toBottomOf="@+id/tvEmailLabel">
+            app:layout_constraintTop_toBottomOf="@+id/subTextViewSignUp"
+            app:startIconDrawable="@drawable/ic_email">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/tiEmailField"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@drawable/layout_border"
                 android:hint="@string/hint_enter_your_email"
                 android:paddingStart="36dp" />
         </com.google.android.material.textfield.TextInputLayout>
 
-        <TextView
-            android:id="@+id/tvPasswordLabel"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="36dp"
-            android:layout_marginTop="16dp"
-            android:text="@string/label_password"
-            android:textColor="#2A2D34"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tilEmail" />
-
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/tilPassword"
+            style="@style/CustomTextInputLayoutStyle"
             android:layout_width="0dp"
-            android:layout_height="58dp"
+            android:layout_height="wrap_content"
             android:layout_marginStart="36dp"
+            android:layout_marginTop="10dp"
             android:layout_marginEnd="36dp"
             android:hint="@string/hint_enter_your_password"
             app:boxCornerRadiusBottomEnd="8dp"
             app:boxCornerRadiusBottomStart="8dp"
             app:boxCornerRadiusTopEnd="8dp"
             app:boxCornerRadiusTopStart="8dp"
-            app:startIconDrawable="@drawable/ic_password"
             app:boxStrokeColor="@color/custom_border_color"
+            app:endIconMode="password_toggle"
+            app:hintTextColor="@color/black"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            style="@style/CustomTextInputLayoutStyle"
-            app:layout_constraintTop_toBottomOf="@+id/tvPasswordLabel">
+            app:layout_constraintTop_toBottomOf="@+id/tilEmail"
+            app:startIconDrawable="@drawable/ic_password">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/tiPasswordField"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@drawable/layout_border"
+                android:inputType="textPassword"
                 android:paddingStart="36dp" />
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -130,7 +111,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="36dp"
-            android:layout_marginTop="5dp"
             android:contentDescription="@string/rememberMe"
             android:text="@string/rememberMe"
             android:textColor="@color/gray_400"
@@ -142,9 +122,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="36dp"
+            android:fontFamily="@font/inter_bold"
             android:text="@string/forgotPassword"
-            android:textColor="#1B1B1B"
-            android:textStyle="bold"
+            android:textColor="#434343"
             app:layout_constraintBottom_toBottomOf="@+id/cbxRememberMe"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="@+id/cbxRememberMe" />
@@ -154,14 +134,13 @@
             android:layout_width="0dp"
             android:layout_height="52dp"
             android:layout_marginStart="36dp"
-            android:layout_marginTop="75dp"
             android:layout_marginEnd="36dp"
             android:backgroundTint="@color/purple_600"
-            android:text="@string/signIn"
             android:enabled="false"
+            android:text="@string/signIn"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tilPassword" />
+            app:layout_constraintTop_toBottomOf="@+id/cbxRememberMe" />
 
         <TextView
             android:id="@+id/textView7"
@@ -177,7 +156,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="4dp"
+            android:fontFamily="@font/inter_bold"
             android:text="@string/signUp"
+            android:textColor="#434343"
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="@+id/textView7"
             app:layout_constraintStart_toEndOf="@+id/textView7"

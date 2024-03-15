@@ -75,6 +75,7 @@ public class LoginFragment extends BaseFragment {
     private void updatePasswordValidation(boolean isValid) {
         isPasswordValidated = isValid;
     }
+
     private void setUpInputField(TextInputEditText inputField, String regex, int validBg, int invalidBg, Runnable validationFlagUpdater) {
         inputField.addTextChangedListener(new TextWatcher() {
             @Override
@@ -95,14 +96,17 @@ public class LoginFragment extends BaseFragment {
             }
         });
     }
+
     public void setUpEmailInputField() {
         String emailRegex = "^[a-zA-Z0-9_+&*-]+(?:\\.[a-zA-Z0-9_+&*-]+)*@" + "(?:[a-zA-Z0-9-]+\\.)+[a-zA-Z]{2,7}$";
         setUpInputField(binding.tiEmailField, emailRegex, R.drawable.layout_border, R.drawable.layout_border_error, () -> updateEmailValidation(binding.tiEmailField.getText().toString().matches(emailRegex)));
     }
+
     public void setUpPasswordInputField() {
         String passwordRegex = "^.{6,}$";
         setUpInputField(binding.tiPasswordField, passwordRegex, R.drawable.layout_border, R.drawable.layout_border_error, () -> updatePasswordValidation(binding.tiPasswordField.getText().toString().matches(passwordRegex)));
     }
+
     private void navigateToHome() {
         String email = Objects.requireNonNull(binding.tiEmailField.getText()).toString();
         String password = Objects.requireNonNull(binding.tiPasswordField.getText()).toString();
@@ -113,10 +117,11 @@ public class LoginFragment extends BaseFragment {
             if (user != null && user.Email != null) {
                 NavHostFragment.findNavController(this).navigate(R.id.action_loginFragment_to_homeFragment);
             } else {
-                Toast.makeText(getContext(), "Login failed. User not found or incorrect credentials.", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getContext(), "You may have entered incorrect credentials.", Toast.LENGTH_SHORT).show();
             }
         });
     }
+
     private void navigateToRegister() {
         NavHostFragment.findNavController(this).navigate(R.id.action_loginFragment_to_registerFragment);
     }
@@ -124,6 +129,7 @@ public class LoginFragment extends BaseFragment {
     private void navigateToForgotPassword() {
         NavHostFragment.findNavController(this).navigate(R.id.action_loginFragment_to_forgotPasswordFragment);
     }
+
     private void updateLoginButtonState() {
         binding.btnLogin.setEnabled(isEmailValidated && isPasswordValidated);
     }

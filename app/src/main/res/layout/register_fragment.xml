@@ -49,135 +49,99 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/signUpTextViewLabel" />
 
-        <TextView
-            android:id="@+id/tvNameLabel"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="36dp"
-            android:layout_marginTop="26dp"
-            android:text="@string/label_name"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/subTextViewSignUp" />
-
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/nameInputLayout"
             style="@style/CustomTextInputLayoutStyle"
             android:layout_width="0dp"
-            android:layout_height="52dp"
+            android:layout_height="wrap_content"
             android:layout_marginStart="36dp"
+            android:layout_marginTop="30dp"
             android:layout_marginEnd="36dp"
             android:hint="@string/hint_enter_your_name"
             android:textColorHint="@color/gray_400"
             app:boxStrokeColor="@color/custom_border_color"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tvNameLabel"
+            app:layout_constraintTop_toBottomOf="@+id/subTextViewSignUp"
             app:startIconDrawable="@drawable/ic_user">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/nameEditText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@drawable/layout_border"
                 android:paddingStart="36dp"
                 android:paddingEnd="36dp" />
         </com.google.android.material.textfield.TextInputLayout>
-
-        <TextView
-            android:id="@+id/emailTextViewLabel"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="36dp"
-            android:layout_marginTop="6dp"
-            android:text="@string/label_email"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/nameInputLayout" />
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/emailTextInput"
             style="@style/CustomTextInputLayoutStyle"
             android:layout_width="0dp"
-            android:layout_height="52dp"
+            android:layout_height="wrap_content"
             android:layout_marginStart="36dp"
+            android:layout_marginTop="10dp"
             android:layout_marginEnd="36dp"
             android:hint="@string/hint_enter_your_email"
             android:textColorHint="@color/gray_400"
             app:boxStrokeColor="@color/custom_border_color"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/emailTextViewLabel"
+            app:layout_constraintTop_toBottomOf="@+id/nameInputLayout"
             app:startIconDrawable="@drawable/ic_email">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@drawable/layout_border"
                 android:paddingStart="36dp"
                 android:paddingEnd="36dp" />
         </com.google.android.material.textfield.TextInputLayout>
-
-        <TextView
-            android:id="@+id/passwordTextViewLabel"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="36dp"
-            android:layout_marginTop="6dp"
-            android:text="@string/label_password"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/emailTextInput" />
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/passwordTextInput"
             style="@style/CustomTextInputLayoutStyle"
             android:layout_width="0dp"
-            android:layout_height="52dp"
+            android:layout_height="wrap_content"
             android:layout_marginStart="36dp"
+            android:layout_marginTop="10dp"
             android:layout_marginEnd="36dp"
             android:hint="@string/hint_enter_your_password"
             android:textColorHint="@color/gray_400"
             app:boxStrokeColor="@color/custom_border_color"
+            app:endIconMode="password_toggle"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/passwordTextViewLabel"
+            app:layout_constraintTop_toBottomOf="@+id/emailTextInput"
             app:startIconDrawable="@drawable/ic_password">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@drawable/layout_border"
+                android:inputType="textPassword"
                 android:paddingStart="36dp"
                 android:paddingEnd="36dp" />
         </com.google.android.material.textfield.TextInputLayout>
-
-        <TextView
-            android:id="@+id/repeatPasswordLabel"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="36dp"
-            android:layout_marginTop="6dp"
-            android:text="@string/label_repeat_password"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/passwordTextInput" />
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/repeatPasswordTextInput"
             style="@style/CustomTextInputLayoutStyle"
             android:layout_width="0dp"
-            android:layout_height="52dp"
+            android:layout_height="wrap_content"
             android:layout_marginStart="36dp"
+            android:layout_marginTop="10dp"
             android:layout_marginEnd="36dp"
             android:hint="@string/hint_repeat_your_password"
             android:textColorHint="@color/gray_400"
             app:boxStrokeColor="@color/custom_border_color"
+            app:endIconMode="password_toggle"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/repeatPasswordLabel"
+            app:layout_constraintTop_toBottomOf="@+id/passwordTextInput"
             app:startIconDrawable="@drawable/ic_password">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@drawable/layout_border"
+                android:inputType="textPassword"
                 android:paddingStart="36dp"
                 android:paddingEnd="36dp" />
         </com.google.android.material.textfield.TextInputLayout>
@@ -187,9 +151,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="36dp"
+            android:layout_marginTop="5dp"
             android:text="@string/i_agree_to"
             android:textColor="@color/gray_400"
-            app:buttonTint="@color/gray_200"
+            app:buttonTint="@color/purple_600"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/repeatPasswordTextInput" />
 
@@ -202,20 +167,20 @@
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="@+id/radioButton"
             app:layout_constraintStart_toEndOf="@+id/radioButton"
-            app:layout_constraintTop_toBottomOf="@+id/repeatPasswordTextInput" />
+            app:layout_constraintTop_toTopOf="@+id/radioButton" />
 
         <Button
             android:id="@+id/btnRegister"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="36dp"
-            android:layout_marginTop="56dp"
+            android:layout_marginTop="5dp"
             android:layout_marginEnd="36dp"
             android:backgroundTint="#9747FF"
             android:text="@string/register_button"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/repeatPasswordTextInput" />
+            app:layout_constraintTop_toBottomOf="@+id/radioButton" />
 
         <ImageButton
             android:id="@+id/ibReturn"

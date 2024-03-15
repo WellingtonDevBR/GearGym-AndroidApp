@@ -15,6 +15,7 @@ import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.gamezzar.geargymtest.R;
 import com.gamezzar.geargymtest.databinding.ForgotPasswordFragmentBinding;
@@ -41,7 +42,7 @@ public class ForgotPasswordFragment extends Fragment {
         binding.ibReturn.setOnClickListener(v -> navigateToLogin());
         binding.btnResetPassword.setOnClickListener((v -> {
             if (isEmailValidated) {
-
+                Toast.makeText(getContext(), "We have sent you a link to your email!", Toast.LENGTH_SHORT).show();
             }
         }));
         return binding.getRoot();
@@ -87,7 +88,6 @@ public class ForgotPasswordFragment extends Fragment {
         String emailRegex = "^[a-zA-Z0-9_+&*-]+(?:\\.[a-zA-Z0-9_+&*-]+)*@" + "(?:[a-zA-Z0-9-]+\\.)+[a-zA-Z]{2,7}$";
         setUpInputField(binding.tietEmailField, emailRegex, R.drawable.layout_border, R.drawable.layout_border_error, () -> updateEmailValidation(Objects.requireNonNull(binding.tietEmailField.getText()).toString().matches(emailRegex)));
     }
-
 
     public void navigateToLogin() {
         NavHostFragment.findNavController(this).navigate(R.id.action_forgotPasswordFragment_to_loginFragment);
