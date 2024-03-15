@@ -22,7 +22,7 @@ public class UserRepository {
 
     public UserRepository(Application application) {
         AppDatabase db = Room.databaseBuilder(application,
-                AppDatabase.class, "database-name").build();
+                AppDatabase.class, "geargym_database").fallbackToDestructiveMigration().build();
         userDao = db.userDao();
     }
 

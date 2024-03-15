@@ -31,6 +31,7 @@ android {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
     }
+
 }
 
 dependencies {
@@ -51,6 +52,13 @@ dependencies {
     implementation "androidx.compose.material3:material3:1.2.1"
     implementation "androidx.compose.material3:material3-adaptive-navigation-suite:1.0.0-alpha05"
     implementation "androidx.room:room-runtime:$room_version"
+    implementation "androidx.datastore:datastore-preferences:1.0.0"
+    implementation "androidx.datastore:datastore-preferences-rxjava3:1.0.0"
+    implementation "androidx.datastore:datastore-preferences-core:1.0.0"
+    implementation "androidx.datastore:datastore:1.0.0"
+    implementation "androidx.datastore:datastore-rxjava3:1.0.0"
+    implementation "androidx.datastore:datastore-core:1.0.0"
+    implementation 'io.reactivex.rxjava3:rxandroid:3.0.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.5'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
     annotationProcessor "androidx.room:room-compiler:$room_version"

@@ -1,7 +1,22 @@
 package com.gamezzar.geargymtest.viewmodel;
 
-import androidx.lifecycle.ViewModel;
+import android.app.Application;
 
-public class RegisterViewModel extends ViewModel {
-    // TODO: Implement the ViewModel
+import androidx.annotation.NonNull;
+import androidx.lifecycle.AndroidViewModel;
+
+import com.gamezzar.geargymtest.database.entities.User;
+import com.gamezzar.geargymtest.database.repositories.UserRepository;
+
+public class RegisterViewModel extends AndroidViewModel {
+
+    UserRepository userRepository;
+    public RegisterViewModel(@NonNull Application application) {
+        super(application);
+        userRepository = new UserRepository(getApplication());
+    }
+
+    public void signUp(User user) {
+        userRepository.insert(user);
+    }
 }

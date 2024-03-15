@@ -13,9 +13,9 @@
 
         <ImageView
             android:id="@+id/imageView"
-            android:layout_width="122dp"
-            android:layout_height="122dp"
-            android:layout_marginTop="36dp"
+            android:layout_width="160dp"
+            android:layout_height="160dp"
+            android:layout_marginTop="25dp"
             android:contentDescription="@string/gearGymLogo"
             android:foreground="@drawable/logo"
             app:layout_constraintEnd_toEndOf="parent"
@@ -28,7 +28,7 @@
             android:id="@+id/signUpTextViewLabel"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="26dp"
+            android:layout_marginTop="40dp"
             android:text="@string/welcomeTitle"
             android:textColor="#333333"
             android:textSize="24sp"
@@ -55,14 +55,13 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="36dp"
-            android:layout_marginTop="30dp"
+            android:layout_marginTop="40dp"
             android:layout_marginEnd="36dp"
             android:hint="@string/hint_enter_your_email"
             app:boxCornerRadiusBottomEnd="8dp"
             app:boxCornerRadiusBottomStart="8dp"
             app:boxCornerRadiusTopEnd="8dp"
             app:boxCornerRadiusTopStart="8dp"
-            app:errorEnabled="true"
             app:helperTextTextColor="@color/red"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -90,7 +89,6 @@
             app:boxCornerRadiusTopEnd="8dp"
             app:boxCornerRadiusTopStart="8dp"
             app:endIconMode="password_toggle"
-            app:errorEnabled="true"
             app:helperTextTextColor="@color/red"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -104,12 +102,13 @@
         </com.google.android.material.textfield.TextInputLayout>
 
 
-        <CheckBox
+        <com.google.android.material.checkbox.MaterialCheckBox
             android:id="@+id/cbxRememberMe"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="36dp"
             android:contentDescription="@string/rememberMe"
+            app:buttonTint="@color/selector_radio_button_tint"
             android:text="@string/rememberMe"
             android:textColor="@color/gray_400"
             app:layout_constraintStart_toStartOf="parent"
@@ -145,6 +144,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="110dp"
+            android:layout_marginTop="10dp"
             android:text="@string/doNotHaveAccount"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/btnLogin" />

@@ -25,14 +25,10 @@ public class NewWorkoutListFragment extends BaseFragment {
     private NewWorkoutListViewModel mViewModel;
     NewWorkoutListAdapter adapter;
     private List<Workout> workoutChoiceList;
-
-
     private NewWorkoutListFragmentBinding binding;
-
     public static NewWorkoutListFragment newInstance() {
         return new NewWorkoutListFragment();
     }
-
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {

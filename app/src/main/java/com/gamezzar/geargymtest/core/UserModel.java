@@ -1,12 +1,12 @@
 package com.gamezzar.geargymtest.core;
 
-public class User {
+public class UserModel {
     private String name;
     private String email;
     private String password;
     private String repeatPassword;
 
-    private User(String name, String email, String password, String repeatPassword) {
+    private UserModel(String name, String email, String password, String repeatPassword) {
         this.name = name;
         this.email = email;
         this.password = password;
@@ -27,7 +27,7 @@ public class User {
     }
 
     public static boolean isUserValid(String name, String email, String password, String repeatPassword) {
-        User user = new User(name, email, password, repeatPassword);
-        return user.validate();
+        UserModel userModel = new UserModel(name, email, password, repeatPassword);
+        return userModel.validate();
     }
 }
