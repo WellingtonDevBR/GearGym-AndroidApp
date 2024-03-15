@@ -226,7 +226,7 @@
             android:background="@android:color/transparent"
             android:backgroundTint="@color/black"
             android:src="@drawable/ic_up_button"
-            android:tint="@color/black"
+            app:tint="@color/black"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 

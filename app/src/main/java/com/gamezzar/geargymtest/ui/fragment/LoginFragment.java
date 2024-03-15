@@ -44,8 +44,14 @@ public class LoginFragment extends BaseFragment {
         setUpPasswordInputField();
         binding.btnLogin.setOnClickListener(v -> navigateToHome());
         binding.tvSignUp.setOnClickListener(v -> navigateToRegister());
-
+        binding.tvForgotPassword.setOnClickListener(v -> navigateToForgotPassword());
         return binding.getRoot();
+    }
+
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        mViewModel = new ViewModelProvider(this).get(LoginViewModel.class);
     }
 
     @Override
@@ -56,6 +62,19 @@ public class LoginFragment extends BaseFragment {
         hideFab();
     }
 
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        binding = null;
+    }
+
+    private void updateEmailValidation(boolean isValid) {
+        isEmailValidated = isValid;
+    }
+
+    private void updatePasswordValidation(boolean isValid) {
+        isPasswordValidated = isValid;
+    }
     private void setUpInputField(TextInputEditText inputField, String regex, int validBg, int invalidBg, Runnable validationFlagUpdater) {
         inputField.addTextChangedListener(new TextWatcher() {
             @Override
@@ -76,17 +95,13 @@ public class LoginFragment extends BaseFragment {
             }
         });
     }
-
-    @Override
-    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
-        super.onViewCreated(view, savedInstanceState);
-        mViewModel = new ViewModelProvider(this).get(LoginViewModel.class);
+    public void setUpEmailInputField() {
+        String emailRegex = "^[a-zA-Z0-9_+&*-]+(?:\\.[a-zA-Z0-9_+&*-]+)*@" + "(?:[a-zA-Z0-9-]+\\.)+[a-zA-Z]{2,7}$";
+        setUpInputField(binding.tiEmailField, emailRegex, R.drawable.layout_border, R.drawable.layout_border_error, () -> updateEmailValidation(binding.tiEmailField.getText().toString().matches(emailRegex)));
     }
-
-    @Override
-    public void onDestroyView() {
-        super.onDestroyView();
-        binding = null;
+    public void setUpPasswordInputField() {
+        String passwordRegex = "^.{6,}$";
+        setUpInputField(binding.tiPasswordField, passwordRegex, R.drawable.layout_border, R.drawable.layout_border_error, () -> updatePasswordValidation(binding.tiPasswordField.getText().toString().matches(passwordRegex)));
     }
     private void navigateToHome() {
         String email = Objects.requireNonNull(binding.tiEmailField.getText()).toString();
@@ -106,28 +121,10 @@ public class LoginFragment extends BaseFragment {
         NavHostFragment.findNavController(this).navigate(R.id.action_loginFragment_to_registerFragment);
     }
 
+    private void navigateToForgotPassword() {
+        NavHostFragment.findNavController(this).navigate(R.id.action_loginFragment_to_forgotPasswordFragment);
+    }
     private void updateLoginButtonState() {
         binding.btnLogin.setEnabled(isEmailValidated && isPasswordValidated);
     }
-
-    private void updateEmailValidation(boolean isValid) {
-        isEmailValidated = isValid;
-    }
-
-    private void updatePasswordValidation(boolean isValid) {
-        isPasswordValidated = isValid;
-    }
-
-    // Usage
-    public void setUpEmailInputField() {
-        String emailRegex = "^[a-zA-Z0-9_+&*-]+(?:\\.[a-zA-Z0-9_+&*-]+)*@" + "(?:[a-zA-Z0-9-]+\\.)+[a-zA-Z]{2,7}$";
-        setUpInputField(binding.tiEmailField, emailRegex, R.drawable.layout_border, R.drawable.layout_border_error, () -> updateEmailValidation(binding.tiEmailField.getText().toString().matches(emailRegex)));
-    }
-
-    public void setUpPasswordInputField() {
-        String passwordRegex = "^.{6,}$";
-        setUpInputField(binding.tiPasswordField, passwordRegex, R.drawable.layout_border, R.drawable.layout_border_error, () -> updatePasswordValidation(binding.tiPasswordField.getText().toString().matches(passwordRegex)));
-    }
-
-
 }
