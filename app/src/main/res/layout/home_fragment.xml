@@ -44,11 +44,10 @@
             android:layout_marginEnd="36dp"
             android:background="@drawable/circle"
             android:scaleType="centerCrop"
+            android:src="@drawable/ic_user_profile"
             app:layout_constraintBottom_toBottomOf="@+id/tvUsername"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/tvWelcomeLabel"
-            tools:src="@tools:sample/avatars"
-            tools:srcCompat="@drawable/ic_user_profile" />
+            app:layout_constraintTop_toTopOf="@+id/tvWelcomeLabel" />
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/svHomeContainer"
@@ -84,8 +83,8 @@
                     android:layout_gravity="fill"
                     android:layout_margin="8dp"
                     android:background="@color/gray_400"
-                    app:cardCornerRadius="8dp"
-                    app:cardElevation="4dp">
+                    app:cardCornerRadius="16dp"
+                    app:cardElevation="5dp">
 
                     <androidx.constraintlayout.widget.ConstraintLayout
                         android:layout_width="match_parent"
@@ -124,8 +123,8 @@
                     android:layout_gravity="fill"
                     android:layout_margin="8dp"
                     android:background="@color/gray_400"
-                    app:cardCornerRadius="8dp"
-                    app:cardElevation="4dp">
+                    app:cardCornerRadius="16dp"
+                    app:cardElevation="5dp">
 
                     <androidx.constraintlayout.widget.ConstraintLayout
                         android:layout_width="match_parent"
@@ -164,8 +163,8 @@
                     android:layout_gravity="fill"
                     android:layout_margin="8dp"
                     android:background="@color/gray_400"
-                    app:cardCornerRadius="8dp"
-                    app:cardElevation="4dp">
+                    app:cardCornerRadius="16dp"
+                    app:cardElevation="5dp">
 
                     <androidx.constraintlayout.widget.ConstraintLayout
                         android:layout_width="match_parent"
@@ -204,8 +203,8 @@
                     android:layout_gravity="fill"
                     android:layout_margin="8dp"
                     android:background="@color/gray_400"
-                    app:cardCornerRadius="8dp"
-                    app:cardElevation="4dp">
+                    app:cardCornerRadius="16dp"
+                    app:cardElevation="5dp">
 
                     <androidx.constraintlayout.widget.ConstraintLayout
                         android:layout_width="match_parent"
