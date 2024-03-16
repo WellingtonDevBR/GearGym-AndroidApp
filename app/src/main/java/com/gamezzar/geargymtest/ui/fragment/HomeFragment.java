@@ -31,6 +31,7 @@ public class HomeFragment extends BaseFragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         // Inflate the layout for this fragment with ViewBinding
         binding = HomeFragmentBinding.inflate(inflater, container, false);
+        binding.ivProfile.setOnClickListener(v -> openProfileNavigation());
         return binding.getRoot();
     }
 
@@ -57,11 +58,14 @@ public class HomeFragment extends BaseFragment {
     @Override
     public void onDestroyView() {
         super.onDestroyView();
-        showToolBar();
         binding = null;
     }
 
     private void navigateToWorkout() {
         NavHostFragment.findNavController(this).navigate(R.id.action_homeFragment_to_workoutFragment);
+    }
+
+    private void openProfileNavigation() {
+        NavHostFragment.findNavController(this).navigate(R.id.action_homeFragment_to_profileNavFragment);
     }
 }
