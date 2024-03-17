@@ -1,0 +1,100 @@
+{
+  "formatVersion": 1,
+  "database": {
+    "version": 2,
+    "identityHash": "4790c23b96846dad3ebebfe9a6e93124",
+    "entities": [
+      {
+        "tableName": "User",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`UID` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `Name` TEXT, `Gender` TEXT, `Email` TEXT, `Password` TEXT, `Age` INTEGER, `Address` TEXT, `ImgSrc` TEXT, `Weight` REAL, `Height` REAL, `Purpose` TEXT, `Token` TEXT)",
+        "fields": [
+          {
+            "fieldPath": "UID",
+            "columnName": "UID",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "Name",
+            "columnName": "Name",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "Gender",
+            "columnName": "Gender",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "Email",
+            "columnName": "Email",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "Password",
+            "columnName": "Password",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "Age",
+            "columnName": "Age",
+            "affinity": "INTEGER",
+            "notNull": false
+          },
+          {
+            "fieldPath": "Address",
+            "columnName": "Address",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "ImgSrc",
+            "columnName": "ImgSrc",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "Weight",
+            "columnName": "Weight",
+            "affinity": "REAL",
+            "notNull": false
+          },
+          {
+            "fieldPath": "Height",
+            "columnName": "Height",
+            "affinity": "REAL",
+            "notNull": false
+          },
+          {
+            "fieldPath": "Purpose",
+            "columnName": "Purpose",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "Token",
+            "columnName": "Token",
+            "affinity": "TEXT",
+            "notNull": false
+          }
+        ],
+        "primaryKey": {
+          "autoGenerate": true,
+          "columnNames": [
+            "UID"
+          ]
+        },
+        "indices": [],
+        "foreignKeys": []
+      }
+    ],
+    "views": [],
+    "setupQueries": [
+      "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, '4790c23b96846dad3ebebfe9a6e93124')"
+    ]
+  }
+}

@@ -2,7 +2,6 @@ package com.gamezzar.geargymtest.seedwork.service;
 
 import android.graphics.Bitmap;
 
-import com.gamezzar.geargymtest.core.ImageProcessingService;
 import com.gamezzar.geargymtest.core.ObjectDetectionData;
 
 import java.util.ArrayList;

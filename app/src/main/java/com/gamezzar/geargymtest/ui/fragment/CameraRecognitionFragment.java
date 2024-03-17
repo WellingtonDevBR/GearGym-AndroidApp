@@ -18,14 +18,15 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.amazonaws.regions.Regions;
 import com.amazonaws.services.rekognition.model.BoundingBox;
-import com.amazonaws.services.rekognition.model.DetectLabelsResult;
-import com.amazonaws.services.rekognition.model.Label;
+import com.amazonaws.services.rekognition.model.CustomLabel;
+import com.amazonaws.services.rekognition.model.DetectCustomLabelsResult;
 import com.gamezzar.geargymtest.BuildConfig;
 import com.gamezzar.geargymtest.R;
 import com.gamezzar.geargymtest.core.BaseFragment;
-import com.gamezzar.geargymtest.core.CameraManager;
-import com.gamezzar.geargymtest.core.ImageProcessingService;
+import com.gamezzar.geargymtest.seedwork.service.CameraManagerService;
+import com.gamezzar.geargymtest.seedwork.service.ImageProcessingService;
 import com.gamezzar.geargymtest.core.ObjectDetectionData;
 import com.gamezzar.geargymtest.databinding.CameraRecognitionFragmentBinding;
 import com.gamezzar.geargymtest.seedwork.service.AwsRekognitionService;
@@ -46,7 +47,6 @@ public class CameraRecognitionFragment extends BaseFragment {
     private WorkoutRecognisedItemAdapter adapter;
     private List<ObjectDetectionData> equipmentsRecognised;
     private ImageProcessingService imageProcessingService;
-    private CameraManager cameraManager;
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -54,7 +54,7 @@ public class CameraRecognitionFragment extends BaseFragment {
         imageProcessingService = new ImageProcessingService();
         equipmentsRecognised = new ArrayList<>();
         adapter = new WorkoutRecognisedItemAdapter(equipmentsRecognised);
-        awsRekognitionService = new AwsRekognitionService(BuildConfig.AWS_ACCESS_KEY, BuildConfig.AWS_SECRET_KEY);
+        awsRekognitionService = new AwsRekognitionService(getContext(), BuildConfig.AWS_IDENTITY_POOL_ID, Regions.US_EAST_2);
         return binding.getRoot();
     }
 
@@ -67,13 +67,12 @@ public class CameraRecognitionFragment extends BaseFragment {
         binding.rvRecognisedEquipments.setAdapter(adapter);
         PreviewView previewView = binding.viewFinder;
         ImageAnalysis.Analyzer analyzer = new MyImageAnalyzer();
-        cameraManager = new CameraManager(requireContext(), getViewLifecycleOwner(), previewView, analyzer);
-        cameraManager.startCamera();
+        CameraManagerService cameraManagerService = new CameraManagerService(requireContext(), getViewLifecycleOwner(), previewView, analyzer);
+        cameraManagerService.startCamera();
     }
 
     private class MyImageAnalyzer implements ImageAnalysis.Analyzer {
         private final ExecutorService executorService = Executors.newSingleThreadExecutor();
-        private final long analysisInterval = 5000; // milliseconds
         private long lastAnalysisTime = 0;
 
         @Override
@@ -88,6 +87,8 @@ public class CameraRecognitionFragment extends BaseFragment {
         }
 
         private boolean shouldAnalyzeFrame(long currentTime) {
+            // milliseconds
+            long analysisInterval = 5000;
             return currentTime - lastAnalysisTime >= analysisInterval;
         }
 
@@ -111,32 +112,35 @@ public class CameraRecognitionFragment extends BaseFragment {
 
         private void detectObjects(Bitmap bitmap) {
             byte[] jpegData = imageProcessingService.bitmapToJpegByteArray(bitmap);
-            DetectLabelsResult result = awsRekognitionService.detectLabels(ByteBuffer.wrap(jpegData), 10, 80.0f);
+            DetectCustomLabelsResult result = awsRekognitionService.detectCustomLabels(ByteBuffer.wrap(jpegData));
             processDetectionResult(result, bitmap);
         }
 
-        private void processDetectionResult(DetectLabelsResult result, Bitmap bitmap) {
+        private void processDetectionResult(DetectCustomLabelsResult result, Bitmap bitmap) {
             requireActivity().runOnUiThread(() -> updateUIWithDetectionResult(result, bitmap));
         }
 
-        private void updateUIWithDetectionResult(DetectLabelsResult result, Bitmap bitmap) {
-            List<Label> labels = result.getLabels();
+        private void updateUIWithDetectionResult(DetectCustomLabelsResult result, Bitmap bitmap) {
+            List<CustomLabel> labels = result.getCustomLabels();
             if (labels.isEmpty()) return;
 
-            for (Label label : labels) {
+            for (CustomLabel label : labels) {
                 processLabel(label, bitmap);
             }
         }
 
-        private void processLabel(Label label, Bitmap bitmap) {
-            label.getInstances().stream().findFirst().ifPresent(instance -> {
-                BoundingBox boundingBox = instance.getBoundingBox();
+        private void processLabel(CustomLabel label, Bitmap bitmap) {
+
+            if (label.getGeometry() != null && label.getGeometry().getBoundingBox() != null) {
+                Log.d("boundingBoxes", "Bounding: " + label.getGeometry().getBoundingBox());
+                BoundingBox boundingBox = label.getGeometry().getBoundingBox();
+                // Now you have the bounding box and can proceed with cropping the bitmap
                 Bitmap croppedBitmap = imageProcessingService.cropDetectedObject(bitmap, boundingBox);
                 updateDetectedEquipments(croppedBitmap, label);
-            });
+            }
         }
 
-        private void updateDetectedEquipments(Bitmap croppedBitmap, Label label) {
+        private void updateDetectedEquipments(Bitmap croppedBitmap, CustomLabel label) {
             ObjectDetectionData data = new ObjectDetectionData(croppedBitmap, label.getName(), label.getConfidence());
             if (equipmentsRecognised.size() >= 3) {
                 equipmentsRecognised.remove(0);

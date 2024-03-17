@@ -1,4 +1,4 @@
-package com.gamezzar.geargymtest.core;
+package com.gamezzar.geargymtest.seedwork.service;
 
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;

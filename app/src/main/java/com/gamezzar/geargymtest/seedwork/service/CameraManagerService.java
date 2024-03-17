@@ -1,4 +1,4 @@
-package com.gamezzar.geargymtest.core;
+package com.gamezzar.geargymtest.seedwork.service;
 
 import android.content.Context;
 import android.util.Log;
@@ -15,13 +15,13 @@ import com.google.common.util.concurrent.ListenableFuture;
 
 import java.util.concurrent.ExecutionException;
 
-public class CameraManager {
+public class CameraManagerService {
     private final Context context;
     private final LifecycleOwner lifecycleOwner;
     private final PreviewView previewView;
     private final ImageAnalysis.Analyzer analyzer;
 
-    public CameraManager(Context context, LifecycleOwner lifecycleOwner, PreviewView previewView, ImageAnalysis.Analyzer analyzer) {
+    public CameraManagerService(Context context, LifecycleOwner lifecycleOwner, PreviewView previewView, ImageAnalysis.Analyzer analyzer) {
         this.context = context;
         this.lifecycleOwner = lifecycleOwner;
         this.previewView = previewView;

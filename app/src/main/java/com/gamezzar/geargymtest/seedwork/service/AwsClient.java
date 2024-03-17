@@ -1,16 +1,15 @@
 package com.gamezzar.geargymtest.seedwork.service;
 
-import com.amazonaws.auth.AWSCredentials;
-import com.amazonaws.auth.AWSCredentialsProvider;
-import com.amazonaws.auth.BasicAWSCredentials;
+import android.content.Context;
+
+import com.amazonaws.auth.CognitoCachingCredentialsProvider;
+import com.amazonaws.regions.Region;
 import com.amazonaws.regions.Regions;
+import com.amazonaws.services.rekognition.AmazonRekognitionClient;
 
 public abstract class AwsClient {
-
-    protected BasicAWSCredentials awsClient;
-
-    public AwsClient(String AccessKey, String SecretKey) {
-        awsClient = new BasicAWSCredentials(AccessKey, SecretKey);
-
+    protected CognitoCachingCredentialsProvider credentialsProvider;
+    public AwsClient(Context context, String identityPoolId, Regions region) {
+        credentialsProvider = new CognitoCachingCredentialsProvider(context, identityPoolId, region);
     }
 }

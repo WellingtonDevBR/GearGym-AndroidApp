@@ -13,11 +13,20 @@ if (secretsPropertiesFile.exists()) {
 android {
     namespace 'com.gamezzar.geargymtest'
     compileSdk 34
+    useLibrary 'org.apache.http.legacy'
+
+    packagingOptions {
+        exclude 'META-INF/INDEX.LIST'
+        exclude 'META-INF/DEPENDENCIES'
+        exclude 'META-INF/io.netty.versions.properties'
+    }
 
     buildFeatures {
         // Enable generation of BuildConfig.java
         buildConfig true
     }
+
+
 
     defaultConfig {
         applicationId "com.gamezzar.geargymtest"
@@ -29,9 +38,17 @@ android {
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         buildConfigField "String", "AWS_ACCESS_KEY", "\"${secretsProperties['AWS_ACCESS_KEY']}\""
         buildConfigField "String", "AWS_SECRET_KEY", "\"${secretsProperties['AWS_SECRET_KEY']}\""
+        buildConfigField "String", "AWS_REKOGNITION_VERSION_ARN", "\"${secretsProperties['AWS_REKOGNITION_VERSION_ARN']}\""
+        buildConfigField "String", "AWS_IDENTITY_POOL_ID", "\"${secretsProperties['AWS_IDENTITY_POOL_ID']}\""
 
         renderscriptTargetApi 21
         renderscriptSupportModeEnabled true
+
+        javaCompileOptions {
+            annotationProcessorOptions {
+                arguments += ["room.schemaLocation": "$projectDir/schemas".toString()]
+            }
+        }
     }
 
     viewBinding {
@@ -44,10 +61,14 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
+
+
+
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
     }
+
 
 }
 
@@ -81,8 +102,9 @@ dependencies {
     implementation "androidx.camera:camera-lifecycle:$camerax_version"
     implementation "androidx.camera:camera-view:$camerax_version"
     implementation "androidx.camera:camera-extensions:${camerax_version}"
-    implementation "com.amazonaws:aws-android-sdk-rekognition:2.75.0"
-    implementation "com.amazonaws:aws-android-sdk-core:2.75.0"
+    implementation('com.amazonaws:aws-android-sdk-rekognition:2.75.0')
+    implementation 'com.amazonaws:aws-android-sdk-core:2.75.0'
+    implementation 'com.amazonaws:aws-android-sdk-cognitoidentityprovider:2.75.0'
     androidTestImplementation "androidx.test.ext:junit:1.1.5"
     androidTestImplementation "androidx.test.espresso:espresso-core:3.5.1"
     annotationProcessor "androidx.room:room-compiler:$room_version"
