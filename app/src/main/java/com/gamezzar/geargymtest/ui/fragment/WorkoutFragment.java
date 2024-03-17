@@ -25,8 +25,7 @@ public class WorkoutFragment extends BaseFragment {
     }
 
     @Override
-    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
-                             @Nullable Bundle savedInstanceState) {
+    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         binding = WorkoutFragmentBinding.inflate(inflater, container, false);
         return binding.getRoot();
     }
@@ -39,9 +38,17 @@ public class WorkoutFragment extends BaseFragment {
         binding.listWorkoutCard.setOnClickListener(v -> navigateToListWorkout());
     }
 
+    @Override
+    public void onResume() {
+        super.onResume();
+        hideBottomAppBar();
+        showToolBar();
+    }
+
     private void navigateToCreateWorkout() {
         NavHostFragment.findNavController(this).navigate(R.id.action_workoutFragment_to_createWorkoutFragment);
     }
+
     private void navigateToListWorkout() {
         NavHostFragment.findNavController(this).navigate((R.id.action_workoutFragment_to_workoutListFragment));
     }

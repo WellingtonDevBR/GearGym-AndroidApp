@@ -34,8 +34,7 @@ public class NewWorkoutFragment extends BaseFragment {
     }
 
     @Override
-    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
-                             @Nullable Bundle savedInstanceState) {
+    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         binding = NewWorkoutFragmentBinding.inflate(inflater, container, false);
 
         workoutList = new ArrayList<>();
@@ -45,11 +44,8 @@ public class NewWorkoutFragment extends BaseFragment {
         workoutList.add(new Workout("ABS", "Body Workout", R.drawable.abs_wokrout, 6));
 
         View.OnClickListener onItemClickListener = view -> {
-            // Assuming each item has a tag set with its position or ID
             Workout selectedWorkout = (Workout) view.getTag();
-            // Now you can navigate to the next fragment using the selected workout's details
             NavDirections action = NewWorkoutFragmentDirections.actionCreateWorkoutFragmentToNewWorkoutListFragment();
-
             NavHostFragment.findNavController(NewWorkoutFragment.this).navigate(action);
         };
 

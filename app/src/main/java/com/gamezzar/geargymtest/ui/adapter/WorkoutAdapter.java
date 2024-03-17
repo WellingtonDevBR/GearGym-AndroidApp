@@ -14,8 +14,8 @@ import java.util.List;
 
 public class WorkoutAdapter extends RecyclerView.Adapter<WorkoutAdapter.WorkoutViewHolder> {
 
-    private List<Workout> workoutList;
-    private View.OnClickListener onItemClickListener;
+    private final List<Workout> workoutList;
+    private final View.OnClickListener onItemClickListener;
 
     public WorkoutAdapter(List<Workout> workoutList, View.OnClickListener onItemClickListener) {
         this.workoutList = workoutList;
@@ -43,7 +43,7 @@ public class WorkoutAdapter extends RecyclerView.Adapter<WorkoutAdapter.WorkoutV
     }
 
     static class WorkoutViewHolder extends RecyclerView.ViewHolder {
-        private WorkoutItemCardBinding binding;
+        private final WorkoutItemCardBinding binding;
 
         public WorkoutViewHolder(WorkoutItemCardBinding binding) {
             super(binding.getRoot());
