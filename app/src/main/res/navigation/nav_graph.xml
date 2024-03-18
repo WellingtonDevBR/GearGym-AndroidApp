@@ -109,6 +109,18 @@
         <action
             android:id="@+id/action_cameraRecognitionFragment_to_homeFragment"
             app:destination="@id/homeFragment" />
+        <action
+            android:id="@+id/action_cameraRecognitionFragment_to_equipmentDetailsFragment"
+            app:destination="@+id/equipmentDetailsFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/equipmentDetailsFragment"
+        android:name="com.gamezzar.geargymtest.ui.fragment.EquipmentDetailsFragment"
+        tools:layout="@layout/equipment_details_fragment">
+        <action
+            android:id="@+id/action_equipmentDetailsFragment_to_cameraRecognitionFragment"
+            app:destination="@+id/cameraRecognitionFragment" />
     </fragment>
 
     <fragment

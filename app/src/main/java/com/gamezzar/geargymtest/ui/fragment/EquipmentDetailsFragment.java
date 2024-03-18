@@ -13,11 +13,13 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.gamezzar.geargymtest.R;
+import com.gamezzar.geargymtest.databinding.EquipmentDetailsFragmentBinding;
 import com.gamezzar.geargymtest.viewmodel.EquipmentDetailsViewModel;
 
 public class EquipmentDetailsFragment extends Fragment {
 
     private EquipmentDetailsViewModel mViewModel;
+    private EquipmentDetailsFragmentBinding binding;
 
     public static EquipmentDetailsFragment newInstance() {
         return new EquipmentDetailsFragment();
@@ -26,7 +28,13 @@ public class EquipmentDetailsFragment extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.equipment_details_fragment, container, false);
+        binding = EquipmentDetailsFragmentBinding.inflate(inflater, container, false);
+        return binding.getRoot();
     }
 
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        mViewModel = new ViewModelProvider(this).get(EquipmentDetailsViewModel.class);
+    }
 }

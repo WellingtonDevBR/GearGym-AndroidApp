@@ -39,7 +39,7 @@
                 android:layout_marginTop="20dp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                tools:src="@drawable/equipment_example" />
+                tools:src="@drawable/equipment_recognition" />
 
             <TextView
                 android:id="@+id/tvWorkoutTitle"
@@ -57,6 +57,7 @@
                 android:id="@+id/tvWorkoutDetails"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
+                android:layout_marginStart="10dp"
                 android:layout_marginTop="10dp"
                 android:layout_marginEnd="20dp"
                 android:fontFamily="@font/inter_medium"
@@ -64,7 +65,7 @@
                 android:textSize="11sp"
                 app:layout_constraintBottom_toBottomOf="@+id/ivEquipmentImage"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="@+id/tvWorkoutTitle"
+                app:layout_constraintStart_toEndOf="@+id/ivEquipmentImage"
                 app:layout_constraintTop_toBottomOf="@+id/tvWorkoutTitle" />
 
             <LinearLayout
@@ -93,7 +94,7 @@
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rvWorkoutTutorials"
-                android:layout_width="371dp"
+                android:layout_width="0dp"
                 android:layout_height="107dp"
                 android:layout_marginStart="20dp"
                 android:layout_marginTop="10dp"
