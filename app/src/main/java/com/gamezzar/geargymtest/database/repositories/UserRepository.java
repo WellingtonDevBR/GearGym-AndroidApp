@@ -17,17 +17,16 @@ public class UserRepository {
     private final ExecutorService executorService = Executors.newFixedThreadPool(2); // Using a fixed thread pool
 
     public UserRepository(Application application) {
-        AppDatabase db = Room.databaseBuilder(application,
-                AppDatabase.class, "geargym_database").fallbackToDestructiveMigration().build();
+        AppDatabase db = DatabaseClient.getInstance(application);
         userDao = db.userDao();
     }
 
     public LiveData<User> findByEmailAndPassword(String email, String password) {
-        return userDao.findUserByEmailAndPassword(email, password);
+        return userDao.findByEmailAndPassword(email, password);
     }
 
     public void insert(User user) {
-        executorService.execute(() -> userDao.insertUser(user));
+        executorService.execute(() -> userDao.insert(user));
     }
 
 }
