@@ -98,7 +98,7 @@ public class CameraRecognitionFragment extends BaseFragment {
                     Bitmap bitmap = processImageForAnalysis(image);
                     detectObjects(bitmap);
                 } catch (Exception e) {
-                    Log.e("MyImageAnalyzer", "Failed to analyze image", e);
+                    Log.e("ImageAnalyzer", "Failed to analyze image", e);
                 } finally {
                     image.close();
                 }
@@ -134,20 +134,22 @@ public class CameraRecognitionFragment extends BaseFragment {
             if (label.getGeometry() != null && label.getGeometry().getBoundingBox() != null) {
                 Log.d("boundingBoxes", "Bounding: " + label.getGeometry().getBoundingBox());
                 BoundingBox boundingBox = label.getGeometry().getBoundingBox();
-                // Now you have the bounding box and can proceed with cropping the bitmap
+                // Crop the bounding box to add to our RecycleView
                 Bitmap croppedBitmap = imageProcessingService.cropDetectedObject(bitmap, boundingBox);
                 updateDetectedEquipments(croppedBitmap, label);
             }
         }
 
         private void updateDetectedEquipments(Bitmap croppedBitmap, CustomLabel label) {
-            ObjectDetectionData data = new ObjectDetectionData(croppedBitmap, label.getName(), label.getConfidence());
+            View.OnClickListener onClickListener = v -> navigateToHomeScreen();
+            ObjectDetectionData data = new ObjectDetectionData(croppedBitmap, label.getName(), label.getConfidence(), onClickListener);
             if (equipmentsRecognised.size() >= 3) {
                 equipmentsRecognised.remove(0);
                 adapter.notifyItemRemoved(0);
             }
+            int notifyTheNewItemPosition = equipmentsRecognised.size() - 1;
             equipmentsRecognised.add(data);
-            adapter.notifyItemInserted(equipmentsRecognised.size() - 1);
+            adapter.notifyItemInserted(notifyTheNewItemPosition);
         }
     }
 

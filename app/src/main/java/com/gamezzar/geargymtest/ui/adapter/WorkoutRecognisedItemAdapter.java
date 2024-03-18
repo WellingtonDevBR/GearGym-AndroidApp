@@ -1,5 +1,6 @@
 package com.gamezzar.geargymtest.ui.adapter;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -31,7 +32,7 @@ public class WorkoutRecognisedItemAdapter extends RecyclerView.Adapter<WorkoutRe
     @Override
     public void onBindViewHolder(@NonNull WorkoutRecognisedItemViewHolder holder, int position) {
         ObjectDetectionData objectDetectionData = equipmentLabels.get(position);
-        holder.bind(objectDetectionData, onItemClickListener);
+        holder.bind(objectDetectionData, objectDetectionData.getOnClickListener());
     }
 
     @Override
