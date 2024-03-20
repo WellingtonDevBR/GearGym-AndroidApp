@@ -9,6 +9,4 @@ import com.gamezzar.geargymtest.database.entities.Set;
 public interface SetDao {
     @Insert
     void insert(Set set);
-
-    // CRUD operations for Set
 }

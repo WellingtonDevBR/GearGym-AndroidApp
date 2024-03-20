@@ -1,16 +1,20 @@
 package com.gamezzar.geargymtest.database.entities;
 
-import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.ForeignKey;
+import androidx.room.Index;
 import androidx.room.PrimaryKey;
 
 @Entity(foreignKeys = {
-        @ForeignKey(entity = WorkoutRoutine.class, parentColumns = "UID", childColumns = "WorkoutRoutineId", onDelete = ForeignKey.CASCADE)
-})
+        @ForeignKey(entity = RoutineWorkout.class,
+                parentColumns = "UID",
+                childColumns = "RoutineWorkoutId",
+                onDelete = ForeignKey.CASCADE),
+},
+        indices = {@Index("RoutineWorkoutId")})
 public class Set {
     @PrimaryKey(autoGenerate = true)
     public Integer UID;
-    public Integer WorkoutRoutineId;
+    public Integer RoutineWorkoutId;
     public Integer Weight;
 }

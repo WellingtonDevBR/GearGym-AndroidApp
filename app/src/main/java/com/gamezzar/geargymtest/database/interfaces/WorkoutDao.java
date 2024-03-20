@@ -10,5 +10,4 @@ public interface WorkoutDao {
     @Insert
     void insert(Workout workout);
 
-    // Other CRUD operations for Workout
 }

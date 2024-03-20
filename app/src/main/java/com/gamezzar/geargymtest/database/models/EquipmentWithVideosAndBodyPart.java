@@ -15,9 +15,22 @@ public class EquipmentWithVideosAndBodyPart {
     @Embedded
     public Equipment equipment;
 
-    @Relation(entity = Video.class, parentColumn = "UID", entityColumn = "EquipmentId")
+    @Relation(
+            entity = Video.class,
+            parentColumn = "UID",
+            entityColumn = "EquipmentId"
+    )
     public List<Video> videos;
 
-    @Relation(entity = BodyPart.class, parentColumn = "UID", entityColumn = "BodyPartId", associateBy = @Junction(value = EquipmentBodyPart.class, parentColumn = "EquipmentId", entityColumn = "BodyPartId"))
+    @Relation(
+            entity = BodyPart.class,
+            parentColumn = "UID",
+            entityColumn = "UID",
+            associateBy = @Junction(
+                    value = EquipmentBodyPart.class,
+                    parentColumn = "EquipmentId",
+                    entityColumn = "BodyPartId"
+            )
+    )
     public List<BodyPart> bodyParts;
 }

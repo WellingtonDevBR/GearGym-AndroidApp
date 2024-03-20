@@ -16,10 +16,6 @@ public interface RoutineDao {
     @Insert
     void insert(Routine routine);
 
-    @Insert
-    void insertRoutineWorkoutSetCrossRef(RoutineWorkoutSetCrossRef crossRef);
-
-    // This is a simplified version; you may need a custom method to process and combine data
     @Transaction
     @Query("SELECT * FROM Routine WHERE UID = :routineId")
     LiveData<List<RoutineWithWorkoutsAndSets>> getRoutineWithWorkoutsAndSets(int routineId);
