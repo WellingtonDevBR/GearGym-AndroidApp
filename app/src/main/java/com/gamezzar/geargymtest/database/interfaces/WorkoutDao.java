@@ -9,4 +9,6 @@ import com.gamezzar.geargymtest.database.entities.Workout;
 public interface WorkoutDao {
     @Insert
     void insert(Workout workout);
+
+    // Other CRUD operations for Workout
 }

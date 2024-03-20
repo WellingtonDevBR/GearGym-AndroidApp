@@ -1,16 +1,18 @@
 package com.gamezzar.geargymtest.database.entities;
 
-import androidx.annotation.Nullable;
 import androidx.room.Entity;
+import androidx.room.ForeignKey;
 import androidx.room.PrimaryKey;
 
-@Entity
+@Entity(foreignKeys = @ForeignKey(entity = Equipment.class,
+        parentColumns = "UID",
+        childColumns = "EquipmentId",
+        onDelete = ForeignKey.CASCADE))
 public class Video {
     @PrimaryKey(autoGenerate = true)
     public Integer UID;
+    public Integer EquipmentId; // Foreign key pointing to the Equipment table
     public String Uri;
-    @Nullable
-    public String ThumbNailUri;
-    @Nullable
-    public Float Duration;
+    public String ThumbnailUri;
+    public String Duration;
 }

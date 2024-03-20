@@ -12,6 +12,7 @@
         android:layout_marginStart="5dp"
         android:layout_marginTop="5dp"
         android:fontFamily="@font/inter_bold"
+        android:textColor="@color/black_300"
         android:text="Monday Workout"
         android:textSize="16sp"
         app:layout_constraintStart_toStartOf="parent"
@@ -23,6 +24,7 @@
         android:layout_marginStart="5dp"
         android:layout_marginTop="5dp"
         android:layout_marginEnd="5dp"
+        android:background="@color/white"
         app:cardCornerRadius="12dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -32,6 +34,7 @@
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
+            android:background="@color/white"
             android:layout_height="match_parent">
 
             <ImageView
@@ -54,6 +57,7 @@
                 android:layout_marginStart="5dp"
                 android:layout_marginEnd="5dp"
                 android:fontFamily="@font/inter_semibold"
+                android:textColor="@color/secondary"
                 android:text="7 Workouts"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/ivWorkoutType"
@@ -79,16 +83,15 @@
                 android:layout_height="48dp"
                 android:layout_marginStart="5dp"
                 android:layout_marginEnd="5dp"
-                android:backgroundTint="@color/purple_100"
+                android:backgroundTint="@color/primary"
                 android:fontFamily="@font/inter_medium"
+                android:elevation="40dp"
                 android:text="View All"
-                android:textColor="@color/purple_600"
+                android:textColor="@color/white"
                 android:textSize="12sp"
-                app:cornerRadius="14dp"
                 app:layout_constraintBottom_toBottomOf="@+id/ivWorkoutType"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/ivWorkoutType"
-                style="@style/Widget.MaterialComponents.Button.UnelevatedButton" />
+                app:layout_constraintStart_toEndOf="@+id/ivWorkoutType" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </com.google.android.material.card.MaterialCardView>

@@ -9,13 +9,9 @@ import androidx.room.PrimaryKey;
 public class Workout {
     @PrimaryKey(autoGenerate = true)
     public Integer UID;
-    @ColumnInfo(name = "Name")
     public String Name;
-    @ColumnInfo(name = "ImageUri")
     public String ImageUri;
-    @ColumnInfo(name = "Details")
     public String Details;
     @Nullable
-    @ColumnInfo(name = "Duration")
     public String Duration;
 }

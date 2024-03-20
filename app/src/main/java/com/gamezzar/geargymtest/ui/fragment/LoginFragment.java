@@ -98,7 +98,7 @@ public class LoginFragment extends BaseFragment {
             @Override
             public void afterTextChanged(Editable s) {
                 boolean isValid = s.toString().matches(regex);
-                int boxStrokeColor = isValid ? getResources().getColor(R.color.purple_600, getResources().newTheme()) : getResources().getColor(R.color.red, getResources().newTheme());
+                int boxStrokeColor = isValid ? getResources().getColor(R.color.primary, getResources().newTheme()) : getResources().getColor(R.color.red, getResources().newTheme());
                 inputLayout.setBoxStrokeColor(boxStrokeColor);
                 inputLayout.setHelperTextEnabled(!isValid);
                 if (inputLayout.getId() == R.id.tilEmail) {

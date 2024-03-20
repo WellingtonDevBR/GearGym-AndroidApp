@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/purple_600"
+    android:background="@color/primary"
     tools:context=".ui.fragment.WorkoutFragment">
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -66,8 +66,9 @@
                         android:layout_height="wrap_content"
                         android:layout_marginStart="16dp"
                         android:layout_marginBottom="16dp"
+                        android:fontFamily="@font/inter_medium"
                         android:text="Create Workout"
-                        android:textStyle="bold"
+                        android:textColor="@color/secondary"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintStart_toStartOf="parent" />
 
@@ -124,8 +125,9 @@
                         android:layout_height="wrap_content"
                         android:layout_marginStart="16dp"
                         android:layout_marginBottom="16dp"
+                        android:fontFamily="@font/inter_medium"
                         android:text="My Workout"
-                        android:textStyle="bold"
+                        android:textColor="@color/secondary"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintStart_toStartOf="parent" />
 

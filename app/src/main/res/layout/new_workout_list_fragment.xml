@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/purple_600"
+    android:background="@color/primary"
     tools:context=".ui.fragment.NewWorkoutListFragment">
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -38,20 +38,23 @@
                 android:layout_marginStart="20dp"
                 android:layout_marginTop="16dp"
                 android:layout_marginEnd="20dp"
-                app:endIconDrawable="@drawable/ic_filter_with_circle"
+                android:hint="Search Workout"
+                app:endIconDrawable="@drawable/ic_filter"
                 app:endIconMode="custom"
+                app:endIconTint="@color/primary"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:startIconDrawable="@drawable/ic_search">
+                app:startIconDrawable="@drawable/ic_search"
+                app:startIconTint="@color/gray_400">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="@drawable/layout_border"
-                    android:hint="Search Workout"
-                    android:paddingStart="40dp"
-                    android:paddingEnd="36dp" />
+                    android:fontFamily="@font/inter"
+                    android:inputType="text"
+                    android:textColor="@color/secondary"
+                    android:textSize="16sp" />
             </com.google.android.material.textfield.TextInputLayout>
 
             <TextView
@@ -60,9 +63,10 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="20dp"
                 android:layout_marginTop="20dp"
+                android:fontFamily="@font/inter_bold"
                 android:text="Chest Workout"
+                android:textColor="@color/black_300"
                 android:textSize="18sp"
-                android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/tilSearchWorkout" />
 
@@ -89,8 +93,9 @@
                 android:layout_marginStart="26dp"
                 android:layout_marginEnd="26dp"
                 android:layout_marginBottom="26dp"
-                android:backgroundTint="@color/purple_600"
+                android:backgroundTint="@color/primary"
                 android:text="Save"
+                android:textColor="@color/white"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent" />

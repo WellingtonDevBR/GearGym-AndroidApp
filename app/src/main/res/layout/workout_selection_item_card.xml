@@ -1,33 +1,35 @@
 <?xml version="1.0" encoding="utf-8"?>
 <com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:layout_gravity="top"
     app:cardBackgroundColor="#ffffff"
-    app:cardCornerRadius="16dp"
-    app:cardElevation="4dp"
+    app:cardCornerRadius="12dp"
+    app:cardElevation="2dp"
     app:cardPreventCornerOverlap="false"
     app:cardUseCompatPadding="true"
-    app:tint="@color/purple_600">
+    app:tint="@color/primary">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@drawable/layout_border">
+        android:layout_height="60dp"
+        android:background="@drawable/layout_border_workout_item">
 
         <ImageView
             android:id="@+id/ivWorkoutImage"
             android:layout_width="54dp"
             android:layout_height="54dp"
-            android:layout_marginStart="10dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginBottom="10dp"
+            android:layout_marginStart="5dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="5dp"
+            android:background="@drawable/layout_border_workout_item_image"
+            android:contentDescription="workout"
             android:scaleType="fitXY"
+            android:src="@drawable/workout_body_part"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:srcCompat="@tools:sample/avatars" />
+            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/tvWorkoutName"
@@ -55,11 +57,12 @@
             app:layout_constraintStart_toEndOf="@+id/tvWorkoutName"
             app:layout_constraintTop_toTopOf="@+id/tvWorkoutName" />
 
-        <CheckBox
+        <com.google.android.material.checkbox.MaterialCheckBox
             android:id="@+id/checkBox"
-            android:layout_width="18dp"
-            android:layout_height="18dp"
+            android:layout_width="38dp"
+            android:layout_height="38dp"
             android:layout_marginEnd="20dp"
+            app:buttonTint="@color/selector_radio_button_tint"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />

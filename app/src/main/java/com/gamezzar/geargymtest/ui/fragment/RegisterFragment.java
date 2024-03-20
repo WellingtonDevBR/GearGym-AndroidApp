@@ -108,7 +108,7 @@ public class RegisterFragment extends BaseFragment {
             public void afterTextChanged(Editable s) {
                 boolean isValid = s.toString().matches(regex);
                 int boxStrokeColor = isValid
-                        ? getResources().getColor(R.color.purple_600, getResources().newTheme())
+                        ? getResources().getColor(R.color.primary, getResources().newTheme())
                         : getResources().getColor(R.color.red, getResources().newTheme());
                 inputLayout.setBoxStrokeColor(boxStrokeColor);
                 inputLayout.setHelperTextEnabled(!isValid);

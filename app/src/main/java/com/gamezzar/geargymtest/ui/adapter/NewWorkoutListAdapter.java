@@ -49,7 +49,7 @@ public class NewWorkoutListAdapter extends RecyclerView.Adapter<NewWorkoutListAd
 
         public void bind(Workout workout) {
             // Bind the workout data to the views
-            binding.ivWorkoutImage.setImageResource(workout.getImageResourceId());
+            //binding.ivWorkoutImage.setImageResource(workout.getImageResourceId());
             binding.tvWorkoutName.setText(workout.getSubtitle());
             binding.tvWorkoutTime.setText(workout.getFormattedWorkoutCount());
             binding.checkBox.setActivated(true);

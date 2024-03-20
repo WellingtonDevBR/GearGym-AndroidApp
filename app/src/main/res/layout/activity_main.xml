@@ -10,14 +10,14 @@
     <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:backgroundTint="@color/purple_600"
+        android:backgroundTint="@color/primary"
         app:elevation="0.1dp">
 
         <androidx.appcompat.widget.Toolbar
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
-            android:background="@color/purple_600"
+            android:background="@color/primary"
             app:navigationIcon="@drawable/ic_up_button"
             app:titleTextColor="@color/white" />
     </com.google.android.material.appbar.AppBarLayout>
@@ -35,7 +35,12 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom"
-        android:background="@android:color/transparent"
+        android:background="@color/white"
+        android:backgroundTint="@color/white"
+        android:backgroundTintMode="add"
+        app:backgroundTint="@color/white"
+        app:contentInsetEnd="0dp"
+        app:contentInsetStart="0dp"
         app:fabAlignmentMode="center"
         app:fabCradleMargin="10dp"
         app:fabCradleRoundedCornerRadius="10dp"
@@ -46,8 +51,11 @@
             android:id="@+id/bottom_navigation"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@android:color/transparent"
+            app:backgroundTint="@android:color/transparent"
             app:elevation="0dp"
+            app:itemIconTint="@color/bottom_nav_colors"
+            app:itemTextColor="@color/bottom_nav_colors"
+            app:labelVisibilityMode="labeled"
             app:menu="@menu/bottom_navigation" />
     </com.google.android.material.bottomappbar.BottomAppBar>
 
@@ -57,7 +65,7 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="10dp"
         android:background="@android:color/transparent"
-        android:backgroundTint="@color/purple_600"
+        android:backgroundTint="@color/primary"
         android:contentDescription="scan equipment"
         app:backgroundTint="@android:color/white"
         app:layout_anchor="@id/bottom_app_bar"

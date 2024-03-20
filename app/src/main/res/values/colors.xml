@@ -1,11 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <color name="primary">#9747FF</color>
+    <color name="secondary">#1B2431</color>
+    <color name="accent">#6A6C71</color>
     <color name="black">#000000</color>
     <color name="black_300">#333333</color>
     <color name="white">#FFFFFFFF</color>
     <color name="gray_200">#CCCDCE</color>
     <color name="gray_400">#858585</color>
-    <color name="purple_600">#9747FF</color>
     <color name="purple_100">#1A9747FF</color>
     <color name="red">#FF0000</color>
 </resources>
