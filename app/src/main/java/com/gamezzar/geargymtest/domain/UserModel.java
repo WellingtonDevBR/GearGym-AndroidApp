@@ -1,4 +1,4 @@
-package com.gamezzar.geargymtest.core;
+package com.gamezzar.geargymtest.domain;
 
 public class UserModel {
     private String name;

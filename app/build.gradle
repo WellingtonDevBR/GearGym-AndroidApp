@@ -2,7 +2,6 @@ plugins {
     id 'com.android.application'
     id 'androidx.navigation.safeargs'
 }
-
 def secretsPropertiesFile = file("secrets.properties") // Changes here
 def secretsProperties = new Properties()
 if (secretsPropertiesFile.exists()) {
@@ -22,7 +21,6 @@ android {
 
 
     buildFeatures {
-        // Enable generation of BuildConfig.java
         buildConfig true
     }
 
@@ -76,6 +74,7 @@ dependencies {
     def nav_version = "2.7.7"
     def room_version = "2.6.1"
     def camerax_version = "1.3.2"
+    def aws_service = "2.75.0"
     testImplementation 'junit:junit:4.13.2'
     implementation 'androidx.appcompat:appcompat:1.6.1'
     implementation 'com.google.android.material:material:1.11.0'
@@ -102,10 +101,13 @@ dependencies {
     implementation "androidx.camera:camera-lifecycle:$camerax_version"
     implementation "androidx.camera:camera-view:$camerax_version"
     implementation "androidx.camera:camera-extensions:${camerax_version}"
-    implementation('com.amazonaws:aws-android-sdk-rekognition:2.75.0')
-    implementation 'com.amazonaws:aws-android-sdk-core:2.75.0'
-    implementation 'com.amazonaws:aws-android-sdk-cognitoidentityprovider:2.75.0'
+    implementation "com.amazonaws:aws-android-sdk-rekognition:2.75.0"
+    implementation "com.amazonaws:aws-android-sdk-core:2.75.0"
+    implementation "com.amazonaws:aws-android-sdk-cognitoidentityprovider:${aws_service}"
+    implementation "com.amazonaws:aws-android-sdk-s3:${aws_service}"
+    implementation "com.github.bumptech.glide:glide:4.16.0"
+    annotationProcessor 'com.github.bumptech.glide:compiler:4.16.0'
+    annotationProcessor "androidx.room:room-compiler:$room_version"
     androidTestImplementation "androidx.test.ext:junit:1.1.5"
     androidTestImplementation "androidx.test.espresso:espresso-core:3.5.1"
-    annotationProcessor "androidx.room:room-compiler:$room_version"
 }

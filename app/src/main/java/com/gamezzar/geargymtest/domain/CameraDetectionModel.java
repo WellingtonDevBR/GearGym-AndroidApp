@@ -1,14 +1,14 @@
-package com.gamezzar.geargymtest.core;
+package com.gamezzar.geargymtest.domain;
 
 import android.graphics.Bitmap;
 import android.view.View;
 
-public class ObjectDetectionData {
+public class CameraDetectionModel {
     private final Bitmap image;
     private final String label;
     private final Float confidence;
     private final View.OnClickListener onClickListener;
-    public ObjectDetectionData(Bitmap image, String label, Float confidence, View.OnClickListener onClickListener) {
+    public CameraDetectionModel(Bitmap image, String label, Float confidence, View.OnClickListener onClickListener) {
         this.image = image;
         this.label = label;
         this.confidence = confidence;

@@ -1,14 +1,10 @@
 package com.gamezzar.geargymtest.ui.fragment;
 
-import android.content.Context;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.datastore.preferences.core.MutablePreferences;
 import androidx.datastore.preferences.core.Preferences;
-import androidx.datastore.preferences.core.PreferencesKeys;
-import androidx.datastore.preferences.rxjava3.RxPreferenceDataStoreBuilder;
 import androidx.datastore.rxjava3.RxDataStore;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.ViewModelProvider;
@@ -20,11 +16,10 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.CheckBox;
 import android.widget.Toast;
 
 import com.gamezzar.geargymtest.R;
-import com.gamezzar.geargymtest.core.BaseFragment;
+import com.gamezzar.geargymtest.seedwork.shared.BaseFragment;
 import com.gamezzar.geargymtest.database.entities.User;
 import com.gamezzar.geargymtest.databinding.LoginFragmentBinding;
 import com.gamezzar.geargymtest.viewmodel.LoginViewModel;
@@ -34,8 +29,6 @@ import com.google.android.material.textfield.TextInputLayout;
 import java.util.Objects;
 
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers;
-import io.reactivex.rxjava3.core.Flowable;
-import io.reactivex.rxjava3.core.Single;
 import io.reactivex.rxjava3.disposables.CompositeDisposable;
 import io.reactivex.rxjava3.schedulers.Schedulers;
 

@@ -14,14 +14,15 @@
         android:background="@color/white">
 
         <ImageView
-            android:id="@+id/imageWorkout"
+            android:id="@+id/ivWorkoutType"
             android:layout_width="0dp"
             android:layout_height="120dp"
             android:scaleType="fitXY"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/chest_workout" />
+            app:srcCompat="@drawable/chest_workout"
+            android:contentDescription="WorkoutType" />
 
         <TextView
             android:id="@+id/textWorkoutTitle"
@@ -34,9 +35,9 @@
             android:text="Chest"
             android:textSize="18sp"
             android:textStyle="bold"
-            app:layout_constraintEnd_toEndOf="@id/imageWorkout"
-            app:layout_constraintStart_toStartOf="@id/imageWorkout"
-            app:layout_constraintTop_toBottomOf="@id/imageWorkout" />
+            app:layout_constraintEnd_toEndOf="@id/ivWorkoutType"
+            app:layout_constraintStart_toStartOf="@id/ivWorkoutType"
+            app:layout_constraintTop_toBottomOf="@id/ivWorkoutType" />
 
         <TextView
             android:id="@+id/textWorkoutSubtitle"

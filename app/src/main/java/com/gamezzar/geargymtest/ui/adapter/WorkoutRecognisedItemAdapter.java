@@ -1,6 +1,5 @@
 package com.gamezzar.geargymtest.ui.adapter;
 
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,16 +8,16 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.gamezzar.geargymtest.databinding.WorkoutRecognisedItemBinding;
-import com.gamezzar.geargymtest.core.ObjectDetectionData;
+import com.gamezzar.geargymtest.domain.CameraDetectionModel;
 
 import java.util.List;
 import java.util.Locale;
 
 public class WorkoutRecognisedItemAdapter extends RecyclerView.Adapter<WorkoutRecognisedItemAdapter.WorkoutRecognisedItemViewHolder> {
-    private final List<ObjectDetectionData> equipmentLabels;
+    private final List<CameraDetectionModel> equipmentLabels;
     private View.OnClickListener onItemClickListener;
 
-    public WorkoutRecognisedItemAdapter(List<ObjectDetectionData> equipmentLabels) {
+    public WorkoutRecognisedItemAdapter(List<CameraDetectionModel> equipmentLabels) {
         this.equipmentLabels = equipmentLabels;
     }
 
@@ -31,8 +30,8 @@ public class WorkoutRecognisedItemAdapter extends RecyclerView.Adapter<WorkoutRe
 
     @Override
     public void onBindViewHolder(@NonNull WorkoutRecognisedItemViewHolder holder, int position) {
-        ObjectDetectionData objectDetectionData = equipmentLabels.get(position);
-        holder.bind(objectDetectionData, objectDetectionData.getOnClickListener());
+        CameraDetectionModel cameraDetectionModel = equipmentLabels.get(position);
+        holder.bind(cameraDetectionModel, cameraDetectionModel.getOnClickListener());
     }
 
     @Override
@@ -49,11 +48,11 @@ public class WorkoutRecognisedItemAdapter extends RecyclerView.Adapter<WorkoutRe
             this.binding = binding;
         }
 
-        public void bind(ObjectDetectionData objectDetectionData, View.OnClickListener clickListener) {
-            String formattedConfidence = String.format(Locale.getDefault(), objectDetectionData.getLabel() + " " + "%.2f%%", objectDetectionData.getConfidence());
+        public void bind(CameraDetectionModel cameraDetectionModel, View.OnClickListener clickListener) {
+            String formattedConfidence = String.format(Locale.getDefault(), cameraDetectionModel.getLabel() + " " + "%.2f%%", cameraDetectionModel.getConfidence());
             this.binding.tvConfidenceLabel.setText(formattedConfidence);
-            this.binding.ivRecognisedObject.setImageBitmap(objectDetectionData.getImage());
-            itemView.setTag(objectDetectionData);
+            this.binding.ivRecognisedObject.setImageBitmap(cameraDetectionModel.getImage());
+            itemView.setTag(cameraDetectionModel);
             itemView.setOnClickListener(clickListener);
         }
     }

@@ -11,7 +11,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.gamezzar.geargymtest.R;
-import com.gamezzar.geargymtest.core.BaseFragment;
+import com.gamezzar.geargymtest.seedwork.shared.BaseFragment;
 import com.gamezzar.geargymtest.databinding.WorkoutFragmentBinding;
 import com.gamezzar.geargymtest.viewmodel.WorkoutViewModel;
 

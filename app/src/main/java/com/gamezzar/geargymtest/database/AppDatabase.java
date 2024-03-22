@@ -25,7 +25,7 @@ import com.gamezzar.geargymtest.database.interfaces.WorkoutDao;
 import com.gamezzar.geargymtest.database.interfaces.RoutineWorkoutDao;
 
 @Database(entities = {User.class, EquipmentBodyPart.class, Workout.class, Video.class, BodyPart.class,
-        Equipment.class, Tag.class, RoutineWorkout.class, Routine.class, Set.class}, version = 6)
+        Equipment.class, Tag.class, RoutineWorkout.class, Routine.class, Set.class}, version = 7)
 public abstract class AppDatabase extends RoomDatabase {
     public abstract UserDao userDao();
 

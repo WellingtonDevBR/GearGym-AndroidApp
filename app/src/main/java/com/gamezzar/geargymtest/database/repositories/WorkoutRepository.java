@@ -5,6 +5,7 @@ import android.app.Application;
 import androidx.room.Room;
 
 import com.gamezzar.geargymtest.database.AppDatabase;
+import com.gamezzar.geargymtest.database.interfaces.BodyPartDao;
 import com.gamezzar.geargymtest.database.interfaces.WorkoutDao;
 
 import java.util.concurrent.ExecutorService;

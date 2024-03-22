@@ -6,12 +6,12 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.gamezzar.geargymtest.databinding.WorkoutItemsInCardBinding;
+import com.gamezzar.geargymtest.databinding.MyWorkoutListItemBinding;
 
-public class WorkoutListItemAdapter extends RecyclerView.Adapter<WorkoutListItemAdapter.WorkoutListItemViewHolder> {
+public class MyWorkoutListItemAdapter extends RecyclerView.Adapter<MyWorkoutListItemAdapter.WorkoutListItemViewHolder> {
     private final String workoutName;
 
-    public WorkoutListItemAdapter(String workoutName) {
+    public MyWorkoutListItemAdapter(String workoutName) {
         this.workoutName = workoutName;
     }
 
@@ -19,15 +19,15 @@ public class WorkoutListItemAdapter extends RecyclerView.Adapter<WorkoutListItem
     @Override
     public WorkoutListItemViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         LayoutInflater layoutInflater = LayoutInflater.from(parent.getContext());
-        WorkoutItemsInCardBinding binding = WorkoutItemsInCardBinding.inflate(layoutInflater, parent, false);
+        MyWorkoutListItemBinding binding = MyWorkoutListItemBinding.inflate(layoutInflater, parent, false);
         return new WorkoutListItemViewHolder(binding);
     }
 
     public static class WorkoutListItemViewHolder extends RecyclerView.ViewHolder {
 
-        final WorkoutItemsInCardBinding binding;
+        final MyWorkoutListItemBinding binding;
 
-        public WorkoutListItemViewHolder(@NonNull WorkoutItemsInCardBinding binding) {
+        public WorkoutListItemViewHolder(@NonNull MyWorkoutListItemBinding binding) {
             super(binding.getRoot());
             this.binding = binding;
         }

@@ -5,7 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/primary"
-    tools:context=".ui.fragment.NewWorkoutFragment">
+    android:backgroundTint="@color/primary"
+    tools:context=".ui.fragment.MyWorkoutListFragment">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -31,34 +32,38 @@
             app:layout_constraintTop_toBottomOf="@+id/toolbar">
 
             <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/recyclerView"
-                android:layout_width="match_parent"
+                android:id="@+id/recycleView"
+                android:layout_width="375dp"
                 android:layout_height="0dp"
-                android:layout_marginTop="12dp"
-                android:layout_marginBottom="16dp"
-                android:clipToPadding="false"
-                android:paddingStart="16dp"
-                android:paddingEnd="16dp"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="20dp"
+                android:layout_marginBottom="30dp"
                 app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-                app:layout_constraintBottom_toTopOf="@+id/btnSave"
+                app:layout_constraintBottom_toTopOf="@+id/btnNewWorkout"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <Button
-                android:id="@+id/btnSave"
+                android:id="@+id/btnNewWorkout"
                 android:layout_width="0dp"
-                android:layout_height="58dp"
-                android:layout_marginStart="26dp"
-                android:layout_marginEnd="26dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginEnd="20dp"
+                android:layout_marginBottom="28dp"
+                android:height="52dp"
                 android:textColor="@color/white"
-                android:layout_marginBottom="26dp"
                 android:backgroundTint="@color/primary"
-                android:text="Next"
+                android:fontFamily="@font/inter_semibold"
+                android:text="New Workout"
+                android:textSize="12sp"
+                app:cornerRadius="12dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent" />
         </androidx.constraintlayout.widget.ConstraintLayout>
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 </FrameLayout>

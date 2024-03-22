@@ -19,16 +19,12 @@ import android.provider.Settings;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
 
-import com.gamezzar.geargymtest.MainActivity;
 import com.gamezzar.geargymtest.R;
-import com.gamezzar.geargymtest.core.BaseFragment;
+import com.gamezzar.geargymtest.seedwork.shared.BaseFragment;
 import com.gamezzar.geargymtest.databinding.HomeFragmentBinding;
 import com.gamezzar.geargymtest.viewmodel.HomeViewModel;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
-
-import java.util.Objects;
 
 
 public class HomeFragment extends BaseFragment {

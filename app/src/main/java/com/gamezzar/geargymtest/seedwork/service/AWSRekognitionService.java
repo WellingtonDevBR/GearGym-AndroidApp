@@ -15,11 +15,11 @@ import com.gamezzar.geargymtest.BuildConfig;
 
 import java.nio.ByteBuffer;
 
-public class AwsRekognitionService extends AwsClient {
+public class AWSRekognitionService extends AWSClient {
 
     protected AmazonRekognitionClient rekognitionClient;
 
-    public AwsRekognitionService(Context context, String identityPoolId, Regions region) {
+    public AWSRekognitionService(Context context, String identityPoolId, Regions region) {
         super(context, identityPoolId, region);
         rekognitionClient = new AmazonRekognitionClient(credentialsProvider);
         rekognitionClient.setRegion(Region.getRegion(region));

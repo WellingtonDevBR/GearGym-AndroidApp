@@ -24,12 +24,12 @@ import com.amazonaws.services.rekognition.model.CustomLabel;
 import com.amazonaws.services.rekognition.model.DetectCustomLabelsResult;
 import com.gamezzar.geargymtest.BuildConfig;
 import com.gamezzar.geargymtest.R;
-import com.gamezzar.geargymtest.core.BaseFragment;
+import com.gamezzar.geargymtest.seedwork.shared.BaseFragment;
 import com.gamezzar.geargymtest.seedwork.service.CameraManagerService;
 import com.gamezzar.geargymtest.seedwork.service.ImageProcessingService;
-import com.gamezzar.geargymtest.core.ObjectDetectionData;
+import com.gamezzar.geargymtest.domain.CameraDetectionModel;
 import com.gamezzar.geargymtest.databinding.CameraRecognitionFragmentBinding;
-import com.gamezzar.geargymtest.seedwork.service.AwsRekognitionService;
+import com.gamezzar.geargymtest.seedwork.service.AWSRekognitionService;
 import com.gamezzar.geargymtest.ui.adapter.WorkoutRecognisedItemAdapter;
 import com.gamezzar.geargymtest.viewmodel.CameraRecognitionViewModel;
 
@@ -41,11 +41,11 @@ import java.util.concurrent.Executors;
 
 public class CameraRecognitionFragment extends BaseFragment {
 
-    private static AwsRekognitionService awsRekognitionService;
+    private static AWSRekognitionService awsRekognitionService;
     CameraRecognitionFragmentBinding binding;
     private CameraRecognitionViewModel mViewModel;
     private WorkoutRecognisedItemAdapter adapter;
-    private List<ObjectDetectionData> equipmentsRecognised;
+    private List<CameraDetectionModel> equipmentsRecognised;
     private ImageProcessingService imageProcessingService;
 
     @Override
@@ -54,7 +54,7 @@ public class CameraRecognitionFragment extends BaseFragment {
         imageProcessingService = new ImageProcessingService();
         equipmentsRecognised = new ArrayList<>();
         adapter = new WorkoutRecognisedItemAdapter(equipmentsRecognised);
-        awsRekognitionService = new AwsRekognitionService(getContext(), BuildConfig.AWS_IDENTITY_POOL_ID, Regions.US_EAST_2);
+        awsRekognitionService = new AWSRekognitionService(getContext(), BuildConfig.AWS_IDENTITY_POOL_ID, Regions.US_EAST_2);
         return binding.getRoot();
     }
 
@@ -142,7 +142,7 @@ public class CameraRecognitionFragment extends BaseFragment {
 
         private void updateDetectedEquipments(Bitmap croppedBitmap, CustomLabel label) {
             View.OnClickListener onClickListener = v -> navigateToHomeScreen();
-            ObjectDetectionData data = new ObjectDetectionData(croppedBitmap, label.getName(), label.getConfidence(), onClickListener);
+            CameraDetectionModel data = new CameraDetectionModel(croppedBitmap, label.getName(), label.getConfidence(), onClickListener);
             if (equipmentsRecognised.size() >= 3) {
                 equipmentsRecognised.remove(0);
                 adapter.notifyItemRemoved(0);

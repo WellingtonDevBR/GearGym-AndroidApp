@@ -13,19 +13,20 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="60dp"
+        android:layout_height="match_parent"
         android:background="@drawable/layout_border_workout_item">
 
         <ImageView
             android:id="@+id/ivWorkoutImage"
             android:layout_width="54dp"
             android:layout_height="54dp"
-            android:layout_marginStart="5dp"
-            android:layout_marginTop="5dp"
-            android:layout_marginBottom="5dp"
+            android:layout_marginStart="6dp"
+            android:layout_marginTop="6dp"
+            android:layout_marginBottom="6dp"
+            android:layout_margin="6dp"
+            android:scaleType="fitXY"
             android:background="@drawable/layout_border_workout_item_image"
             android:contentDescription="workout"
-            android:scaleType="fitXY"
             android:src="@drawable/workout_body_part"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -61,7 +62,7 @@
             android:id="@+id/checkBox"
             android:layout_width="38dp"
             android:layout_height="38dp"
-            android:layout_marginEnd="20dp"
+            android:layout_marginEnd="10dp"
             app:buttonTint="@color/selector_radio_button_tint"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"

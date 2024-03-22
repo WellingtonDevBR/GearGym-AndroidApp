@@ -1,4 +1,4 @@
-package com.gamezzar.geargymtest.core;
+package com.gamezzar.geargymtest.seedwork.shared;
 
 import android.view.View;
 

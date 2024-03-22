@@ -142,13 +142,16 @@
 
     <fragment
         android:id="@+id/createWorkoutFragment"
-        android:name="com.gamezzar.geargymtest.ui.fragment.NewWorkoutFragment"
+        android:name="com.gamezzar.geargymtest.ui.fragment.BodyPartFragment"
         android:label="New Workout"
-        tools:layout="@layout/new_workout_fragment">
+        tools:layout="@layout/body_part_fragment">
         <action
             android:id="@+id/action_createWorkoutFragment_to_newWorkoutListFragment"
-            app:destination="@id/newWorkoutListFragment" />
-
+            app:destination="@id/newWorkoutListFragment">
+            <argument
+                android:name="workouts"
+                app:argType="com.gamezzar.geargymtest.domain.WorkoutModel[]" />
+        </action>
         <action
             android:id="@+id/action_createWorkoutFragment_to_workoutListFragment"
             app:destination="@id/workoutListFragment" />
@@ -156,9 +159,12 @@
 
     <fragment
         android:id="@+id/newWorkoutListFragment"
-        android:name="com.gamezzar.geargymtest.ui.fragment.NewWorkoutListFragment"
+        android:name="com.gamezzar.geargymtest.ui.fragment.WorkoutListOptionFragment"
         android:label="New Workout"
-        tools:layout="@layout/new_workout_list_fragment">
+        tools:layout="@layout/workout_list_option_fragment">
+        <argument
+            android:name="workouts"
+            app:argType="com.gamezzar.geargymtest.domain.WorkoutModel[]" />
         <action
             android:id="@+id/action_newWorkoutListFragment_to_createWorkoutFragment"
             app:destination="@id/createWorkoutFragment" />
@@ -166,9 +172,9 @@
 
     <fragment
         android:id="@+id/workoutListFragment"
-        android:name="com.gamezzar.geargymtest.ui.fragment.WorkoutListFragment"
+        android:name="com.gamezzar.geargymtest.ui.fragment.MyWorkoutListFragment"
         android:label="Your Workout"
-        tools:layout="@layout/workout_list_fragment">
+        tools:layout="@layout/my_workout_list_fragment">
         <action
             android:id="@+id/action_workoutListFragment_to_workoutFragment"
             app:destination="@id/workoutFragment" />
