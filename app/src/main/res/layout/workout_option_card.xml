@@ -59,7 +59,7 @@
             app:layout_constraintTop_toTopOf="@+id/tvWorkoutName" />
 
         <com.google.android.material.checkbox.MaterialCheckBox
-            android:id="@+id/checkBox"
+            android:id="@+id/cbWorkout"
             android:layout_width="38dp"
             android:layout_height="38dp"
             android:layout_marginEnd="10dp"

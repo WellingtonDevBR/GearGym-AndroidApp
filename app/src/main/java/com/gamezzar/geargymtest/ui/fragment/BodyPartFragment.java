@@ -12,9 +12,13 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
+import android.widget.TextView;
 
 import com.amazonaws.regions.Regions;
 import com.gamezzar.geargymtest.BuildConfig;
+import com.gamezzar.geargymtest.R;
 import com.gamezzar.geargymtest.database.entities.Workout;
 import com.gamezzar.geargymtest.database.models.BodyPartWithWorkouts;
 import com.gamezzar.geargymtest.databinding.BodyPartFragmentBinding;
@@ -24,13 +28,17 @@ import com.gamezzar.geargymtest.domain.WorkoutModel;
 import com.gamezzar.geargymtest.seedwork.service.AWSS3Service;
 import com.gamezzar.geargymtest.ui.adapter.BodyPartAdapter;
 import com.gamezzar.geargymtest.viewmodel.NewWorkoutViewModel;
+import com.gamezzar.geargymtest.viewmodel.SharedWorkoutViewModel;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
+import java.util.Objects;
 
 public class BodyPartFragment extends BaseFragment {
 
     private NewWorkoutViewModel mViewModel;
+    private SharedWorkoutViewModel sharedWorkoutViewModel;
     private BodyPartAdapter adapter;
     private List<BodyPartModel> bodyPartModelList;
     private List<WorkoutModel> workoutList;
@@ -46,7 +54,8 @@ public class BodyPartFragment extends BaseFragment {
         binding = BodyPartFragmentBinding.inflate(inflater, container, false);
         awss3Service = new AWSS3Service(requireContext(), BuildConfig.AWS_IDENTITY_POOL_ID, Regions.US_EAST_2);
         bodyPartModelList = new ArrayList<>();
-
+        workoutList = new ArrayList<>();
+        sharedWorkoutViewModel = new ViewModelProvider(requireActivity()).get(SharedWorkoutViewModel.class);
         adapter = new BodyPartAdapter(bodyPartModelList, this::onBodyPartClicked);
         binding.recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         binding.recyclerView.setAdapter(adapter);
@@ -55,7 +64,6 @@ public class BodyPartFragment extends BaseFragment {
     }
 
     private void onBodyPartClicked(BodyPartModel bodyPart) {
-        System.out.println(bodyPart.workoutList());
         WorkoutModel[] workoutList = bodyPart.workoutList().toArray(new WorkoutModel[0]);
         BodyPartFragmentDirections.ActionCreateWorkoutFragmentToNewWorkoutListFragment action = BodyPartFragmentDirections.actionCreateWorkoutFragmentToNewWorkoutListFragment(workoutList);
         NavHostFragment.findNavController(this).navigate(action);
@@ -66,9 +74,23 @@ public class BodyPartFragment extends BaseFragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         mViewModel = new ViewModelProvider(this).get(NewWorkoutViewModel.class);
-        workoutList = new ArrayList<>(); // Make sure this is initialized before using it
+
+        sharedWorkoutViewModel.getSelectedWorkouts().observe(getViewLifecycleOwner(), workouts -> {
+            int workoutsLength = workouts.size();
+            TextView tvBalloonAddedWorkouts = binding.tvBalloonAddedWorkouts;
+            if (workoutsLength > 0) {
+                tvBalloonAddedWorkouts.setVisibility(View.VISIBLE);
+                tvBalloonAddedWorkouts.setText(String.format(Locale.US, "You have added %d workouts", workoutsLength));
+                Animation slideUpAnimation = AnimationUtils.loadAnimation(getContext(), R.anim.slide_up);
+                tvBalloonAddedWorkouts.startAnimation(slideUpAnimation);
+            } else {
+                tvBalloonAddedWorkouts.setVisibility(View.INVISIBLE);
+            }
+        });
+
         fetchBodyParts();
     }
+
 
     private void fetchBodyParts() {
         mViewModel.retrieveAllBodyPartsAndWorkouts().observe(getViewLifecycleOwner(), bodyPartWithWorkouts -> {
@@ -115,7 +137,6 @@ public class BodyPartFragment extends BaseFragment {
         }
         return workoutModels;
     }
-
 
 
     @Override
