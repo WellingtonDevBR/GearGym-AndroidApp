@@ -4,6 +4,7 @@ import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.core.content.ContextCompat;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.fragment.NavHostFragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -14,6 +15,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
+import android.widget.Button;
 import android.widget.TextView;
 
 import com.amazonaws.regions.Regions;
@@ -55,17 +57,23 @@ public class BodyPartFragment extends BaseFragment {
         awss3Service = new AWSS3Service(requireContext(), BuildConfig.AWS_IDENTITY_POOL_ID, Regions.US_EAST_2);
         bodyPartModelList = new ArrayList<>();
         workoutList = new ArrayList<>();
-        sharedWorkoutViewModel = new ViewModelProvider(requireActivity()).get(SharedWorkoutViewModel.class);
         adapter = new BodyPartAdapter(bodyPartModelList, this::onBodyPartClicked);
         binding.recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         binding.recyclerView.setAdapter(adapter);
-
+        sharedWorkoutViewModel = new ViewModelProvider(requireActivity()).get(SharedWorkoutViewModel.class);
+        sharedWorkoutViewModel.getWorkoutCounter().observe(getViewLifecycleOwner(), integer -> {
+            boolean isEnabled = integer > 0;
+            binding.btnNext.setEnabled(isEnabled);
+            int backgroundColor = isEnabled ? R.color.primary : R.color.gray_200;
+            binding.btnNext.setBackgroundTintList(ContextCompat.getColorStateList(requireContext(), backgroundColor));
+        });
         return binding.getRoot();
     }
 
     private void onBodyPartClicked(BodyPartModel bodyPart) {
+        sharedWorkoutViewModel.setCurrentBodyPart(bodyPart.getName());
         WorkoutModel[] workoutList = bodyPart.workoutList().toArray(new WorkoutModel[0]);
-        BodyPartFragmentDirections.ActionCreateWorkoutFragmentToNewWorkoutListFragment action = BodyPartFragmentDirections.actionCreateWorkoutFragmentToNewWorkoutListFragment(workoutList);
+        BodyPartFragmentDirections.ActionBodyPartListFragmentToWorkoutListOptionFragment action = BodyPartFragmentDirections.actionBodyPartListFragmentToWorkoutListOptionFragment(workoutList);
         NavHostFragment.findNavController(this).navigate(action);
     }
 
@@ -87,6 +95,16 @@ public class BodyPartFragment extends BaseFragment {
                 tvBalloonAddedWorkouts.setVisibility(View.INVISIBLE);
             }
         });
+
+        Button nextButton = binding.btnNext;
+        nextButton.setOnClickListener(v -> {
+            if (nextButton.isEnabled()) {
+                NavHostFragment.findNavController(this).navigate(R.id.action_bodyPartListFragment_to_workoutListOptionFragment);
+            }
+        });
+        if (nextButton.isEnabled()) {
+
+        }
 
         fetchBodyParts();
     }
@@ -110,6 +128,9 @@ public class BodyPartFragment extends BaseFragment {
                                 BodyPartModel bodyPartModel = new BodyPartModel(bodyPartName, imageUrl, workoutsLength, workouts);
                                 tempBodyPartModelList.add(bodyPartModel);
                                 if (tempBodyPartModelList.size() == bodyPartWithWorkouts.size()) {
+                                    // Sort the tempBodyPartModelList alphabetically by body part name before adding it to bodyPartModelList
+                                    tempBodyPartModelList.sort((o1, o2) -> o1.getName().compareToIgnoreCase(o2.getName()));
+
                                     bodyPartModelList.clear();
                                     bodyPartModelList.addAll(tempBodyPartModelList);
                                     adapter.notifyDataSetChanged();

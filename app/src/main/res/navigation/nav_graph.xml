@@ -130,7 +130,7 @@
         tools:layout="@layout/workout_fragment">
         <action
             android:id="@+id/action_workoutFragment_to_createWorkoutFragment"
-            app:destination="@id/createWorkoutFragment" />
+            app:destination="@id/bodyPartListFragment" />
 
         <action
             android:id="@+id/action_workoutFragment_to_workoutListFragment"
@@ -141,13 +141,13 @@
     </fragment>
 
     <fragment
-        android:id="@+id/createWorkoutFragment"
+        android:id="@+id/bodyPartListFragment"
         android:name="com.gamezzar.geargymtest.ui.fragment.BodyPartFragment"
         android:label="New Workout"
         tools:layout="@layout/body_part_fragment">
         <action
-            android:id="@+id/action_createWorkoutFragment_to_newWorkoutListFragment"
-            app:destination="@id/newWorkoutListFragment">
+            android:id="@+id/action_bodyPartListFragment_to_workoutListOptionFragment"
+            app:destination="@id/workoutListOptionFragment">
             <argument
                 android:name="workouts"
                 app:argType="com.gamezzar.geargymtest.domain.WorkoutModel[]" />
@@ -158,7 +158,7 @@
     </fragment>
 
     <fragment
-        android:id="@+id/newWorkoutListFragment"
+        android:id="@+id/workoutListOptionFragment"
         android:name="com.gamezzar.geargymtest.ui.fragment.WorkoutListOptionFragment"
         android:label="New Workout"
         tools:layout="@layout/workout_list_option_fragment">
@@ -167,7 +167,7 @@
             app:argType="com.gamezzar.geargymtest.domain.WorkoutModel[]" />
         <action
             android:id="@+id/action_newWorkoutListFragment_to_createWorkoutFragment"
-            app:destination="@id/createWorkoutFragment" />
+            app:destination="@id/bodyPartListFragment" />
     </fragment>
 
     <fragment
@@ -180,7 +180,7 @@
             app:destination="@id/workoutFragment" />
         <action
             android:id="@+id/action_workoutListFragment_to_createWorkoutFragment"
-            app:destination="@id/createWorkoutFragment" />
+            app:destination="@id/workoutListOptionFragment" />
 
     </fragment>
 </navigation>

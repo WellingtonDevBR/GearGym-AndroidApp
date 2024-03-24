@@ -32,6 +32,7 @@ import com.gamezzar.geargymtest.viewmodel.WorkoutListOptionViewModel;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Locale;
 import java.util.Objects;
 import java.util.Set;
 
@@ -43,6 +44,7 @@ public class WorkoutListOptionFragment extends BaseFragment {
     private List<WorkoutModel> workoutList;
     private WorkoutListOptionFragmentBinding binding;
     private AWSS3Service awss3Service;
+    private String currentBodyPart;
 
     public static WorkoutListOptionFragment newInstance() {
         return new WorkoutListOptionFragment();
@@ -52,9 +54,18 @@ public class WorkoutListOptionFragment extends BaseFragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         initializeBinding(inflater, container);
         initializeDependencies();
+        setUpCurrentBodyPartTitle();
         setupWorkoutList();
         setupSaveButton();
         return binding.getRoot();
+    }
+
+    public void setUpCurrentBodyPartTitle() {
+        sharedWorkoutViewModel.getCurrentBodyPart().observe(getViewLifecycleOwner(), s -> {
+            String modifiedString = s.substring(0, 1).toUpperCase() + s.substring(1);
+            binding.tvWorkoutTypeLabel.setText(String.format(Locale.US, modifiedString + " Workout"));
+            currentBodyPart = s;
+        });
     }
 
     private void initializeBinding(LayoutInflater inflater, @Nullable ViewGroup container) {
@@ -74,8 +85,9 @@ public class WorkoutListOptionFragment extends BaseFragment {
     }
 
     private void updateCounter() {
-        int counter = (int) workoutList.stream().filter(WorkoutModel::getChecked).count();
-        UiUtils.updateButtonWithCounter(requireContext(), binding.btnSave, counter, R.drawable.counter_circle);
+        sharedWorkoutViewModel.getWorkoutCounter().observe(getViewLifecycleOwner(), counter -> {
+            UiUtils.updateButtonWithCounter(requireContext(), binding.btnSave, counter, R.drawable.counter_circle);
+        });
     }
 
     private void setupSaveButton() {
@@ -93,9 +105,7 @@ public class WorkoutListOptionFragment extends BaseFragment {
 
 
     private void observeSelectedWorkouts() {
-        sharedWorkoutViewModel.getSelectedWorkouts().observe(getViewLifecycleOwner(), selectedWorkouts ->
-                updateButtonWithCounter(requireContext(), binding.btnSave, selectedWorkouts.size(), R.drawable.counter_circle)
-        );
+        sharedWorkoutViewModel.getSelectedWorkouts().observe(getViewLifecycleOwner(), selectedWorkouts -> updateButtonWithCounter(requireContext(), binding.btnSave, selectedWorkouts.size(), R.drawable.counter_circle));
     }
 
     private void loadWorkoutsFromArguments() {

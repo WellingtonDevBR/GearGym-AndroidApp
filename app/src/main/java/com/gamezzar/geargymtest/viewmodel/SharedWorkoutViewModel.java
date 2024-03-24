@@ -16,12 +16,28 @@ import java.util.Objects;
 
 public class SharedWorkoutViewModel extends ViewModel {
     private final MutableLiveData<List<WorkoutModel>> selectedWorkouts = new MutableLiveData<>(new ArrayList<>());
+    private final MutableLiveData<String> currentBodyPart = new MutableLiveData<>("");
 
     public void addSelectedWorkout(WorkoutModel workout) {
         List<WorkoutModel> currentWorkoutList = selectedWorkouts.getValue();
-        assert currentWorkoutList != null;
-        currentWorkoutList.add(workout);
-        selectedWorkouts.setValue(currentWorkoutList);
+        if (currentWorkoutList == null) {
+            currentWorkoutList = new ArrayList<>();
+        }
+
+        // Check if the list already contains the workout based on some unique identifier, e.g., the title.
+        boolean alreadySelected = currentWorkoutList.stream().anyMatch(w -> w.getTitle().equals(workout.getTitle()));
+
+        if (!alreadySelected) {
+            currentWorkoutList.add(workout);
+            selectedWorkouts.setValue(currentWorkoutList); // Notify observers
+        }
+    }
+
+    public MutableLiveData<String> getCurrentBodyPart() {
+        return this.currentBodyPart;
+    }
+    public void setCurrentBodyPart(String currentBodyPart) {
+        this.currentBodyPart.setValue(currentBodyPart);
     }
 
     public void removeSelectedWorkout(WorkoutModel workout) {
