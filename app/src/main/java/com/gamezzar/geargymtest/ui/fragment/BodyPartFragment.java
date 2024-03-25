@@ -99,7 +99,7 @@ public class BodyPartFragment extends BaseFragment {
         Button nextButton = binding.btnNext;
         nextButton.setOnClickListener(v -> {
             if (nextButton.isEnabled()) {
-                NavHostFragment.findNavController(this).navigate(R.id.action_bodyPartListFragment_to_workoutListOptionFragment);
+                NavHostFragment.findNavController(this).navigate(R.id.action_bodyPartListFragment_to_workoutSetupFragment);
             }
         });
         if (nextButton.isEnabled()) {

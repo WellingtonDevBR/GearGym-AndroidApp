@@ -11,4 +11,5 @@
     <color name="purple_100">#1A9747FF</color>
     <color name="purple_400">#9575CD</color>
     <color name="red">#FF0000</color>
+    <color name="error">#97474C</color>
 </resources>

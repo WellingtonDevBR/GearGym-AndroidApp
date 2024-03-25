@@ -153,9 +153,15 @@
                 app:argType="com.gamezzar.geargymtest.domain.WorkoutModel[]" />
         </action>
         <action
-            android:id="@+id/action_createWorkoutFragment_to_workoutListFragment"
-            app:destination="@id/workoutListFragment" />
+            android:id="@+id/action_bodyPartListFragment_to_workoutSetupFragment"
+            app:destination="@id/workoutSetupFragment" />
     </fragment>
+
+    <fragment
+        android:id="@+id/workoutSetupFragment"
+        android:name="com.gamezzar.geargymtest.ui.fragment.WorkoutSetupFragment"
+        android:label="New Workout"
+        tools:layout="@layout/workout_setup_fragment" />
 
     <fragment
         android:id="@+id/workoutListOptionFragment"

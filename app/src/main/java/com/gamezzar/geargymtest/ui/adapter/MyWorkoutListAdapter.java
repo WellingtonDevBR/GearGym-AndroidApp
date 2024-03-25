@@ -35,8 +35,7 @@ public class MyWorkoutListAdapter extends RecyclerView.Adapter<MyWorkoutListAdap
         // Assuming each Workout has a method `getWorkoutChoices()` that returns List<Workout>
         String workoutChoices = workout.getTitle();
         MyWorkoutListItemAdapter nestedAdapter = new MyWorkoutListItemAdapter(workoutChoices);
-        holder.nestedRecyclerView.setLayoutManager(new LinearLayoutManager(holder.itemView.getContext(), LinearLayoutManager.HORIZONTAL, false));
-        holder.nestedRecyclerView.setAdapter(nestedAdapter);
+
 
         //holder.binding.workoutTypeName.setText(workout.getName()); // Adjust this line according to your actual data and layout
     }
@@ -48,12 +47,10 @@ public class MyWorkoutListAdapter extends RecyclerView.Adapter<MyWorkoutListAdap
 
     public static class WorkoutListViewHolder extends RecyclerView.ViewHolder {
         private final MyDayWorkoutCardBinding binding;
-        final RecyclerView nestedRecyclerView;
 
         public WorkoutListViewHolder(MyDayWorkoutCardBinding binding) {
             super(binding.getRoot());
             this.binding = binding;
-            this.nestedRecyclerView = binding.rvWorkoutItems; // Ensure your WorkoutListItemCardBinding has a RecyclerView with this ID
         }
 
         public void bind(WorkoutModel workout) {

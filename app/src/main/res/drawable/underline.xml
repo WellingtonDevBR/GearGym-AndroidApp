@@ -1,15 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layer-list xmlns:android="http://schemas.android.com/apk/res/android">
-    <item>
-        <shape android:shape="rectangle">
-            <solid android:color="#00FFFFFF" />
-        </shape>
-    </item>
-    <item
-        android:bottom="9dp"
-        android:left="-2dp"
-        android:right="-2dp"
-        android:top="25dp">
+    <item android:bottom="2dp" android:left="-2dp" android:right="-2dp" android:top="24dp"> <!-- Adjust top and bottom to control thickness -->
         <shape>
             <solid android:color="@color/gray_200" />
         </shape>

@@ -3,6 +3,8 @@ package com.gamezzar.geargymtest.domain;
 import android.os.Parcel;
 import android.os.Parcelable;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 public class WorkoutModel implements Parcelable {
@@ -11,6 +13,7 @@ public class WorkoutModel implements Parcelable {
     private final String duration;
     private String imageUrl;
     private Boolean isChecked;
+    private List<SetModel> sets = new ArrayList<>();
 
 
     public WorkoutModel(String title, String duration, String imageUrl) {
@@ -22,9 +25,10 @@ public class WorkoutModel implements Parcelable {
 
     public WorkoutModel(Parcel in) {
         title = in.readString();
-        imageUrl = in.readString();
         duration = in.readString();
-        isChecked = false;
+        imageUrl = in.readString();
+        isChecked = in.readByte() != 0;
+        sets = in.createTypedArrayList(SetModel.CREATOR);
     }
 
     @Override
@@ -35,9 +39,10 @@ public class WorkoutModel implements Parcelable {
     @Override
     public void writeToParcel(Parcel dest, int flags) {
         dest.writeString(title);
-        dest.writeString(imageUrl);
         dest.writeString(duration);
-        isChecked = false;
+        dest.writeString(imageUrl);
+        dest.writeByte((byte) (isChecked ? 1 : 0));
+        dest.writeTypedList(sets);
     }
 
     @Override
@@ -69,7 +74,9 @@ public class WorkoutModel implements Parcelable {
         return imageUrl;
     }
 
-    public String getWorkoutDuration() { return duration; }
+    public String getWorkoutDuration() {
+        return duration;
+    }
 
     public Boolean getChecked() {
         return isChecked;
@@ -78,4 +85,28 @@ public class WorkoutModel implements Parcelable {
     public void setChecked(Boolean checked) {
         isChecked = checked;
     }
+
+    public List<SetModel> getSets() {
+        return sets;
+    }
+
+    public interface SetsChangeListener {
+        void onSetsChanged();
+    }
+
+    public void addSet(SetModel sets) {
+        this.sets.add(sets);
+    }
+
+    private transient SetsChangeListener setsChangeListener; // transient for Parcelable
+
+
+    public void deleteSetAtPosition(int position) {
+        if (position >= 0 && position < sets.size()) {
+            sets.remove(position);
+            if (setsChangeListener != null) setsChangeListener.onSetsChanged();
+        }
+    }
+
+
 }

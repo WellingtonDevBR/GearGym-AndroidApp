@@ -5,19 +5,6 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
-    <TextView
-        android:id="@+id/tvSavedWorkoutName"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="5dp"
-        android:layout_marginTop="5dp"
-        android:fontFamily="@font/inter_bold"
-        android:textColor="@color/black_300"
-        android:text="Monday Workout"
-        android:textSize="16sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
     <com.google.android.material.card.MaterialCardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -28,69 +15,81 @@
         app:cardCornerRadius="12dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvSavedWorkoutName"
+        app:layout_constraintTop_toTopOf="parent"
         app:strokeColor="#C4C4C4"
         app:strokeWidth="0.5dp">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:background="@color/white"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:background="@color/white">
 
             <ImageView
                 android:id="@+id/ivWorkoutType"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="94dp"
+                android:layout_height="130dp"
                 android:layout_marginStart="5dp"
                 android:layout_marginTop="5dp"
                 android:layout_marginBottom="5dp"
-                android:scaleType="fitXY"
+                android:scaleType="centerCrop"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:srcCompat="@drawable/chest_workout_promo" />
 
             <TextView
-                android:id="@+id/tvWorkoutTypeName"
+                android:id="@+id/tvWorkoutName"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="5dp"
                 android:layout_marginEnd="5dp"
                 android:fontFamily="@font/inter_semibold"
                 android:textColor="@color/secondary"
-                android:text="7 Workouts"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/ivWorkoutType"
                 app:layout_constraintTop_toTopOf="@+id/ivWorkoutType" />
 
-            <androidx.recyclerview.widget.RecyclerView
+
+            <com.gamezzar.geargymtest.seedwork.utils.InnerRecyclerView
                 android:id="@+id/rvWorkoutItems"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
                 android:layout_marginStart="5dp"
-                android:layout_marginTop="5dp"
                 android:layout_marginEnd="5dp"
                 android:layout_marginBottom="5dp"
-                app:layout_constraintBottom_toTopOf="@+id/btnExpandSavedWorkoutList"
+                android:descendantFocusability="afterDescendants"
+                app:layout_constraintBottom_toTopOf="@+id/btnAddSet"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="1.0"
                 app:layout_constraintStart_toEndOf="@+id/ivWorkoutType"
-                app:layout_constraintTop_toBottomOf="@+id/tvWorkoutTypeName" />
+                app:layout_constraintTop_toBottomOf="@+id/tvWorkoutName" />
 
             <com.google.android.material.button.MaterialButton
-                android:id="@+id/btnExpandSavedWorkoutList"
+                android:id="@+id/btnAddSet"
                 android:layout_width="0dp"
-                android:layout_height="48dp"
+                android:layout_height="42dp"
                 android:layout_marginStart="5dp"
                 android:layout_marginEnd="5dp"
-                android:backgroundTint="@color/primary"
-                android:fontFamily="@font/inter_medium"
+                android:backgroundTint="@color/purple_400"
                 android:elevation="40dp"
-                android:text="View All"
+                android:fontFamily="@font/inter_medium"
+                android:text="+ Add Set"
                 android:textColor="@color/white"
                 android:textSize="12sp"
                 app:layout_constraintBottom_toBottomOf="@+id/ivWorkoutType"
                 app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/ivWorkoutType" />
+
+            <TextView
+                android:id="@+id/textViewEmptyState"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="Please add at least one set"
+                android:textColor="@color/error"
+                android:visibility="gone"
+                app:layout_constraintBottom_toBottomOf="@+id/rvWorkoutItems"
+                app:layout_constraintEnd_toEndOf="@+id/rvWorkoutItems"
                 app:layout_constraintStart_toEndOf="@+id/ivWorkoutType" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
