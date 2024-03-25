@@ -181,6 +181,7 @@ public class WorkoutSetupFragment extends BaseFragment {
         Toast.makeText(requireContext(), message, Toast.LENGTH_SHORT).show();
     }
     private void navigateToWorkoutFragment() {
+        sharedViewModel.cleanSelectedWorkouts();
         NavHostFragment.findNavController(this).navigate(R.id.action_workoutSetupFragment_to_workoutFragment);
     }
 }

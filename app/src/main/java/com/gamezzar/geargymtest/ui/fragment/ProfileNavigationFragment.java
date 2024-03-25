@@ -14,6 +14,7 @@ import com.gamezzar.geargymtest.R;
 import com.gamezzar.geargymtest.seedwork.shared.BaseFragment;
 import com.gamezzar.geargymtest.databinding.ProfileNavigationFragmentBinding;
 import com.gamezzar.geargymtest.viewmodel.ProfileNavigationViewModel;
+import com.gamezzar.geargymtest.viewmodel.SessionManager;
 
 public class ProfileNavigationFragment extends BaseFragment {
 
@@ -57,6 +58,8 @@ public class ProfileNavigationFragment extends BaseFragment {
     }
 
     public void exitApplication() {
+        SessionManager sessionManager = new SessionManager(requireActivity());
+        sessionManager.logoutUser();
         NavHostFragment.findNavController(this).navigate(R.id.action_profileNavFragment_to_loginFragment);
     }
 }

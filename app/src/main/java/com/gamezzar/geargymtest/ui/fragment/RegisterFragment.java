@@ -79,9 +79,9 @@ public class RegisterFragment extends BaseFragment {
             Toast.makeText(getContext(), "Please, check the fields above if you have fulfilled correctly.", Toast.LENGTH_SHORT).show();
         } else {
             User user = new User();
-            user.Name = name;
-            user.Email = email;
-            user.Password = password;
+            user.setName(name);
+            user.setEmail(email);
+            user.setPassword(password);
             mViewModel.signUp(user);
             navigateToHome();
         }

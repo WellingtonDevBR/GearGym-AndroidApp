@@ -16,6 +16,7 @@ import androidx.annotation.Nullable;
 import androidx.navigation.fragment.NavHostFragment;
 
 import android.provider.Settings;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -24,6 +25,7 @@ import com.gamezzar.geargymtest.R;
 import com.gamezzar.geargymtest.seedwork.shared.BaseFragment;
 import com.gamezzar.geargymtest.databinding.HomeFragmentBinding;
 import com.gamezzar.geargymtest.viewmodel.HomeViewModel;
+import com.gamezzar.geargymtest.viewmodel.SessionManager;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 
@@ -45,13 +47,17 @@ public class HomeFragment extends BaseFragment {
         activity = (AppCompatActivity) getActivity();
         assert activity != null;
         FloatingActionButton floatingActionButton = activity.findViewById(R.id.fab);
-        floatingActionButton.setOnClickListener(v -> {
-            if (allPermissionsGranted()) {
-                openCameraRecognition();
-            } else {
-                requestCameraPermission();
-            }
-        });
+        if (floatingActionButton != null) {
+            floatingActionButton.setOnClickListener(v -> {
+                if (allPermissionsGranted()) {
+                    openCameraRecognition();
+                } else {
+                    requestCameraPermission();
+                }
+            });
+        } else {
+            Log.e("HomeFragment", "FloatingActionButton is null");
+        }
         return binding.getRoot();
     }
 

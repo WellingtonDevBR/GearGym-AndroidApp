@@ -8,6 +8,7 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.navigation.fragment.NavHostFragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
 import android.util.Log;
@@ -147,14 +148,23 @@ public class WorkoutListOptionFragment extends BaseFragment {
     }
 
     private void saveWorkouts() {
+        boolean hasCheckedItems = false;
+
         for (WorkoutModel workout : workoutList) {
             if (workout.getChecked()) {
                 sharedWorkoutViewModel.addSelectedWorkout(workout);
+                hasCheckedItems = true; // Found at least one item to navigate with
             } else {
                 sharedWorkoutViewModel.removeSelectedWorkout(workout);
             }
         }
-        Toast.makeText(getContext(), "Workouts saved successfully", Toast.LENGTH_SHORT).show();
+
+        if (hasCheckedItems) {
+            NavHostFragment.findNavController(this).navigate(R.id.action_workoutListOptionFragment_to_bodyPartListFragment);
+            Toast.makeText(getContext(), "Workouts saved successfully", Toast.LENGTH_SHORT).show();
+        } else {
+            Toast.makeText(getContext(), "Please select at least one workout to save.", Toast.LENGTH_SHORT).show();
+        }
     }
 
 

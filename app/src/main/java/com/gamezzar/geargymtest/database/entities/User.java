@@ -8,25 +8,60 @@ import androidx.room.PrimaryKey;
 @Entity
 public class User {
     @PrimaryKey(autoGenerate = true)
-    public int UID;
-    public String Name;
+    private int UID;
+    private String Name;
     @Nullable
-    public String Gender;
-    public String Email;
-    public String Password;
+    private String Gender;
+    private String Email;
+    private String Password;
     @Nullable
-    public Integer Age;
+    private Integer Age;
     @Nullable
-    public String Address;
+    private String Address;
     @Nullable
-    public String ImgSrc;
+    private String ImgSrc;
     @Nullable
-    public Float Weight;
+    private Float Weight;
     @Nullable
-    public Float Height;
+    private Float Height;
     @Nullable
-    public String Purpose;
+    private String Purpose;
     @Nullable
-    public String Token;
+    private String Token;
 
+    // Getters
+    public int getUID() { return UID; }
+    public String getName() { return Name; }
+    @Nullable
+    public String getGender() { return Gender; }
+    public String getEmail() { return Email; }
+    public String getPassword() { return Password; }
+    @Nullable
+    public Integer getAge() { return Age; }
+    @Nullable
+    public String getAddress() { return Address; }
+    @Nullable
+    public String getImgSrc() { return ImgSrc; }
+    @Nullable
+    public Float getWeight() { return Weight; }
+    @Nullable
+    public Float getHeight() { return Height; }
+    @Nullable
+    public String getPurpose() { return Purpose; }
+    @Nullable
+    public String getToken() { return Token; }
+
+    // Setters
+    public void setUID(int UID) { this.UID = UID; }
+    public void setName(String name) { Name = name; }
+    public void setGender(@Nullable String gender) { Gender = gender; }
+    public void setEmail(String email) { Email = email; }
+    public void setPassword(String password) { Password = password; }
+    public void setAge(@Nullable Integer age) { Age = age; }
+    public void setAddress(@Nullable String address) { Address = address; }
+    public void setImgSrc(@Nullable String imgSrc) { ImgSrc = imgSrc; }
+    public void setWeight(@Nullable Float weight) { Weight = weight; }
+    public void setHeight(@Nullable Float height) { Height = height; }
+    public void setPurpose(@Nullable String purpose) { Purpose = purpose; }
+    public void setToken(@Nullable String token) { Token = token; }
 }

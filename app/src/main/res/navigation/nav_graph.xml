@@ -84,6 +84,10 @@
         <action
             android:id="@+id/action_homeFragment_to_cameraRecognitionFragment"
             app:destination="@id/cameraRecognitionFragment" />
+
+        <action
+            android:id="@+id/action_homeFragment_to_loginFragment"
+            app:destination="@id/loginFragment" />
     </fragment>
 
     <fragment
@@ -176,7 +180,7 @@
             android:name="workouts"
             app:argType="com.gamezzar.geargymtest.domain.WorkoutModel[]" />
         <action
-            android:id="@+id/action_newWorkoutListFragment_to_createWorkoutFragment"
+            android:id="@+id/action_workoutListOptionFragment_to_bodyPartListFragment"
             app:destination="@id/bodyPartListFragment" />
     </fragment>
 

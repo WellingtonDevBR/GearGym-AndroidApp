@@ -32,6 +32,10 @@ public class SharedWorkoutViewModel extends ViewModel {
         }
     }
 
+    public void cleanSelectedWorkouts() {
+        selectedWorkouts.setValue(new ArrayList<>());
+    }
+
     public void updateSelectedWorkout(WorkoutModel updatedWorkout) {
         if (updatedWorkout == null) {
             return; // Nothing to update if the passed workout is null
@@ -39,20 +43,14 @@ public class SharedWorkoutViewModel extends ViewModel {
 
         List<WorkoutModel> currentWorkoutList = selectedWorkouts.getValue();
         if (currentWorkoutList != null) {
-            // Iterate through the list to find the workout by title
             for (int i = 0; i < currentWorkoutList.size(); i++) {
                 WorkoutModel existingWorkout = currentWorkoutList.get(i);
                 if (existingWorkout.getTitle().equals(updatedWorkout.getTitle())) {
-                    // Replace the old workout with the updated one
                     currentWorkoutList.set(i, updatedWorkout);
-                    // Notify observers of the change
                     selectedWorkouts.setValue(new ArrayList<>(currentWorkoutList));
                     return; // Stop once the update is made
                 }
             }
-            // Optionally, add the workout if not found (consider if this behavior is desired)
-            // currentWorkoutList.add(updatedWorkout);
-            // selectedWorkouts.setValue(new ArrayList<>(currentWorkoutList));
         }
     }
 
