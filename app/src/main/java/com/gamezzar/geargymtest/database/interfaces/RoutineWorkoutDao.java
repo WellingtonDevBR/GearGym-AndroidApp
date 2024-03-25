@@ -8,6 +8,6 @@ import com.gamezzar.geargymtest.database.entities.RoutineWorkout;
 @Dao
 public interface RoutineWorkoutDao {
     @Insert
-    void insert(RoutineWorkout routineWorkout);
+    long insert(RoutineWorkout routineWorkout);
 
 }

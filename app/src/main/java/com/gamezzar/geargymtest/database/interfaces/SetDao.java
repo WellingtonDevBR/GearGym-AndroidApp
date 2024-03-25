@@ -8,5 +8,5 @@ import com.gamezzar.geargymtest.database.entities.Set;
 @Dao
 public interface SetDao {
     @Insert
-    void insert(Set set);
+    long insert(Set set);
 }

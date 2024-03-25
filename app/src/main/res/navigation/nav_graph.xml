@@ -161,7 +161,11 @@
         android:id="@+id/workoutSetupFragment"
         android:name="com.gamezzar.geargymtest.ui.fragment.WorkoutSetupFragment"
         android:label="New Workout"
-        tools:layout="@layout/workout_setup_fragment" />
+        tools:layout="@layout/workout_setup_fragment">
+        <action
+            android:id="@+id/action_workoutSetupFragment_to_workoutFragment"
+            app:destination="@id/workoutFragment" />
+    </fragment>
 
     <fragment
         android:id="@+id/workoutListOptionFragment"

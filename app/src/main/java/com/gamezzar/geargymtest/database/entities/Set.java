@@ -6,7 +6,7 @@ import androidx.room.Index;
 import androidx.room.PrimaryKey;
 
 @Entity(foreignKeys = {
-        @ForeignKey(entity = RoutineWorkout.class,
+        @ForeignKey(entity = Workout.class,
                 parentColumns = "UID",
                 childColumns = "RoutineWorkoutId",
                 onDelete = ForeignKey.CASCADE),
@@ -16,5 +16,6 @@ public class Set {
     @PrimaryKey(autoGenerate = true)
     public Integer UID;
     public Integer RoutineWorkoutId;
+    public Integer Repetition;
     public Integer Weight;
 }

@@ -14,7 +14,7 @@ import java.util.List;
 @Dao
 public interface RoutineDao {
     @Insert
-    void insert(Routine routine);
+    long insert(Routine routine);
 
     @Transaction
     @Query("SELECT * FROM Routine WHERE UID = :routineId")
