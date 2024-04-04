@@ -1,19 +1,22 @@
 package com.gamezzar.geargymtest.database.entities;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.room.Entity;
 import androidx.room.Index;
+import androidx.room.PrimaryKey;
 
-@Entity(primaryKeys = {"RoutineId", "WorkoutId"},
-        indices = {
-                @Index(value = "UID", unique = true),
-                @Index(value = "WorkoutId")
-        })
+@Entity(indices = {
+        @Index(value = {"RoutineId", "WorkoutId"}, unique = true),
+        @Index(value = "WorkoutId")
+})
 public class RoutineWorkout {
-    public Integer UID;
+    @PrimaryKey(autoGenerate = true)
+    @NonNull
+    public int UID;
+
     @NonNull
     public Integer RoutineId;
+
     @NonNull
     public Integer WorkoutId;
 }

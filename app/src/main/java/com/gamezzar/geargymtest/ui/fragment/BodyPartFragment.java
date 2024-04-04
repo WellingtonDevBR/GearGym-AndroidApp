@@ -128,9 +128,7 @@ public class BodyPartFragment extends BaseFragment {
                                 BodyPartModel bodyPartModel = new BodyPartModel(bodyPartName, imageUrl, workoutsLength, workouts);
                                 tempBodyPartModelList.add(bodyPartModel);
                                 if (tempBodyPartModelList.size() == bodyPartWithWorkouts.size()) {
-                                    // Sort the tempBodyPartModelList alphabetically by body part name before adding it to bodyPartModelList
                                     tempBodyPartModelList.sort((o1, o2) -> o1.getName().compareToIgnoreCase(o2.getName()));
-
                                     bodyPartModelList.clear();
                                     bodyPartModelList.addAll(tempBodyPartModelList);
                                     adapter.notifyDataSetChanged();

@@ -136,6 +136,14 @@ public class LoginFragment extends BaseFragment {
     }
 
     @Override
+    public void onResume() {
+        super.onResume();
+        hideFab();
+        hideBottomAppBar();
+        hideToolBar();
+    }
+
+    @Override
     public void onDestroyView() {
         super.onDestroyView();
         disposables.clear();

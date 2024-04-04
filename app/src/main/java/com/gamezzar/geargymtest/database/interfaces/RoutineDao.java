@@ -19,4 +19,12 @@ public interface RoutineDao {
     @Transaction
     @Query("SELECT * FROM Routine WHERE UID = :routineId")
     LiveData<List<RoutineWithWorkoutsAndSets>> getRoutineWithWorkoutsAndSets(int routineId);
+
+    @Transaction
+    @Query("SELECT * FROM Routine")
+    LiveData<List<RoutineWithWorkoutsAndSets>> getAllRoutineWithWorkoutsAndSets();
+
+    @Query("DELETE FROM Routine WHERE UID = :id")
+    void deleteById(int id);
+
 }

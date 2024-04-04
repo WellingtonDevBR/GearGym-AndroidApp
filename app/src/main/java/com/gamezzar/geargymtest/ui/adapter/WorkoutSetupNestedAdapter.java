@@ -6,7 +6,8 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.gamezzar.geargymtest.databinding.MyWorkoutListItemBinding;
+import com.gamezzar.geargymtest.databinding.MyRoutineWorkoutItemBinding;
+import com.gamezzar.geargymtest.databinding.MyRoutineWorkoutSetItemBinding;
 import com.gamezzar.geargymtest.domain.SetModel;
 import com.gamezzar.geargymtest.domain.WorkoutModel;
 
@@ -28,7 +29,7 @@ public class WorkoutSetupNestedAdapter extends RecyclerView.Adapter<WorkoutSetup
     @NonNull
     @Override
     public WorkoutSetupNestedViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        MyWorkoutListItemBinding binding = MyWorkoutListItemBinding.inflate(LayoutInflater.from(parent.getContext()), parent, false);
+        MyRoutineWorkoutSetItemBinding binding = MyRoutineWorkoutSetItemBinding.inflate(LayoutInflater.from(parent.getContext()), parent, false);
         return new WorkoutSetupNestedViewHolder(binding);
     }
 
@@ -49,9 +50,9 @@ public class WorkoutSetupNestedAdapter extends RecyclerView.Adapter<WorkoutSetup
     }
 
     class WorkoutSetupNestedViewHolder extends RecyclerView.ViewHolder {
-        final MyWorkoutListItemBinding binding;
+        final MyRoutineWorkoutSetItemBinding binding;
 
-        public WorkoutSetupNestedViewHolder(@NonNull MyWorkoutListItemBinding binding) {
+        public WorkoutSetupNestedViewHolder(@NonNull MyRoutineWorkoutSetItemBinding binding) {
             super(binding.getRoot());
             this.binding = binding;
         }

@@ -186,9 +186,9 @@
 
     <fragment
         android:id="@+id/workoutListFragment"
-        android:name="com.gamezzar.geargymtest.ui.fragment.MyWorkoutListFragment"
+        android:name="com.gamezzar.geargymtest.ui.fragment.MyRoutineListFragment"
         android:label="Your Workout"
-        tools:layout="@layout/my_workout_list_fragment">
+        tools:layout="@layout/my_routine_list_fragment">
         <action
             android:id="@+id/action_workoutListFragment_to_workoutFragment"
             app:destination="@id/workoutFragment" />

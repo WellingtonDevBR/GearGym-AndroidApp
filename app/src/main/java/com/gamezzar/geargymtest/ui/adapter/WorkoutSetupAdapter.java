@@ -10,8 +10,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
-import com.gamezzar.geargymtest.databinding.MyDayWorkoutCardBinding;
-import com.gamezzar.geargymtest.domain.SetModel;
+import com.gamezzar.geargymtest.databinding.MyDayRoutineCardBinding;
 import com.gamezzar.geargymtest.domain.WorkoutModel;
 import com.gamezzar.geargymtest.seedwork.ui.CustomDialogFragment;
 
@@ -35,7 +34,7 @@ public class WorkoutSetupAdapter extends RecyclerView.Adapter<WorkoutSetupAdapte
     @NonNull
     @Override
     public WorkoutSetupAdapter.WorkoutSetupViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        MyDayWorkoutCardBinding binding = MyDayWorkoutCardBinding.inflate(LayoutInflater.from(parent.getContext()), parent, false);
+        MyDayRoutineCardBinding binding = MyDayRoutineCardBinding.inflate(LayoutInflater.from(parent.getContext()), parent, false);
         return new WorkoutSetupViewHolder(binding);
     }
 
@@ -58,16 +57,19 @@ public class WorkoutSetupAdapter extends RecyclerView.Adapter<WorkoutSetupAdapte
 
 
     static class WorkoutSetupViewHolder extends RecyclerView.ViewHolder {
-        final MyDayWorkoutCardBinding binding;
+        final MyDayRoutineCardBinding binding;
 
-        public WorkoutSetupViewHolder(MyDayWorkoutCardBinding binding) {
+        public WorkoutSetupViewHolder(MyDayRoutineCardBinding binding) {
             super(binding.getRoot());
             this.binding = binding;
         }
 
         public void bind(final WorkoutModel workout, final FragmentManager fragmentManager) {
             this.binding.tvWorkoutName.setText(workout.getTitle());
-            Glide.with(binding.ivWorkoutType.getContext()).load(workout.getImageUrl()).fitCenter().into(this.binding.ivWorkoutType);
+            Glide.with(binding.ivWorkoutType.getContext())
+                    .load(workout.getImageUrl())
+                    .fitCenter()
+                    .into(binding.ivWorkoutType);
             WorkoutSetupNestedAdapter nestedAdapter = new WorkoutSetupNestedAdapter(workout.getSets(), (set, nestedItemPosition, workoutModel) -> {
                 workout.deleteSetAtPosition(nestedItemPosition);
                 if (workoutUpdatedListener != null) {
@@ -75,7 +77,6 @@ public class WorkoutSetupAdapter extends RecyclerView.Adapter<WorkoutSetupAdapte
                 }
                 toggleEmptyStateView(workout.getSets().isEmpty());
             }, workout);
-
             binding.rvWorkoutItems.setLayoutManager(new LinearLayoutManager(binding.rvWorkoutItems.getContext()));
             binding.rvWorkoutItems.setAdapter(nestedAdapter);
             toggleEmptyStateView(workout.getSets().isEmpty());

@@ -11,15 +11,25 @@ public class WorkoutModel implements Parcelable {
 
     private final String title;
     private final String duration;
+
+    public String getImageName() {
+        return imageName;
+    }
+
+    public void setImageName(String imageName) {
+        this.imageName = imageName;
+    }
+
+    private String imageName;
     private String imageUrl;
     private Boolean isChecked;
     private List<SetModel> sets = new ArrayList<>();
 
 
-    public WorkoutModel(String title, String duration, String imageUrl) {
+    public WorkoutModel(String title, String duration, String imageName) {
         this.title = title;
         this.duration = duration;
-        this.imageUrl = imageUrl;
+        this.imageName = imageName;
         isChecked = false;
     }
 

@@ -127,10 +127,9 @@ public class WorkoutListOptionFragment extends BaseFragment {
 
         for (WorkoutModel workout : workoutsArray) {
             String bucketName = "geargym";
-            String objectKey = "workout/" + workout.getImageUrl();
+            String objectKey = "workout/" + workout.getImageName();
 
             workout.setChecked(selectedTitles.contains(workout.getTitle()));
-
             awss3Service.getObjectUrl(bucketName, objectKey, new AWSS3Service.UrlCallback() {
                 @Override
                 public void onUrlReady(String imageUrl) {

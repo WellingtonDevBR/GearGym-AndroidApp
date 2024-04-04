@@ -1,0 +1,570 @@
+{
+  "formatVersion": 1,
+  "database": {
+    "version": 10,
+    "identityHash": "45e13f22fada7319ff4db169ccfa9692",
+    "entities": [
+      {
+        "tableName": "User",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`UID` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `Name` TEXT, `Gender` TEXT, `Email` TEXT, `Password` TEXT, `Age` INTEGER, `Address` TEXT, `ImgSrc` TEXT, `Weight` REAL, `Height` REAL, `Purpose` TEXT, `Token` TEXT)",
+        "fields": [
+          {
+            "fieldPath": "UID",
+            "columnName": "UID",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "Name",
+            "columnName": "Name",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "Gender",
+            "columnName": "Gender",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "Email",
+            "columnName": "Email",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "Password",
+            "columnName": "Password",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "Age",
+            "columnName": "Age",
+            "affinity": "INTEGER",
+            "notNull": false
+          },
+          {
+            "fieldPath": "Address",
+            "columnName": "Address",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "ImgSrc",
+            "columnName": "ImgSrc",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "Weight",
+            "columnName": "Weight",
+            "affinity": "REAL",
+            "notNull": false
+          },
+          {
+            "fieldPath": "Height",
+            "columnName": "Height",
+            "affinity": "REAL",
+            "notNull": false
+          },
+          {
+            "fieldPath": "Purpose",
+            "columnName": "Purpose",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "Token",
+            "columnName": "Token",
+            "affinity": "TEXT",
+            "notNull": false
+          }
+        ],
+        "primaryKey": {
+          "autoGenerate": true,
+          "columnNames": [
+            "UID"
+          ]
+        },
+        "indices": [],
+        "foreignKeys": []
+      },
+      {
+        "tableName": "EquipmentBodyPart",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`EquipmentId` INTEGER NOT NULL, `BodyPartId` INTEGER NOT NULL, PRIMARY KEY(`EquipmentId`, `BodyPartId`))",
+        "fields": [
+          {
+            "fieldPath": "EquipmentId",
+            "columnName": "EquipmentId",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "BodyPartId",
+            "columnName": "BodyPartId",
+            "affinity": "INTEGER",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "autoGenerate": false,
+          "columnNames": [
+            "EquipmentId",
+            "BodyPartId"
+          ]
+        },
+        "indices": [
+          {
+            "name": "index_EquipmentBodyPart_EquipmentId",
+            "unique": false,
+            "columnNames": [
+              "EquipmentId"
+            ],
+            "orders": [],
+            "createSql": "CREATE INDEX IF NOT EXISTS `index_EquipmentBodyPart_EquipmentId` ON `${TABLE_NAME}` (`EquipmentId`)"
+          },
+          {
+            "name": "index_EquipmentBodyPart_BodyPartId",
+            "unique": false,
+            "columnNames": [
+              "BodyPartId"
+            ],
+            "orders": [],
+            "createSql": "CREATE INDEX IF NOT EXISTS `index_EquipmentBodyPart_BodyPartId` ON `${TABLE_NAME}` (`BodyPartId`)"
+          }
+        ],
+        "foreignKeys": []
+      },
+      {
+        "tableName": "Workout",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`UID` INTEGER PRIMARY KEY AUTOINCREMENT, `Name` TEXT, `BodyPartId` INTEGER, `ImageUri` TEXT, `Details` TEXT, `Duration` TEXT, FOREIGN KEY(`BodyPartId`) REFERENCES `BodyPart`(`UID`) ON UPDATE NO ACTION ON DELETE CASCADE )",
+        "fields": [
+          {
+            "fieldPath": "UID",
+            "columnName": "UID",
+            "affinity": "INTEGER",
+            "notNull": false
+          },
+          {
+            "fieldPath": "Name",
+            "columnName": "Name",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "BodyPartId",
+            "columnName": "BodyPartId",
+            "affinity": "INTEGER",
+            "notNull": false
+          },
+          {
+            "fieldPath": "ImageUri",
+            "columnName": "ImageUri",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "Details",
+            "columnName": "Details",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "Duration",
+            "columnName": "Duration",
+            "affinity": "TEXT",
+            "notNull": false
+          }
+        ],
+        "primaryKey": {
+          "autoGenerate": true,
+          "columnNames": [
+            "UID"
+          ]
+        },
+        "indices": [],
+        "foreignKeys": [
+          {
+            "table": "BodyPart",
+            "onDelete": "CASCADE",
+            "onUpdate": "NO ACTION",
+            "columns": [
+              "BodyPartId"
+            ],
+            "referencedColumns": [
+              "UID"
+            ]
+          }
+        ]
+      },
+      {
+        "tableName": "Video",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`UID` INTEGER PRIMARY KEY AUTOINCREMENT, `EquipmentId` INTEGER, `Uri` TEXT, `ThumbnailUri` TEXT, `Duration` TEXT, FOREIGN KEY(`EquipmentId`) REFERENCES `Equipment`(`UID`) ON UPDATE NO ACTION ON DELETE CASCADE )",
+        "fields": [
+          {
+            "fieldPath": "UID",
+            "columnName": "UID",
+            "affinity": "INTEGER",
+            "notNull": false
+          },
+          {
+            "fieldPath": "EquipmentId",
+            "columnName": "EquipmentId",
+            "affinity": "INTEGER",
+            "notNull": false
+          },
+          {
+            "fieldPath": "Uri",
+            "columnName": "Uri",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "ThumbnailUri",
+            "columnName": "ThumbnailUri",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "Duration",
+            "columnName": "Duration",
+            "affinity": "TEXT",
+            "notNull": false
+          }
+        ],
+        "primaryKey": {
+          "autoGenerate": true,
+          "columnNames": [
+            "UID"
+          ]
+        },
+        "indices": [
+          {
+            "name": "index_Video_EquipmentId",
+            "unique": false,
+            "columnNames": [
+              "EquipmentId"
+            ],
+            "orders": [],
+            "createSql": "CREATE INDEX IF NOT EXISTS `index_Video_EquipmentId` ON `${TABLE_NAME}` (`EquipmentId`)"
+          }
+        ],
+        "foreignKeys": [
+          {
+            "table": "Equipment",
+            "onDelete": "CASCADE",
+            "onUpdate": "NO ACTION",
+            "columns": [
+              "EquipmentId"
+            ],
+            "referencedColumns": [
+              "UID"
+            ]
+          }
+        ]
+      },
+      {
+        "tableName": "BodyPart",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`UID` INTEGER PRIMARY KEY AUTOINCREMENT, `Name` TEXT, `ImageUri` TEXT)",
+        "fields": [
+          {
+            "fieldPath": "UID",
+            "columnName": "UID",
+            "affinity": "INTEGER",
+            "notNull": false
+          },
+          {
+            "fieldPath": "Name",
+            "columnName": "Name",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "ImageUri",
+            "columnName": "ImageUri",
+            "affinity": "TEXT",
+            "notNull": false
+          }
+        ],
+        "primaryKey": {
+          "autoGenerate": true,
+          "columnNames": [
+            "UID"
+          ]
+        },
+        "indices": [],
+        "foreignKeys": []
+      },
+      {
+        "tableName": "Equipment",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`UID` INTEGER PRIMARY KEY AUTOINCREMENT, `Name` TEXT, `Details` TEXT, `ImageUri` TEXT)",
+        "fields": [
+          {
+            "fieldPath": "UID",
+            "columnName": "UID",
+            "affinity": "INTEGER",
+            "notNull": false
+          },
+          {
+            "fieldPath": "Name",
+            "columnName": "Name",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "Details",
+            "columnName": "Details",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "ImageUri",
+            "columnName": "ImageUri",
+            "affinity": "TEXT",
+            "notNull": false
+          }
+        ],
+        "primaryKey": {
+          "autoGenerate": true,
+          "columnNames": [
+            "UID"
+          ]
+        },
+        "indices": [],
+        "foreignKeys": []
+      },
+      {
+        "tableName": "Tag",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`UID` INTEGER PRIMARY KEY AUTOINCREMENT, `EquipmentId` INTEGER, `Name` TEXT, FOREIGN KEY(`EquipmentId`) REFERENCES `Equipment`(`UID`) ON UPDATE NO ACTION ON DELETE CASCADE )",
+        "fields": [
+          {
+            "fieldPath": "UID",
+            "columnName": "UID",
+            "affinity": "INTEGER",
+            "notNull": false
+          },
+          {
+            "fieldPath": "EquipmentId",
+            "columnName": "EquipmentId",
+            "affinity": "INTEGER",
+            "notNull": false
+          },
+          {
+            "fieldPath": "Name",
+            "columnName": "Name",
+            "affinity": "TEXT",
+            "notNull": false
+          }
+        ],
+        "primaryKey": {
+          "autoGenerate": true,
+          "columnNames": [
+            "UID"
+          ]
+        },
+        "indices": [
+          {
+            "name": "index_Tag_EquipmentId",
+            "unique": false,
+            "columnNames": [
+              "EquipmentId"
+            ],
+            "orders": [],
+            "createSql": "CREATE INDEX IF NOT EXISTS `index_Tag_EquipmentId` ON `${TABLE_NAME}` (`EquipmentId`)"
+          }
+        ],
+        "foreignKeys": [
+          {
+            "table": "Equipment",
+            "onDelete": "CASCADE",
+            "onUpdate": "NO ACTION",
+            "columns": [
+              "EquipmentId"
+            ],
+            "referencedColumns": [
+              "UID"
+            ]
+          }
+        ]
+      },
+      {
+        "tableName": "RoutineWorkout",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`UID` INTEGER, `RoutineId` INTEGER NOT NULL, `WorkoutId` INTEGER NOT NULL, PRIMARY KEY(`RoutineId`, `WorkoutId`))",
+        "fields": [
+          {
+            "fieldPath": "UID",
+            "columnName": "UID",
+            "affinity": "INTEGER",
+            "notNull": false
+          },
+          {
+            "fieldPath": "RoutineId",
+            "columnName": "RoutineId",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "WorkoutId",
+            "columnName": "WorkoutId",
+            "affinity": "INTEGER",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "autoGenerate": false,
+          "columnNames": [
+            "RoutineId",
+            "WorkoutId"
+          ]
+        },
+        "indices": [
+          {
+            "name": "index_RoutineWorkout_UID",
+            "unique": true,
+            "columnNames": [
+              "UID"
+            ],
+            "orders": [],
+            "createSql": "CREATE UNIQUE INDEX IF NOT EXISTS `index_RoutineWorkout_UID` ON `${TABLE_NAME}` (`UID`)"
+          },
+          {
+            "name": "index_RoutineWorkout_WorkoutId",
+            "unique": false,
+            "columnNames": [
+              "WorkoutId"
+            ],
+            "orders": [],
+            "createSql": "CREATE INDEX IF NOT EXISTS `index_RoutineWorkout_WorkoutId` ON `${TABLE_NAME}` (`WorkoutId`)"
+          }
+        ],
+        "foreignKeys": []
+      },
+      {
+        "tableName": "Routine",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`UID` INTEGER PRIMARY KEY AUTOINCREMENT, `UserId` INTEGER, `Name` TEXT, `DayOfWeek` TEXT, FOREIGN KEY(`UserId`) REFERENCES `User`(`UID`) ON UPDATE NO ACTION ON DELETE CASCADE )",
+        "fields": [
+          {
+            "fieldPath": "UID",
+            "columnName": "UID",
+            "affinity": "INTEGER",
+            "notNull": false
+          },
+          {
+            "fieldPath": "UserId",
+            "columnName": "UserId",
+            "affinity": "INTEGER",
+            "notNull": false
+          },
+          {
+            "fieldPath": "Name",
+            "columnName": "Name",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "DayOfWeek",
+            "columnName": "DayOfWeek",
+            "affinity": "TEXT",
+            "notNull": false
+          }
+        ],
+        "primaryKey": {
+          "autoGenerate": true,
+          "columnNames": [
+            "UID"
+          ]
+        },
+        "indices": [
+          {
+            "name": "index_Routine_UserId",
+            "unique": false,
+            "columnNames": [
+              "UserId"
+            ],
+            "orders": [],
+            "createSql": "CREATE INDEX IF NOT EXISTS `index_Routine_UserId` ON `${TABLE_NAME}` (`UserId`)"
+          }
+        ],
+        "foreignKeys": [
+          {
+            "table": "User",
+            "onDelete": "CASCADE",
+            "onUpdate": "NO ACTION",
+            "columns": [
+              "UserId"
+            ],
+            "referencedColumns": [
+              "UID"
+            ]
+          }
+        ]
+      },
+      {
+        "tableName": "Set",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`UID` INTEGER PRIMARY KEY AUTOINCREMENT, `RoutineWorkoutId` INTEGER, `Repetition` INTEGER, `Weight` INTEGER, FOREIGN KEY(`RoutineWorkoutId`) REFERENCES `RoutineWorkout`(`UID`) ON UPDATE NO ACTION ON DELETE CASCADE )",
+        "fields": [
+          {
+            "fieldPath": "UID",
+            "columnName": "UID",
+            "affinity": "INTEGER",
+            "notNull": false
+          },
+          {
+            "fieldPath": "RoutineWorkoutId",
+            "columnName": "RoutineWorkoutId",
+            "affinity": "INTEGER",
+            "notNull": false
+          },
+          {
+            "fieldPath": "Repetition",
+            "columnName": "Repetition",
+            "affinity": "INTEGER",
+            "notNull": false
+          },
+          {
+            "fieldPath": "Weight",
+            "columnName": "Weight",
+            "affinity": "INTEGER",
+            "notNull": false
+          }
+        ],
+        "primaryKey": {
+          "autoGenerate": true,
+          "columnNames": [
+            "UID"
+          ]
+        },
+        "indices": [
+          {
+            "name": "index_Set_RoutineWorkoutId",
+            "unique": false,
+            "columnNames": [
+              "RoutineWorkoutId"
+            ],
+            "orders": [],
+            "createSql": "CREATE INDEX IF NOT EXISTS `index_Set_RoutineWorkoutId` ON `${TABLE_NAME}` (`RoutineWorkoutId`)"
+          }
+        ],
+        "foreignKeys": [
+          {
+            "table": "RoutineWorkout",
+            "onDelete": "CASCADE",
+            "onUpdate": "NO ACTION",
+            "columns": [
+              "RoutineWorkoutId"
+            ],
+            "referencedColumns": [
+              "UID"
+            ]
+          }
+        ]
+      }
+    ],
+    "views": [],
+    "setupQueries": [
+      "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, '45e13f22fada7319ff4db169ccfa9692')"
+    ]
+  }
+}

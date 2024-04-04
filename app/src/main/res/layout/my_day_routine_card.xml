@@ -18,7 +18,6 @@
         app:layout_constraintTop_toTopOf="parent"
         app:strokeColor="#C4C4C4"
         app:strokeWidth="0.5dp">
-
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -57,10 +56,8 @@
                 android:layout_marginStart="5dp"
                 android:layout_marginEnd="5dp"
                 android:layout_marginBottom="5dp"
-                android:descendantFocusability="afterDescendants"
                 app:layout_constraintBottom_toTopOf="@+id/btnAddSet"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="1.0"
                 app:layout_constraintStart_toEndOf="@+id/ivWorkoutType"
                 app:layout_constraintTop_toBottomOf="@+id/tvWorkoutName" />
 
@@ -90,7 +87,8 @@
                 android:visibility="gone"
                 app:layout_constraintBottom_toBottomOf="@+id/rvWorkoutItems"
                 app:layout_constraintEnd_toEndOf="@+id/rvWorkoutItems"
-                app:layout_constraintStart_toEndOf="@+id/ivWorkoutType" />
+                app:layout_constraintStart_toStartOf="@+id/rvWorkoutItems"
+                app:layout_constraintTop_toTopOf="@id/rvWorkoutItems" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </com.google.android.material.card.MaterialCardView>
