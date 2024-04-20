@@ -1,4 +1,4 @@
-package com.gamezzar.geargymtest.utils;
+package com.gamezzar.geargymtest.seedwork.utils;
 
 import android.content.Context;
 import android.content.res.Resources;

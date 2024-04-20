@@ -119,8 +119,8 @@ public class LoginFragment extends BaseFragment {
     }
 
     private void updateLoginButtonState() {
-        boolean isEmailValid = binding.tilEmail.getEditText().getText().toString().matches("^[a-zA-Z0-9_+&*-]+(?:\\.[a-zA-Z0-9_+&*-]+)*@" + "(?:[a-zA-Z0-9-]+\\.)+[a-zA-Z]{2,7}$");
-        boolean isPasswordValid = binding.tilPassword.getEditText().getText().toString().matches("^.{6,}$");
+        boolean isEmailValid = Objects.requireNonNull(binding.tilEmail.getEditText()).getText().toString().matches("^[a-zA-Z0-9_+&*-]+(?:\\.[a-zA-Z0-9_+&*-]+)*@" + "(?:[a-zA-Z0-9-]+\\.)+[a-zA-Z]{2,7}$");
+        boolean isPasswordValid = Objects.requireNonNull(binding.tilPassword.getEditText()).getText().toString().matches("^.{6,}$");
         binding.btnLogin.setEnabled(isEmailValid && isPasswordValid);
     }
 
@@ -130,7 +130,7 @@ public class LoginFragment extends BaseFragment {
 
     private void safeNavigate(int destinationId) {
         NavController navController = NavHostFragment.findNavController(this);
-        if (navController.getCurrentDestination().getId() == R.id.loginFragment) {
+        if (Objects.requireNonNull(navController.getCurrentDestination()).getId() == R.id.loginFragment) {
             navController.navigate(destinationId);
         }
     }

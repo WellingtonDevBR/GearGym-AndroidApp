@@ -17,9 +17,14 @@ import java.util.Locale;
 public class MyRoutineListAdapter extends RecyclerView.Adapter<MyRoutineListAdapter.RoutineViewHolder> {
 
     private static List<RoutineModel> routines;
+    private OnRoutineClickListener listener;
+    public interface OnRoutineClickListener {
+        void onRoutineClicked(RoutineModel routineModel);
+    }
 
-    public MyRoutineListAdapter(List<RoutineModel> routines) {
+    public MyRoutineListAdapter(List<RoutineModel> routines, OnRoutineClickListener listener) {
         this.routines = routines;
+        this.listener = listener;
     }
 
     @NonNull
@@ -34,6 +39,7 @@ public class MyRoutineListAdapter extends RecyclerView.Adapter<MyRoutineListAdap
     public void onBindViewHolder(@NonNull RoutineViewHolder holder, int position) {
         RoutineModel routine = routines.get(position);
         holder.bind(routine);
+        holder.itemView.setOnClickListener(v -> listener.onRoutineClicked(routine));
     }
 
     public RoutineModel getItemAtPosition(int position) {
@@ -60,12 +66,6 @@ public class MyRoutineListAdapter extends RecyclerView.Adapter<MyRoutineListAdap
 
             binding.tvRoutineName.setText(String.format(Locale.US, routine.getTitle() + " " + "Workouts"));
             binding.tvWorkoutName.setText(String.format(Locale.US,"%d Workouts", routine.getRoutineWorkouts().size()));
-
-//            binding.btnAddSet.setVisibility(View.INVISIBLE);
-//            Glide.with(binding.ivWorkoutType.getContext())
-//                    .load(routine.getRoutineWorkouts().get(0).getImageUrl())
-//                    .transform(new CenterCrop(), new RoundedCorners(18))
-//                    .into(binding.ivWorkoutType);
         }
     }
 }

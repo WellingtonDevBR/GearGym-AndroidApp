@@ -11,4 +11,5 @@ public class WorkoutListOptionViewModel extends AndroidViewModel {
         super(application);
     }
     // TODO: Implement the ViewModel
+    // Will be implemented in the future
 }

@@ -45,7 +45,9 @@ public class RoutineRepository {
             long routineId = routineDao.insert(routine);
 
             for (WorkoutWithSets workoutWithSets : workoutsWithSets) {
-                long workoutId = workoutDao.insert(workoutWithSets.workout);
+                // Assuming you have a way to fetch the existing workout ID by some unique identifier
+                long workoutId = workoutDao.getIdByName(workoutWithSets.workout.Name); // Example method
+
                 RoutineWorkout routineWorkout = new RoutineWorkout();
                 routineWorkout.RoutineId = (int) routineId;
                 routineWorkout.WorkoutId = (int) workoutId;
@@ -53,6 +55,7 @@ public class RoutineRepository {
 
                 for (Set set : workoutWithSets.sets) {
                     set.RoutineWorkoutId = (int) routineWorkoutId;
+                    System.out.println("SetLine " + set.RoutineWorkoutId);
                     setDao.insert(set);
                 }
             }

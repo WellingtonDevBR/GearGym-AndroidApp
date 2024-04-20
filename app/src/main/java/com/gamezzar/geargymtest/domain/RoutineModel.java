@@ -1,8 +1,11 @@
 package com.gamezzar.geargymtest.domain;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import java.util.List;
 
-public class RoutineModel {
+public class RoutineModel implements Parcelable {
     private final Integer id;
     private final String title;
     private final String dayOfWeek;
@@ -16,6 +19,41 @@ public class RoutineModel {
         this.workouts = workouts;
         this.sets = sets;
     }
+    protected RoutineModel(Parcel in) {
+        // 'readValue' method is used for boxed types like Integer
+        id = (Integer) in.readValue(Integer.class.getClassLoader());
+        title = in.readString();
+        dayOfWeek = in.readString();
+        // Make sure WorkoutModel and SetModel are also Parcelable
+        workouts = in.createTypedArrayList(WorkoutModel.CREATOR);
+        sets = in.createTypedArrayList(SetModel.CREATOR);
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeValue(id); // Use writeValue for boxed types
+        dest.writeString(title);
+        dest.writeString(dayOfWeek);
+        dest.writeTypedList(workouts);
+        dest.writeTypedList(sets);
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    public static final Parcelable.Creator<RoutineModel> CREATOR = new Parcelable.Creator<RoutineModel>() {
+        @Override
+        public RoutineModel createFromParcel(Parcel in) {
+            return new RoutineModel(in);
+        }
+
+        @Override
+        public RoutineModel[] newArray(int size) {
+            return new RoutineModel[size];
+        }
+    };
 
     public String getTitle() {
         return title;

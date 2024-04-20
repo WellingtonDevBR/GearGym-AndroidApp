@@ -138,7 +138,7 @@
 
         <action
             android:id="@+id/action_workoutFragment_to_workoutListFragment"
-            app:destination="@id/workoutListFragment" />
+            app:destination="@id/routineWorkoutFragment" />
         <action
             android:id="@+id/action_workoutFragment_to_homeFragment"
             app:destination="@id/homeFragment" />
@@ -185,7 +185,7 @@
     </fragment>
 
     <fragment
-        android:id="@+id/workoutListFragment"
+        android:id="@+id/routineWorkoutFragment"
         android:name="com.gamezzar.geargymtest.ui.fragment.MyRoutineListFragment"
         android:label="Your Workout"
         tools:layout="@layout/my_routine_list_fragment">
@@ -195,6 +195,18 @@
         <action
             android:id="@+id/action_workoutListFragment_to_createWorkoutFragment"
             app:destination="@id/workoutListOptionFragment" />
+        <action
+            android:id="@+id/action_routineWorkoutFragment_to_routineWorkoutListFragment"
+            app:destination="@id/routineWorkoutListFragment" />
+    </fragment>
 
+    <fragment
+        android:id="@+id/routineWorkoutListFragment"
+        android:name="com.gamezzar.geargymtest.ui.fragment.RoutineWorkoutListFragment"
+        android:label="My Workouts"
+        tools:layout="@layout/routine_workout_list_fragment">
+        <action
+            android:id="@+id/action_routineWorkoutListFragment_to_routineWorkoutFragment"
+            app:destination="@id/routineWorkoutFragment" />
     </fragment>
 </navigation>

@@ -48,14 +48,6 @@ public class BaseFragment extends Fragment {
         }
     }
 
-    public void showFab() {
-        AppCompatActivity activity = (AppCompatActivity) getActivity();
-        assert activity != null;
-        FloatingActionButton floatingActionButton = activity.findViewById(R.id.fab);
-        assert floatingActionButton != null;
-        floatingActionButton.setVisibility(View.VISIBLE);
-    }
-
     public void hideFab() {
         AppCompatActivity activity = (AppCompatActivity) getActivity();
         assert activity != null;

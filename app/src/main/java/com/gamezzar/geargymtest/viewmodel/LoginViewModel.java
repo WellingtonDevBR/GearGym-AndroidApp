@@ -5,6 +5,7 @@ import android.app.Application;
 import androidx.annotation.NonNull;
 import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LiveData;
+import androidx.lifecycle.MutableLiveData;
 
 import com.gamezzar.geargymtest.database.entities.User;
 import com.gamezzar.geargymtest.database.repositories.UserPreferencesRepository;
@@ -20,6 +21,8 @@ public class LoginViewModel extends AndroidViewModel {
 
     private final UserRepository userRepository;
     private final UserPreferencesRepository userPreferencesRepository;
+    private LiveData<User> loggedUser;
+
     private final CompositeDisposable disposables = new CompositeDisposable();
 
     public LoginViewModel(@NonNull Application application) {
@@ -29,25 +32,12 @@ public class LoginViewModel extends AndroidViewModel {
     }
 
     public LiveData<User> login(String email, String password) {
-        return userRepository.findByEmailAndPassword(email, password);
+        loggedUser = userRepository.findByEmailAndPassword(email, password);
+        return loggedUser;
     }
 
-    public Completable saveEmailToDataStore(String email) {
-        return userPreferencesRepository.saveEmail(email)
-                .subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread());
-    }
-
-    public Flowable<String> retrieveEmailFromDataStore() {
-        return userPreferencesRepository.getEmail()
-                .subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread());
-    }
-
-    public Completable removeEmailFromDataStore() {
-        return userPreferencesRepository.removeEmail()
-                .subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread());
+    public LiveData<User> retrieveLoggedInUser() {
+        return loggedUser;
     }
 
     @Override

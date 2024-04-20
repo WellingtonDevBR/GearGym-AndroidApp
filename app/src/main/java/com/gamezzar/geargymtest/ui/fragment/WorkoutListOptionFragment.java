@@ -1,7 +1,6 @@
 package com.gamezzar.geargymtest.ui.fragment;
 
-import static com.gamezzar.geargymtest.utils.UiUtils.updateButtonWithCounter;
-
+import static com.gamezzar.geargymtest.seedwork.utils.UiUtils.updateButtonWithCounter;
 
 import android.os.Bundle;
 
@@ -25,8 +24,8 @@ import com.gamezzar.geargymtest.databinding.WorkoutListOptionFragmentBinding;
 import com.gamezzar.geargymtest.seedwork.service.AWSS3Service;
 import com.gamezzar.geargymtest.seedwork.shared.BaseFragment;
 import com.gamezzar.geargymtest.domain.WorkoutModel;
+import com.gamezzar.geargymtest.seedwork.utils.UiUtils;
 import com.gamezzar.geargymtest.ui.adapter.WorkoutListOptionAdapter;
-import com.gamezzar.geargymtest.utils.UiUtils;
 import com.gamezzar.geargymtest.viewmodel.SharedWorkoutViewModel;
 import com.gamezzar.geargymtest.viewmodel.WorkoutListOptionViewModel;
 
@@ -87,7 +86,7 @@ public class WorkoutListOptionFragment extends BaseFragment {
 
     private void updateCounter() {
         sharedWorkoutViewModel.getWorkoutCounter().observe(getViewLifecycleOwner(), counter -> {
-            UiUtils.updateButtonWithCounter(requireContext(), binding.btnSave, counter, R.drawable.counter_circle);
+            updateButtonWithCounter(requireContext(), binding.btnSave, counter, R.drawable.counter_circle);
         });
     }
 

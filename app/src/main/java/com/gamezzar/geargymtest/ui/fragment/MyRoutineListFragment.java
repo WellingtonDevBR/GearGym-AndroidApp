@@ -1,10 +1,18 @@
 package com.gamezzar.geargymtest.ui.fragment;
 
+import static com.google.android.material.color.MaterialColors.ALPHA_FULL;
+
+import android.graphics.Canvas;
+import android.graphics.Color;
+import android.graphics.Paint;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.core.content.ContextCompat;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -17,6 +25,7 @@ import android.widget.Toast;
 
 import com.amazonaws.regions.Regions;
 import com.gamezzar.geargymtest.BuildConfig;
+import com.gamezzar.geargymtest.R;
 import com.gamezzar.geargymtest.database.entities.Set;
 import com.gamezzar.geargymtest.database.models.RoutineWithWorkoutsAndSets;
 import com.gamezzar.geargymtest.database.models.WorkoutWithSets;
@@ -66,7 +75,11 @@ public class MyRoutineListFragment extends BaseFragment {
                     RoutineModel routineModel = new RoutineModel(rWithWorkoutsAndSets.routine.UID, rWithWorkoutsAndSets.routine.Name, rWithWorkoutsAndSets.routine.DayOfWeek, workoutModels, setModels);
                     routineModels.add(routineModel);
                 }
-                adapter = new MyRoutineListAdapter(routineModels);
+                adapter = new MyRoutineListAdapter(routineModels, routineModel -> {
+                    Bundle bundle = new Bundle();
+                    bundle.putParcelable("selectedRoutine", routineModel);
+                    Navigation.findNavController(view).navigate(R.id.action_routineWorkoutFragment_to_routineWorkoutListFragment, bundle);
+                });
                 binding.routineRecycleView.setLayoutManager(new LinearLayoutManager(getContext()));
                 binding.routineRecycleView.setAdapter(adapter);
             }
@@ -78,15 +91,18 @@ public class MyRoutineListFragment extends BaseFragment {
 
     @NonNull
     private ItemTouchHelper getItemTouchHelper() {
-        ItemTouchHelper.SimpleCallback simpleItemTouchCallback = new ItemTouchHelper.SimpleCallback(0, ItemTouchHelper.LEFT | ItemTouchHelper.RIGHT) {
+        ItemTouchHelper.SimpleCallback simpleItemTouchCallback = new ItemTouchHelper.SimpleCallback(0, ItemTouchHelper.LEFT) {
 
             @Override
             public boolean onMove(@NonNull RecyclerView recyclerView, @NonNull RecyclerView.ViewHolder viewHolder, @NonNull RecyclerView.ViewHolder target) {
+                // This callback is not used for swipe actions, so return false.
                 return false;
             }
 
+
             @Override
             public void onSwiped(@NonNull RecyclerView.ViewHolder viewHolder, int direction) {
+                // Handle the swipe to delete action here.
                 int position = viewHolder.getAdapterPosition();
                 int routineId = adapter.getItemAtPosition(position).getId();
                 mViewModel.deleteRoutine(routineId, success -> {
@@ -100,10 +116,48 @@ public class MyRoutineListFragment extends BaseFragment {
                     }
                 });
             }
+
+
+            @Override
+            public void onChildDraw(@NonNull Canvas c, @NonNull RecyclerView recyclerView,
+                                    @NonNull RecyclerView.ViewHolder viewHolder,
+                                    float dX, float dY, int actionState, boolean isCurrentlyActive) {
+                if (actionState == ItemTouchHelper.ACTION_STATE_SWIPE && dX < 0) { // Only consider left swipes.
+                    View itemView = viewHolder.itemView;
+                    Paint p = new Paint();
+                    p.setColor(Color.parseColor("#D32F2F"));
+
+                    // Draw background
+                    c.drawRect((float) itemView.getRight() + dX, (float) itemView.getTop(),
+                            (float) itemView.getRight(), (float) itemView.getBottom(), p);
+
+                    // Draw icon
+                    Drawable icon = ContextCompat.getDrawable(requireContext(), R.drawable.ic_trash_svg_48);
+                    if (icon != null) {
+                        int itemHeight = itemView.getBottom() - itemView.getTop();
+                        int intrinsicWidth = icon.getIntrinsicWidth();
+                        int intrinsicHeight = icon.getIntrinsicHeight();
+
+                        int iconLeft = itemView.getRight() - itemView.getPaddingRight() - intrinsicWidth;
+                        int iconRight = itemView.getRight() - itemView.getPaddingRight();
+                        int iconTop = itemView.getTop() + (itemHeight - intrinsicHeight) / 2;
+                        int iconBottom = iconTop + intrinsicHeight;
+                        icon.setBounds(iconLeft, iconTop, iconRight, iconBottom);
+
+                        icon.draw(c);
+                    }
+
+                    itemView.setAlpha(ALPHA_FULL - Math.abs(dX) / (float) viewHolder.itemView.getWidth());
+                    itemView.setTranslationX(dX);
+                } else {
+                    super.onChildDraw(c, recyclerView, viewHolder, dX, dY, actionState, isCurrentlyActive);
+                }
+            }
         };
-        ItemTouchHelper itemTouchHelper = new ItemTouchHelper(simpleItemTouchCallback);
-        return itemTouchHelper;
+        return new ItemTouchHelper(simpleItemTouchCallback);
     }
+
+
 
     private List<WorkoutModel> convertToWorkoutModels(List<WorkoutWithSets> workoutsWithSets) {
         List<WorkoutModel> workoutModels = new ArrayList<>();

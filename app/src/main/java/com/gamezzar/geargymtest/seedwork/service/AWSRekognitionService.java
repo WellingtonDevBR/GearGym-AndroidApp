@@ -41,11 +41,4 @@ public class AWSRekognitionService extends AWSClient {
 
         return rekognitionClient.detectCustomLabels(request);
     }
-    public DetectLabelsResult detectLabelsResult(ByteBuffer imageBytes) {
-        DetectLabelsRequest request = new DetectLabelsRequest()
-                .withImage(new Image().withBytes(imageBytes))
-                .withMaxLabels(10)
-                .withMinConfidence(70F);
-        return rekognitionClient.detectLabels(request);
-    }
 }

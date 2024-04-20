@@ -2,6 +2,8 @@ package com.gamezzar.geargymtest.ui.fragment;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
+import androidx.lifecycle.LiveData;
+import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModelProvider;
 
 import android.Manifest;
@@ -22,16 +24,21 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.gamezzar.geargymtest.R;
+import com.gamezzar.geargymtest.database.entities.User;
 import com.gamezzar.geargymtest.seedwork.shared.BaseFragment;
 import com.gamezzar.geargymtest.databinding.HomeFragmentBinding;
 import com.gamezzar.geargymtest.viewmodel.HomeViewModel;
+import com.gamezzar.geargymtest.viewmodel.LoginViewModel;
 import com.gamezzar.geargymtest.viewmodel.SessionManager;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 
 public class HomeFragment extends BaseFragment {
     private HomeViewModel mViewModel;
+    private LoginViewModel loginViewModel;
     private AppCompatActivity activity;
+    private MutableLiveData<User> loggedUser = new MutableLiveData<>();
+
     private static final String[] REQUIRED_PERMISSIONS = new String[]{Manifest.permission.CAMERA};
 
     public static HomeFragment newInstance() {
@@ -58,6 +65,7 @@ public class HomeFragment extends BaseFragment {
         } else {
             Log.e("HomeFragment", "FloatingActionButton is null");
         }
+
         return binding.getRoot();
     }
 
@@ -65,7 +73,21 @@ public class HomeFragment extends BaseFragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         mViewModel = new ViewModelProvider(this).get(HomeViewModel.class);
+        loginViewModel = new ViewModelProvider(this).get(LoginViewModel.class);
         binding.workoutCard.setOnClickListener(v -> navigateToWorkout());
+        LiveData<User> userLiveData = loginViewModel.retrieveLoggedInUser();
+
+        if (userLiveData != null) {
+            userLiveData.observe(getViewLifecycleOwner(), loggedUser -> {
+                if (loggedUser != null) {
+                    binding.tvUsername.setText(loggedUser.getName());
+                } else {
+                    binding.tvUsername.setText("Guest");
+                }
+            });
+        } else {
+            Log.e("HomeFragment", "User LiveData is null");
+        }
     }
 
 
