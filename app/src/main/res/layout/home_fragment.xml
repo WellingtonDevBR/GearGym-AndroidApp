@@ -49,6 +49,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="@+id/tvWelcomeLabel" />
 
+
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/svHomeContainer"
             android:layout_width="0dp"
@@ -78,7 +79,7 @@
                 <androidx.cardview.widget.CardView
                     android:id="@+id/workout_card"
                     android:layout_width="0dp"
-                    android:layout_height="200dp"
+                    android:layout_height="170dp"
                     android:layout_columnWeight="1"
                     android:layout_gravity="fill"
                     android:layout_margin="8dp"
@@ -118,7 +119,7 @@
 
                 <androidx.cardview.widget.CardView
                     android:layout_width="0dp"
-                    android:layout_height="200dp"
+                    android:layout_height="170dp"
                     android:layout_columnWeight="1"
                     android:layout_gravity="fill"
                     android:layout_margin="8dp"
@@ -159,7 +160,7 @@
 
                 <androidx.cardview.widget.CardView
                     android:layout_width="0dp"
-                    android:layout_height="200dp"
+                    android:layout_height="170dp"
                     android:layout_columnWeight="1"
                     android:layout_gravity="fill"
                     android:layout_margin="8dp"
@@ -200,7 +201,7 @@
 
                 <androidx.cardview.widget.CardView
                     android:layout_width="0dp"
-                    android:layout_height="200dp"
+                    android:layout_height="170dp"
                     android:layout_columnWeight="1"
                     android:layout_gravity="fill"
                     android:layout_margin="8dp"

@@ -6,210 +6,216 @@
     android:layout_height="match_parent"
     tools:context=".ui.fragment.RegisterFragment">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="#FFFFFF">
+        android:fillViewport="true">
 
-        <ImageButton
-            android:id="@+id/ibReturn"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="20dp"
-            android:layout_marginTop="40dp"
-            android:background="@android:color/transparent"
-            android:backgroundTint="@color/black"
-            android:src="@drawable/ic_up_button"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:tint="@color/black" />
 
-        <ImageView
-            android:id="@+id/imageView"
-            android:layout_width="122dp"
-            android:layout_height="122dp"
-            android:layout_marginTop="36dp"
-            android:contentDescription="@string/gear_gym_logo"
-            android:foreground="@drawable/logo"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/logo"
-            tools:src="@tools:sample/avatars" />
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#FFFFFF">
 
-        <TextView
-            android:id="@+id/signUpTextViewLabel"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="26dp"
-            android:text="@string/sign_up_now"
-            android:textColor="#333333"
-            android:textSize="24sp"
-            android:textStyle="bold"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/imageView" />
-
-        <TextView
-            android:id="@+id/subTextViewSignUp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:text="@string/sign_up_promo"
-            android:textColor="#80333333"
-            android:textSize="16sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/signUpTextViewLabel" />
-
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/tilNameRegister"
-            style="@style/CustomTextInputLayoutStyle"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="36dp"
-            android:layout_marginTop="30dp"
-            android:layout_marginEnd="36dp"
-            android:hint="@string/hint_enter_your_name"
-            android:textColorHint="@color/gray_400"
-            app:boxCornerRadiusBottomEnd="8dp"
-            app:boxCornerRadiusBottomStart="8dp"
-            app:boxCornerRadiusTopEnd="8dp"
-            app:boxCornerRadiusTopStart="8dp"
-            app:errorEnabled="false"
-            app:helperTextTextColor="@color/red"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/subTextViewSignUp"
-            app:startIconDrawable="@drawable/ic_user">
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/inputNameField"
-                android:layout_width="match_parent"
+            <ImageButton
+                android:id="@+id/ibReturn"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:inputType="textPersonName" />
-        </com.google.android.material.textfield.TextInputLayout>
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="40dp"
+                android:background="@android:color/transparent"
+                android:backgroundTint="@color/black"
+                android:src="@drawable/ic_up_button"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:tint="@color/black" />
 
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/tilEmailRegister"
-            style="@style/CustomTextInputLayoutStyle"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="36dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginEnd="36dp"
-            android:hint="@string/hint_enter_your_email"
-            android:textColorHint="@color/gray_400"
-            app:boxCornerRadiusBottomEnd="8dp"
-            app:boxCornerRadiusBottomStart="8dp"
-            app:boxCornerRadiusTopEnd="8dp"
-            app:boxCornerRadiusTopStart="8dp"
-            app:helperTextTextColor="@color/red"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tilNameRegister"
-            app:startIconDrawable="@drawable/ic_email">
+            <ImageView
+                android:id="@+id/imageView"
+                android:layout_width="122dp"
+                android:layout_height="122dp"
+                android:layout_marginTop="36dp"
+                android:contentDescription="@string/gear_gym_logo"
+                android:foreground="@drawable/logo"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/logo"
+                tools:src="@tools:sample/avatars" />
 
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/inputEmailField"
-                android:layout_width="match_parent"
+            <TextView
+                android:id="@+id/signUpTextViewLabel"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:inputType="textEmailAddress" />
-        </com.google.android.material.textfield.TextInputLayout>
+                android:layout_marginTop="26dp"
+                android:text="@string/sign_up_now"
+                android:textColor="#333333"
+                android:textSize="24sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/imageView" />
 
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/tilPasswordRegister"
-            style="@style/CustomTextInputLayoutStyle"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="36dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginEnd="36dp"
-            android:hint="@string/hint_enter_your_password"
-            android:textColorHint="@color/gray_400"
-            app:boxCornerRadiusBottomEnd="8dp"
-            app:boxCornerRadiusBottomStart="8dp"
-            app:boxCornerRadiusTopEnd="8dp"
-            app:boxCornerRadiusTopStart="8dp"
-            app:endIconMode="password_toggle"
-            app:helperTextTextColor="@color/red"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tilEmailRegister"
-            app:startIconDrawable="@drawable/ic_password">
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/inputPasswordField"
-                android:layout_width="match_parent"
+            <TextView
+                android:id="@+id/subTextViewSignUp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:inputType="textPassword" />
-        </com.google.android.material.textfield.TextInputLayout>
+                android:layout_marginTop="16dp"
+                android:text="@string/sign_up_promo"
+                android:textColor="#80333333"
+                android:textSize="16sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/signUpTextViewLabel" />
 
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/tilRepeatPasswordRegister"
-            style="@style/CustomTextInputLayoutStyle"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="36dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginEnd="36dp"
-            android:hint="@string/hint_repeat_your_password"
-            android:textColorHint="@color/gray_400"
-            app:boxCornerRadiusBottomEnd="8dp"
-            app:boxCornerRadiusBottomStart="8dp"
-            app:boxCornerRadiusTopEnd="8dp"
-            app:boxCornerRadiusTopStart="8dp"
-            app:endIconMode="password_toggle"
-            app:helperTextTextColor="@color/red"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tilPasswordRegister"
-            app:startIconDrawable="@drawable/ic_password">
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/inputRepeatPasswordField"
-                android:layout_width="match_parent"
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/tilNameRegister"
+                style="@style/CustomTextInputLayoutStyle"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:inputType="textPassword" />
-        </com.google.android.material.textfield.TextInputLayout>
+                android:layout_marginStart="36dp"
+                android:layout_marginTop="30dp"
+                android:layout_marginEnd="36dp"
+                android:hint="@string/hint_enter_your_name"
+                android:textColorHint="@color/gray_400"
+                app:boxCornerRadiusBottomEnd="8dp"
+                app:boxCornerRadiusBottomStart="8dp"
+                app:boxCornerRadiusTopEnd="8dp"
+                app:boxCornerRadiusTopStart="8dp"
+                app:errorEnabled="false"
+                app:helperTextTextColor="@color/red"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/subTextViewSignUp"
+                app:startIconDrawable="@drawable/ic_user">
 
-        <com.google.android.material.radiobutton.MaterialRadioButton
-            android:id="@+id/mrbTermsAndConditions"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="36dp"
-            android:layout_marginTop="5dp"
-            android:checked="false"
-            android:text="@string/i_agree_to"
-            android:textColor="@color/gray_400"
-            app:buttonTint="@color/selector_radio_button_tint"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tilRepeatPasswordRegister"
-            app:useMaterialThemeColors="false" />
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/inputNameField"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="textPersonName" />
+            </com.google.android.material.textfield.TextInputLayout>
 
-        <TextView
-            android:id="@+id/termsConditionsTextView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="3dp"
-            android:text="@string/terms_and_conditions"
-            android:textStyle="bold"
-            app:layout_constraintBottom_toBottomOf="@+id/mrbTermsAndConditions"
-            app:layout_constraintStart_toEndOf="@+id/mrbTermsAndConditions"
-            app:layout_constraintTop_toTopOf="@+id/mrbTermsAndConditions" />
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/tilEmailRegister"
+                style="@style/CustomTextInputLayoutStyle"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="36dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="36dp"
+                android:hint="@string/hint_enter_your_email"
+                android:textColorHint="@color/gray_400"
+                app:boxCornerRadiusBottomEnd="8dp"
+                app:boxCornerRadiusBottomStart="8dp"
+                app:boxCornerRadiusTopEnd="8dp"
+                app:boxCornerRadiusTopStart="8dp"
+                app:helperTextTextColor="@color/red"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tilNameRegister"
+                app:startIconDrawable="@drawable/ic_email">
 
-        <Button
-            android:id="@+id/btnRegister"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="36dp"
-            android:layout_marginTop="5dp"
-            android:layout_marginEnd="36dp"
-            android:backgroundTint="@color/primary"
-            android:text="@string/register_button"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/mrbTermsAndConditions" />
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/inputEmailField"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="textEmailAddress" />
+            </com.google.android.material.textfield.TextInputLayout>
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/tilPasswordRegister"
+                style="@style/CustomTextInputLayoutStyle"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="36dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="36dp"
+                android:hint="@string/hint_enter_your_password"
+                android:textColorHint="@color/gray_400"
+                app:boxCornerRadiusBottomEnd="8dp"
+                app:boxCornerRadiusBottomStart="8dp"
+                app:boxCornerRadiusTopEnd="8dp"
+                app:boxCornerRadiusTopStart="8dp"
+                app:endIconMode="password_toggle"
+                app:helperTextTextColor="@color/red"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tilEmailRegister"
+                app:startIconDrawable="@drawable/ic_password">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/inputPasswordField"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="textPassword" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/tilRepeatPasswordRegister"
+                style="@style/CustomTextInputLayoutStyle"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="36dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="36dp"
+                android:hint="@string/hint_repeat_your_password"
+                android:textColorHint="@color/gray_400"
+                app:boxCornerRadiusBottomEnd="8dp"
+                app:boxCornerRadiusBottomStart="8dp"
+                app:boxCornerRadiusTopEnd="8dp"
+                app:boxCornerRadiusTopStart="8dp"
+                app:endIconMode="password_toggle"
+                app:helperTextTextColor="@color/red"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tilPasswordRegister"
+                app:startIconDrawable="@drawable/ic_password">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/inputRepeatPasswordField"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="textPassword" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.radiobutton.MaterialRadioButton
+                android:id="@+id/mrbTermsAndConditions"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="36dp"
+                android:layout_marginTop="5dp"
+                android:checked="false"
+                android:text="@string/i_agree_to"
+                android:textColor="@color/gray_400"
+                app:buttonTint="@color/selector_radio_button_tint"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tilRepeatPasswordRegister"
+                app:useMaterialThemeColors="false" />
+
+            <TextView
+                android:id="@+id/termsConditionsTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="3dp"
+                android:text="@string/terms_and_conditions"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="@+id/mrbTermsAndConditions"
+                app:layout_constraintStart_toEndOf="@+id/mrbTermsAndConditions"
+                app:layout_constraintTop_toTopOf="@+id/mrbTermsAndConditions" />
+
+            <Button
+                android:id="@+id/btnRegister"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="36dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginEnd="36dp"
+                android:backgroundTint="@color/primary"
+                android:text="@string/register_button"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/mrbTermsAndConditions" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
 </FrameLayout>
