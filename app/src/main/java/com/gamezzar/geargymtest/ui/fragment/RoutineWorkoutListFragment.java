@@ -45,14 +45,11 @@ public class RoutineWorkoutListFragment extends Fragment {
         RoutineModel selectedRoutine = null;
         if (getArguments() != null) {
             selectedRoutine = getArguments().getParcelable("selectedRoutine", RoutineModel.class);
-            if (selectedRoutine != null) { // This line needs to check for NOT null
-                // Now that we confirmed selectedRoutine is not null, proceed with using it
+            if (selectedRoutine != null) {
                 adapter = new RoutineWorkoutListAdapter(selectedRoutine.getRoutineWorkouts());
                 binding.routineWorkoutsListRecycleView.setLayoutManager(new LinearLayoutManager(getContext()));
                 binding.routineWorkoutsListRecycleView.setAdapter(adapter);
             } else {
-                // Handle the case where selectedRoutine is null
-                // e.g., Log an error, show a message, or navigate back
                 Log.e("RoutineWorkoutListFragment", "Selected routine is null.");
             }
         }

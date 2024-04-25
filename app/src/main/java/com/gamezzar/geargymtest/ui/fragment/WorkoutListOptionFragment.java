@@ -2,6 +2,8 @@ package com.gamezzar.geargymtest.ui.fragment;
 
 import static com.gamezzar.geargymtest.seedwork.utils.UiUtils.updateButtonWithCounter;
 
+import static java.util.Locale.filter;
+
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -10,6 +12,8 @@ import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.fragment.NavHostFragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -77,6 +81,34 @@ public class WorkoutListOptionFragment extends BaseFragment {
         sharedWorkoutViewModel = new ViewModelProvider(requireActivity()).get(SharedWorkoutViewModel.class);
     }
 
+    private void setupSearchView() {
+        binding.tilSearchWorkout.getEditText().addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                filter(s.toString());
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+            }
+        });
+    }
+
+    private void filter(String text) {
+        List<WorkoutModel> filteredList = new ArrayList<>();
+        for (WorkoutModel item : workoutList) {
+            if (item.getTitle().toLowerCase().contains(text.toLowerCase())) {
+                filteredList.add(item);
+            }
+        }
+        adapter.updateList(filteredList);
+    }
+
+
     private void setupWorkoutList() {
         workoutList = new ArrayList<>();
         adapter = new WorkoutListOptionAdapter(workoutList, this::updateCounter);
@@ -100,6 +132,7 @@ public class WorkoutListOptionFragment extends BaseFragment {
         super.onViewCreated(view, savedInstanceState);
         observeSelectedWorkouts();
         loadWorkoutsFromArguments();
+        setupSearchView();
         adapter.notifyDataSetChanged();
     }
 

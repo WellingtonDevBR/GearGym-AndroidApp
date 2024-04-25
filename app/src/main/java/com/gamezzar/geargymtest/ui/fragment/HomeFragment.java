@@ -37,7 +37,7 @@ public class HomeFragment extends BaseFragment {
     private HomeViewModel mViewModel;
     private LoginViewModel loginViewModel;
     private AppCompatActivity activity;
-    private MutableLiveData<User> loggedUser = new MutableLiveData<>();
+    private final MutableLiveData<User> loggedUser = new MutableLiveData<>();
 
     private static final String[] REQUIRED_PERMISSIONS = new String[]{Manifest.permission.CAMERA};
 
@@ -51,21 +51,7 @@ public class HomeFragment extends BaseFragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         binding = HomeFragmentBinding.inflate(inflater, container, false);
         binding.ivProfile.setOnClickListener(v -> openProfileNavigation());
-        activity = (AppCompatActivity) getActivity();
-        assert activity != null;
-        FloatingActionButton floatingActionButton = activity.findViewById(R.id.fab);
-        if (floatingActionButton != null) {
-            floatingActionButton.setOnClickListener(v -> {
-                if (allPermissionsGranted()) {
-                    openCameraRecognition();
-                } else {
-                    requestCameraPermission();
-                }
-            });
-        } else {
-            Log.e("HomeFragment", "FloatingActionButton is null");
-        }
-
+        loggedUser.observe(getViewLifecycleOwner(), user -> System.out.println("Hello " + user.getName()));
         return binding.getRoot();
     }
 
@@ -85,8 +71,19 @@ public class HomeFragment extends BaseFragment {
                     binding.tvUsername.setText("Guest");
                 }
             });
-        } else {
-            Log.e("HomeFragment", "User LiveData is null");
+        }
+
+        activity = (AppCompatActivity) getActivity();
+        assert activity != null;
+        FloatingActionButton floatingActionButton = activity.findViewById(R.id.fab);
+        if (floatingActionButton != null) {
+            floatingActionButton.setOnClickListener(v -> {
+                if (allPermissionsGranted()) {
+                    openCameraRecognition();
+                } else {
+                    requestCameraPermission();
+                }
+            });
         }
     }
 

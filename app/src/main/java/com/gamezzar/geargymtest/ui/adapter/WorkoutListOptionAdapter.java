@@ -25,6 +25,12 @@ public class WorkoutListOptionAdapter extends RecyclerView.Adapter<WorkoutListOp
         this.checkedChangeListener = checkedChangeListener;
     }
 
+    public void updateList(List<WorkoutModel> newList) {
+        workoutChoiceList.clear();
+        workoutChoiceList.addAll(newList);
+        notifyDataSetChanged();
+    }
+
 
     @NonNull
     @Override

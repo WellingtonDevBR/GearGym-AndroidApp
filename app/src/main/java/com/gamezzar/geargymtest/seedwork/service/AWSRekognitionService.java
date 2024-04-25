@@ -34,7 +34,7 @@ public class AWSRekognitionService extends AWSClient {
                 .withProjectVersionArn(projectVersionArn)
                 .withImage(new Image().withBytes(imageBytes))
                 .withMaxResults(10)
-                .withMinConfidence(90F);
+                .withMinConfidence(20F);
         // Log response details
         DetectCustomLabelsResult result = rekognitionClient.detectCustomLabels(request);
         Log.d("Rekognition", "Label detection response: " + result.toString());
